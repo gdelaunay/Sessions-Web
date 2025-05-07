@@ -1,4 +1,7 @@
-# SurfSessionsWeb
+# SurfSessions-Web
+
+Frontend affichant les prévisions météo et les sessions de surf enregistrées.
+Elle permet aux utilisateurs de paramétrer leurs spots, leurs conditions idéales, et des notifications basées sur les prévisions, pour l'application **SurfSessions**.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.11.
 
