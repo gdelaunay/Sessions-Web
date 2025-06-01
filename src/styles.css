@@ -1,1 +1,86 @@
-/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --dark-blue: #1F4E79;
+
+  --blue-gradient: linear-gradient(
+    -100deg,
+    #F2F2F2 0%,
+    #E5F3FF 30%,
+    #CFE6FC 60%,
+    #FCFCFC 100%
+  );
+
+  --blue-transparent-gradient: linear-gradient(
+    75deg,
+    rgba(252, 252, 252, 0.5) 0%,
+    rgba(229, 243, 255, 0.5) 35%,
+    rgba(207, 230, 252, 0.5) 75%,
+    rgba(229, 243, 255, 0.5) 100%
+  );
+}
+
+html {
+  background: var(--blue-gradient);
+  background-size: 400% 400%;
+  animation: gradient 40s ease infinite;
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  background: var(--blue-transparent-gradient);
+  background-size: 500% 600%;
+  animation: gradient 30s ease infinite;
+}
+
+header {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  font-size: 1.25rem;
+  background-color: rgba(242, 242, 242, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.logo{
+  height: 48px;
+  width: 48px;
+}
+
+h1{
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--dark-blue);
+  margin: 0 1rem;
+}
+
+main{
+  margin: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Animation des dégradés en arrière plan */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 35% 50%;
+  }
+  75% {
+    background-position: 65% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
