@@ -1,72 +1,86 @@
+/* ---------- Variables ---------- */
+:root {
+  --darkblue: #1F4E79;
+  --blue: #5B9BD5;
+  --light-blue: #BDD7EE;
+  --black: #0D0D0D;
+  --darker-grey: #292929;
+  --dark-grey: #525252;
+  --grey: #A5A5A5;
+  --light-grey: #DBDBDB;
+  --lighter-grey: #F2F2F2;
+  --white: #FCFCFC;
+}
 
+/* ----- Thème clair ----- */
 @media (prefers-color-scheme: light) {
 
   :root {
+    --primary-text-color: var(--darkblue);
+    --secondary-text-color: var(--white);
+    --aside-text-color: var(--white);
+
+    --background-color-aside: rgba(31, 78, 121, 0.75);
+    --logo-background-color: rgba(0,0,0,0);
 
     --background-color-lightgrey: rgba(242, 242, 242, 0.3);
     --box-shadow-color: rgba(0, 0, 0, 0.1);
     --border-color: rgba(255, 255, 255, 0.2);
 
-    --background-color-darkblue: rgba(31, 78, 121, 0.90);
-
-    --darkblue: #1F4E79;
-    --lightgrey: #F2F2F2;
-
-    --primary-text-color: var(--darkblue);
-
     --blue-gradient: linear-gradient(
       -100deg,
-      #F2F2F2 0%,
-      #E5F3FF 30%,
+      #DBDBDB 0%,
+      #BDD7EE 30%,
       #CFE6FC 60%,
-      #FCFCFC 100%
+      #F2F2F2 100%
     );
 
     --blue-transparent-gradient: linear-gradient(
       75deg,
-      rgba(252, 252, 252, 0.5) 0%,
-      rgba(229, 243, 255, 0.5) 35%,
-      rgba(207, 230, 252, 0.5) 75%,
-      rgba(229, 243, 255, 0.5) 100%
+      #5B9BD559 0%,
+      #FCFCFC59 35%,
+      #1F4E7959 75%,
+      #5B9BD559 100%
     );
   }
 
 }
 
+/* ----- Thème foncé ----- */
 @media (prefers-color-scheme: dark) {
 
   :root {
+    --primary-text-color: var(--lighter-grey);
+    --secondary-text-color: var(--darkblue);
+    --aside-text-color: var(--lighter-grey);
 
-    --background-color-lightgrey: rgba(68, 68, 68, 0.3);
-    --box-shadow-color: rgba(205, 205, 205, 0.1);
-    --border-color: rgba(65, 65, 65, 0.2);
+    --background-color-aside: rgba(15, 62, 104, 0.3);
+    --logo-background-color: var(--light-grey);
 
-    --background-color-darkblue: rgba(42, 69, 94, 0.9);
-
-    --darkblue: #1F4E79;
-    --white: #FCFCFC;
-
-    --primary-text-color: var(--white);
+    --background-color-lightgrey: rgba(43, 43, 43, 0.3);
+    --box-shadow-color: rgba(0, 0, 0, 0.1);
+    --border-color: rgba(0, 69, 143, 0.10);
 
     --blue-gradient: linear-gradient(
       -100deg,
-      #3F3F3F 0%,
-      #323F4B 30%,
-      #32495F 60%,
-      #353535 100%
+      #3c3c3c 0%,
+      #233545 30%,
+      #2c3b47 60%,
+      #293137 100%
     );
 
     --blue-transparent-gradient: linear-gradient(
       75deg,
-      rgba(53, 53, 53, 0.5) 0%,
-      rgba(50, 63, 75, 0.5) 35%,
-      rgba(50, 73, 95, 0.5) 75%,
-      rgba(50, 63, 75, 0.5) 100%
+      rgba(63, 108, 149, 0.15) 0%,
+      rgba(108, 108, 108, 0.15) 35%,
+      rgba(20, 51, 78, 0.15) 75%,
+      rgba(66, 113, 156, 0.15) 100%
     );
   }
 
 }
 
+/* ---------- Général ---------- */
 html {
   background: var(--blue-gradient);
   background-size: 400% 400%;
@@ -85,13 +99,8 @@ body {
 }
 
 header {
-  height: 5vh;
-  padding: 0.75rem 1rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
-  font-size: 1.25rem;
+  height: 4vh;
+  padding: 0.75rem 1.25rem;
   background-color: var(--background-color-lightgrey);
   box-shadow: 0 4px 20px var(--box-shadow-color);
   border-bottom: 1px solid var(--border-color);
@@ -99,26 +108,24 @@ header {
   -webkit-backdrop-filter: blur(10px);
 }
 
+#title{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
+header h1 {
+  margin-top: -0.25rem;
+  margin-left: 1.25rem;
+}
+
 .logo{
-  height: 48px;
-  width: 48px;
-}
-
-h1{
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--primary-text-color);
-  margin: 0 1rem;
-}
-
-aside{
-  width: 20vw;
-  height: 95vh;
-  background-color: var(--background-color-darkblue);
-  box-shadow: 0 8px 20px var(--box-shadow-color);
-  border-right: 1px solid var(--border-color);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  height: 38px;
+  width: 38px;
+  padding: 2px;
+  border-radius: 50%;
+  background-color: var(--logo-background-color);
 }
 
 main{
@@ -126,6 +133,71 @@ main{
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+/* ---------- Volet aside ---------- */
+aside{
+  width: 192px;
+  height: 89.85vh;
+  padding: 1.5rem 1rem;
+  background: var(--background-color-aside);
+  box-shadow: 0 6px 30px var(--box-shadow-color);
+  border-right: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom-right-radius: 0.75rem;
+  color: var(--aside-text-color);
+}
+
+aside svg{
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: 0 0.5rem -0.35rem 0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.35rem;
+  font-weight: 400;
+}
+
+li {
+  margin: 0 0 1rem 0;
+}
+
+li a {
+  display: block;
+  padding: 0.5rem 1.75rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: var(--aside-text-color);
+  stroke: var(--aside-text-color);
+}
+
+li a:hover{
+  background-color: rgba(255, 255, 255, 0.33);
+  color: rgba(0, 69, 143, 0.60);
+  stroke: rgba(0, 69, 143, 0.60);
+  border-bottom: solid  white 1px;
+}
+
+li a:focus, li.active a  {
+  background-color: rgba(255, 255, 255, 0.66);
+  color: rgba(0, 69, 143, 0.85);
+  stroke: rgba(0, 69, 143, 0.85);
+  border-bottom: solid  white 1px;
+}
+
+/* ---------- Texte ---------- */
+h1{
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary-text-color);
+  margin: 0 1rem;
 }
 
 #testCard{
@@ -140,10 +212,10 @@ main{
   -webkit-backdrop-filter: blur(5px);
   transform-style: preserve-3d;
   transition: transform 0.1s ease;
-  border-radius: 12px;
+  border-radius: 0.75rem;
 }
 
-/* Animation des dégradés en arrière plan */
+/* ---------- Animation des dégradés en arrière plan ---------- */
 @keyframes gradient {
   0% {
     background-position: 0 50%;
