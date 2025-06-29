@@ -132,6 +132,10 @@ main{
   flex-direction: row;
 }
 
+app-root{
+  height: 100%;
+}
+
 #main-div{
   display: flex;
   flex-direction: column;

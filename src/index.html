@@ -39,21 +39,9 @@
 
     <div id="main-div">
       <app-root></app-root>
-      <div class="card"></div>
-      <footer id="footer">
-        &copy; <span id="year"></span> Goulwen DELAUNAY - <span id="datetime"></span>
-      </footer>
     </div>
 
   </main>
 </body>
 </html>
 
-<script>
-  const now = new Date();
-  document.getElementById('year').textContent = now.getFullYear();
-  document.getElementById('datetime').textContent = now.toLocaleString();
-  setInterval(() => {
-    document.getElementById('datetime').textContent = new Date().toLocaleString();
-  }, 1000);
-</script>
