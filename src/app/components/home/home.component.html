@@ -1,20 +1,62 @@
-<div class="card">
+<div class="card" id="home-card">
   <div *ngIf="forecast">
-    <pre>{{ forecast }}</pre>
-  </div>
-</div>
-<div class="card">
-  <div *ngIf="forecast">
-    <pre>{{ forecast }}</pre>
-  </div>
-</div>
-<app-footer></app-footer>
+    <span id="spot">Spot : Margaret plage - Préfailles</span><br>
+    <span>Latitude : {{ forecast.latitude }} & Longitude : {{forecast.longitude}}</span>
+    <span> - Units : {{ forecast.daily_units | json }}</span>
 
+    <div class="table-div">
+      <tr class="labels" id="days-line" >
+        <td>Date : </td>
+        <td class="day" *ngFor="let day of forecast.daily.time;" >{{ day }}</td>
+      </tr>
+      <tr id="wave-height-line" >
+        <td class="labels">Houle : </td>
+        <td class="waveHeight" *ngFor="let waveHeight of forecast.daily.wave_height_max;" >{{ waveHeight }} mètres</td>
+      </tr>
+      <tr id="wave-period-line" >
+        <td class="labels">Période : </td>
+        <td class="wavePeriod" *ngFor="let wavePeriod of forecast.daily.wave_period_max;" >{{ wavePeriod }} secondes</td>
+      </tr>
+      <tr id="wave-direction-line" >
+        <td class="labels">Direction : </td>
+        <td class="waveDirection" *ngFor="let waveDirection of forecast.daily.wave_direction_dominant;" >{{ waveDirection }} degrés</td>
+      </tr>
+      <tr id="wave-height-line" >
+        <td class="labels">Houle : </td>
+        <td class="waveHeight" *ngFor="let waveHeight of forecast.daily.wave_height_max;" >{{ waveHeight }} m</td>
+      </tr>
+    </div>
+
+  </div>
+</div>
+
+<app-footer></app-footer>
 <style>
 :host{
   display: flex;
   flex-direction: column;
   overflow: auto;
   height: 100%;
+}
+
+#home-card{
+  min-height: 70%;
+  flex-shrink: 0;
+}
+
+td{
+  width: 12.5%;
+  border-right: 1px solid rgba(0, 69, 143, 0.35);
+}
+
+td:last-of-type{
+  border-right: none;
+}
+
+#spot{
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: block;
+  margin: -3.5rem 0 0 -0.5rem;
 }
 </style>

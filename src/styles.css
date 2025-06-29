@@ -98,6 +98,7 @@ body {
   animation: gradient 30s ease infinite;
 }
 
+/* ---------- Header ---------- */
 header {
   padding: 0.5rem 1.25rem;
   background-color: var(--background-color-lightgrey);
@@ -125,6 +126,7 @@ header h1 {
   background-color: var(--logo-background-color);
 }
 
+/* ---------- Main ---------- */
 main{
   height: calc(100% - 3.75rem - 1px);
   width: 100%;
@@ -138,8 +140,7 @@ main{
 }
 
 .card{
-  margin: 2rem auto;
-  min-height: 70%;
+  margin: 5rem auto;
   width: 85%;
   padding: 16px;
   background: var(--background-color-lightgrey);
@@ -205,6 +206,42 @@ li a:focus, li.active a  {
   color: rgba(0, 69, 143, 0.85);
   stroke: rgba(0, 69, 143, 0.85);
   border-bottom: solid  white 1px;
+}
+
+/* ----- Tables ----- */
+.table-div{
+  margin-top: 0.75rem;
+  border: 1px solid rgba(0, 69, 143, 0.35);
+  border-radius: 0.75rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  scrollbar-color: rgba(255, 255, 255, 0.3)  rgba(0, 69, 143, 0.20);
+}
+
+tr{
+  width: 100%;
+  display: flex;
+  background-color: rgba(0, 69, 143, 0.10);
+  border-top: 1px solid rgba(0, 69, 143, 0.35);
+}
+
+tr.labels{
+  font-weight: 600;
+  text-align: center;
+  background-color: rgba(0, 69, 143, 0.20);
+  border-top: #00458f !important;
+}
+
+td.labels{
+  font-weight: 600;
+  text-align: center;
+  background-color: rgba(0, 69, 143, 0.10);
+}
+
+td{
+  padding: 6px 12px;
+  overflow: hidden;
 }
 
 /* ---------- Texte ---------- */
