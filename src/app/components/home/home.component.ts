@@ -2,13 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {FooterComponent} from '../footer/footer.component';
 import {HttpClient} from '@angular/common/http';
 import {ForecastService} from '../../services/forecast.service';
-import {NgIf} from '@angular/common';
+import {JsonPipe, NgForOf, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-home',
   imports: [
     FooterComponent,
-    NgIf
+    NgIf,
+    JsonPipe,
+    NgForOf
   ],
   templateUrl: './home.component.html'
 })
@@ -19,7 +21,7 @@ export class HomeComponent implements OnInit {
   constructor(private http: HttpClient, private forecastService: ForecastService) {  }
 
   ngOnInit() {
-    this.forecastService.getMarineForecastDaily(52.25, 21.15).
+    this.forecastService.getMarineForecastDaily(47.124498, -2.216052).
     subscribe({
       next: (data) => {
         this.forecast = data;
@@ -28,6 +30,8 @@ export class HomeComponent implements OnInit {
         console.error('Erreur :', err);
       }
     });
+
+
   }
 
 }
