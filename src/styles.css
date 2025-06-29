@@ -20,7 +20,7 @@
     --secondary-text-color: var(--white);
     --aside-text-color: var(--white);
 
-    --background-color-aside: rgba(31, 78, 121, 0.75);
+    --background-color-aside: rgba(31, 78, 121, 0.80);
     --logo-background-color: rgba(0,0,0,0);
 
     --background-color-lightgrey: rgba(242, 242, 242, 0.3);
@@ -85,22 +85,21 @@ html {
   background: var(--blue-gradient);
   background-size: 400% 400%;
   animation: gradient 40s ease infinite;
-  height: 100vh;
+  height: 100%;
 }
 
 body {
   margin: 0;
-  height: 100vh;
+  height: 100%;
   font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  color: var(--primary-text-color);
   background: var(--blue-transparent-gradient);
   background-size: 500% 600%;
   animation: gradient 30s ease infinite;
-  overflow: hidden;
 }
 
 header {
-  height: 4vh;
-  padding: 0.75rem 1.25rem;
+  padding: 0.5rem 1.25rem;
   background-color: var(--background-color-lightgrey);
   box-shadow: 0 4px 20px var(--box-shadow-color);
   border-bottom: 1px solid var(--border-color);
@@ -117,28 +116,47 @@ header {
 
 header h1 {
   margin-top: -0.25rem;
-  margin-left: 1.25rem;
 }
 
 .logo{
-  height: 38px;
-  width: 38px;
+  height: 2.5rem;
   padding: 2px;
   border-radius: 50%;
   background-color: var(--logo-background-color);
 }
 
 main{
+  height: calc(100% - 3.75rem - 1px);
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+}
+
+#main-div{
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  width: 100%;
+}
+
+.card{
+  margin: 2rem auto;
+  min-height: 70%;
+  width: 85%;
+  padding: 16px;
+  background: var(--background-color-lightgrey);
+  box-shadow: 0 6px 30px var(--box-shadow-color);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease;
+  border-radius: 0.75rem;
 }
 
 /* ---------- Volet aside ---------- */
 aside{
-  width: 192px;
-  height: 89.85vh;
+  min-width: 12.5rem;
   padding: 1.5rem 1rem;
   background: var(--background-color-aside);
   box-shadow: 0 6px 30px var(--box-shadow-color);
@@ -166,22 +184,21 @@ ul {
 }
 
 li {
-  margin: 0 0 1rem 0;
+  margin: 0 0 1.5rem 0;
 }
 
 li a {
   display: block;
-  padding: 0.5rem 1.75rem;
+  padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  text-decoration: none;
   color: var(--aside-text-color);
   stroke: var(--aside-text-color);
 }
 
 li a:hover{
   background-color: rgba(255, 255, 255, 0.33);
-  color: rgba(0, 69, 143, 0.60);
-  stroke: rgba(0, 69, 143, 0.60);
+  color: rgba(0, 69, 143, 0.75);
+  stroke: rgba(0, 69, 143, 0.75);
   border-bottom: solid  white 1px;
 }
 
@@ -193,6 +210,10 @@ li a:focus, li.active a  {
 }
 
 /* ---------- Texte ---------- */
+a {
+  text-decoration: none;
+}
+
 h1{
   font-size: 2rem;
   font-weight: 600;
@@ -200,19 +221,12 @@ h1{
   margin: 0 1rem;
 }
 
-#testCard{
-  margin: 60px auto auto auto;
-  width: 60vw;
-  min-height: 65vh;
-  padding: 16px;
-  background: var(--background-color-lightgrey);
-  box-shadow: 0 6px 30px var(--box-shadow-color);
-  border: 1px solid var(--border-color);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  transform-style: preserve-3d;
-  transition: transform 0.1s ease;
-  border-radius: 0.75rem;
+/* ---------- Footer ---------- */
+footer {
+  padding: 0.25rem 0.5rem;
+  text-align: start;
+  opacity: 0.75;
+  margin-top: auto;
 }
 
 /* ---------- Animation des dégradés en arrière plan ---------- */
