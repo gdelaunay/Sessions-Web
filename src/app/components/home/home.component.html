@@ -1,6 +1,20 @@
-<div class="card"></div>
-<div class="card"></div>
+<div class="card">
+  <div *ngIf="forecast">
+    <pre>{{ forecast }}</pre>
+  </div>
+</div>
+<div class="card">
+  <div *ngIf="forecast">
+    <pre>{{ forecast }}</pre>
+  </div>
+</div>
 <app-footer></app-footer>
-<style>
 
+<style>
+:host{
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 100%;
+}
 </style>
