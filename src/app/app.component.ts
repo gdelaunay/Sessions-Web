@@ -1,6 +1,8 @@
 import {AfterViewInit, Component} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+export const sessionApiUrl: string = 'http://localhost:5038/api';
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
@@ -11,7 +13,7 @@ export class AppComponent implements AfterViewInit {
   title = 'SurfSessions-Web';
 
   ngAfterViewInit() {
-
+    /*
     // Animation 3D de la carte/container principal
     setTimeout(() => {
       let cards = document.getElementsByClassName('card');
@@ -62,6 +64,8 @@ export class AppComponent implements AfterViewInit {
         });
       }
     }, 0);
+
+     */
   }
 
 }

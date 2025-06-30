@@ -210,7 +210,7 @@ li a:focus, li.active a  {
 
 /* ----- Tables ----- */
 .table-div{
-  margin-top: 0.75rem;
+  margin-top: 0rem;
   border: 1px solid rgba(0, 69, 143, 0.35);
   border-radius: 0.75rem;
   overflow-x: hidden;

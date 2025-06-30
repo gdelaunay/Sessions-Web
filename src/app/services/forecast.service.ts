@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {sessionApiUrl} from '../app.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ForecastService {
-  private forecastApiUrl = 'https://marine-api.open-meteo.com/v1/';
-  private testUrl = 'http://localhost:5038/api/dailyforecast';
+
+  private dailyForecastUrl = sessionApiUrl + '/dailyforecast';
+  private hourlyForecastUrl = sessionApiUrl + '/hourlyforecast';
+
   constructor(private http: HttpClient) { }
-  getMarineForecastDaily() {
-    return this.http.get<any>(this.testUrl);
+
+  getMarineForecastDaily( lat : number, lon: number ) {
+    return this.http.get<any>(`${this.dailyForecastUrl}?lat=${lat}&lon=${lon}`);
   }
 
   /*
