@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnDestroy} from '@angular/core';
+import {AfterViewInit, Component, NgZone, OnDestroy} from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -6,20 +6,23 @@ import {AfterViewInit, Component, OnDestroy} from '@angular/core';
 })
 export class FooterComponent implements AfterViewInit, OnDestroy {
   private intervalId: any;
-
+  constructor(private ngZone: NgZone) {}
   ngAfterViewInit() {
-    const yearEl = document.getElementById('year');
-    const datetimeEl = document.getElementById('datetime');
 
-    if (yearEl && datetimeEl) {
-      const now = new Date();
-      yearEl.textContent = now.getFullYear().toString();
-      datetimeEl.textContent = now.toLocaleString();
+    this.ngZone.runOutsideAngular(() => {
+      const yearEl = document.getElementById('year');
+      const datetimeEl = document.getElementById('datetime');
 
-      this.intervalId = setInterval(() => {
-        datetimeEl.textContent = new Date().toLocaleString();
-      }, 1000);
-    }
+      if (yearEl && datetimeEl) {
+        const now = new Date();
+        yearEl.textContent = now.getFullYear().toString();
+        datetimeEl.textContent = now.toLocaleString();
+
+        this.intervalId = setInterval(() => {
+          datetimeEl.textContent = new Date().toLocaleString();
+        }, 1000);
+      }
+    })
   }
 
   ngOnDestroy() {
