@@ -15,7 +15,7 @@ import {NgForOf, NgIf} from '@angular/common';
 })
 export class HomeComponent implements OnInit {
 
-  forecast: any;
+  forecasts: any;
 
   constructor(private http: HttpClient, private forecastService: ForecastService) {  }
 
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     this.forecastService.getMarineForecastDaily(47.124498, -2.216052).
     subscribe({
       next: (data) => {
-        this.forecast = data;
+        this.forecasts = data;
       },
       error: (err) => {
         console.error('Erreur :', err);

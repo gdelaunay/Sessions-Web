@@ -7,8 +7,8 @@ import {sessionApiUrl} from '../app.component';
 })
 export class ForecastService {
 
-  private dailyForecastUrl = sessionApiUrl + '/dailyforecast';
-  private hourlyForecastUrl = sessionApiUrl + '/hourlyforecast';
+  private dailyForecastUrl = sessionApiUrl + '/forecast/daily';
+  private hourlyForecastUrl = sessionApiUrl + '/forecast/3hourly';
 
   constructor(private http: HttpClient) { }
 
