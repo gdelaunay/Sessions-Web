@@ -247,6 +247,11 @@ td{
 /* ---------- Texte ---------- */
 a {
   text-decoration: none;
+  color: var(--dark-grey);
+}
+
+a:hover, a:focus {
+  color: var(--grey);
 }
 
 h1{

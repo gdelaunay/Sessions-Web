@@ -16,6 +16,8 @@ import {NgForOf, NgIf} from '@angular/common';
 export class HomeComponent implements OnInit {
 
   forecasts: any;
+  error: any;
+  errorUrl: any;
 
   constructor(private http: HttpClient, private forecastService: ForecastService) {  }
 
@@ -27,6 +29,8 @@ export class HomeComponent implements OnInit {
       },
       error: (err) => {
         console.error('Erreur :', err);
+        this.error = `HTTP ${err.status} - ${err.statusText} : `;
+        this.errorUrl = err.url;
       }
     });
 
