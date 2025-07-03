@@ -186,6 +186,11 @@ li {
   margin: 0 0 1.5rem 0;
 }
 
+li.disabled{
+
+  cursor: not-allowed;
+}
+
 li a {
   display: block;
   padding: 0.5rem 1rem;
@@ -252,6 +257,11 @@ a {
 
 a:hover, a:focus {
   color: var(--grey);
+}
+
+a.disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 h1{
