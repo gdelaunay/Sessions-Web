@@ -147,8 +147,15 @@ main{
   height: 100%;
 }
 
+app-home, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-detail, app-session-form{
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 100%;
+}
+
 .card{
-  margin: 1rem auto;
+  margin: 1.5rem auto;
   width: 90%;
   padding: 16px;
   background: var(--background-color-grey);

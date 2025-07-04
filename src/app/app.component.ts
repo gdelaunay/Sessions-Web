@@ -9,7 +9,7 @@ export const sessionApiUrl: string = distantSessionUrl;
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
-  templateUrl: './app.component.html'
+  template: "<router-outlet/>"
 })
 
 export class AppComponent implements AfterViewInit {
