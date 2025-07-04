@@ -1,4 +1,7 @@
 <div class="card" id="home-card">
+  <div *ngIf="!error && !forecasts">
+    <img class="loading" src="loading.gif">
+  </div>
   <div *ngIf="error">
     <span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a>
   </div>
@@ -52,7 +55,8 @@
 }
 
 #home-card{
-  min-height: 70%;
+  margin: 5rem auto;
+  min-height: 60%;
   flex-shrink: 0;
 }
 

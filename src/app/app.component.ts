@@ -1,10 +1,11 @@
 import {AfterViewInit, Component, NgZone} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import {ConsoleLogger} from '@angular/compiler-cli';
 
 const localSessionUrl = 'http://localhost:5038/api';
 const distantSessionUrl = 'https://sessions.gdelaunay.fr:448/api';
 
-export const sessionApiUrl: string = localSessionUrl;
+export const sessionApiUrl: string = distantSessionUrl;
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,23 @@ export class AppComponent implements AfterViewInit {
   ngAfterViewInit() {
 
     this.ngZone.runOutsideAngular(() => {
+
+      // Style des boutons aside selon l'URL
+      const path = window.location.pathname;
+      console.log(path);
+      const routes = [
+        { path: '/spots', id: 'spotsBtn' },
+        { path: '/alerts', id: 'alertsBtn' },
+        { path: '/sessions', id: 'sessionsBtn' },
+        { path: '/', id: 'homeBtn' }
+      ];
+      const match = routes.find(route => path.startsWith(route.path));
+
+      console.log(match);
+      if (match) {
+        document.getElementById(match.id)?.classList.add('active');
+      }
+
       // Animation 3D de la carte/container principal
       setTimeout(() => {
         let cards = document.getElementsByClassName('card');
