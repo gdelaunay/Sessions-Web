@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, NgZone} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {ConsoleLogger} from '@angular/compiler-cli';
 
 const localSessionUrl = 'http://localhost:5038/api';
 const distantSessionUrl = 'https://sessions.gdelaunay.fr:448/api';

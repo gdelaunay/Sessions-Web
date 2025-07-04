@@ -10,6 +10,8 @@
   --light-grey: #DBDBDB;
   --lighter-grey: #F2F2F2;
   --white: #FCFCFC;
+
+  --spinner: url("/spinner.svg")
 }
 
 /* ----- Thème clair ----- */
@@ -197,10 +199,6 @@ li {
   margin: 0 0 0.55rem 0;
 }
 
-li.disabled{
-  cursor: not-allowed;
-}
-
 li a {
   display: block;
   padding: 0.55rem 1rem;
@@ -209,14 +207,14 @@ li a {
   stroke: var(--aside-text-color);
   border: 1px solid transparent;
   transition:
-    margin 0.15s ease,
-    background-color 0.15s ease,
-    border-color 0.15s ease;
+    margin 0.3s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 li a:hover {
-  margin-top: 2px;
-  margin-bottom: -2px;
+  margin-top: 0.2rem;
+  margin-bottom: -0.2rem;
 }
 
 li a:hover, li.active a {
@@ -226,8 +224,8 @@ li a:hover, li.active a {
 }
 
 li a:focus {
-  margin-top: 4px;
-  margin-bottom: -4px;
+  margin-top: 0.4rem;
+  margin-bottom: -0.4rem;
   color: var(--aside-text-color);
   background: var(--background-color-grey);
   border: 1px solid var(--border-color-grey);
@@ -281,8 +279,8 @@ a:hover, a:focus {
 }
 
 a.disabled {
-  pointer-events: none;
-  opacity: 0.5;
+  cursor: not-allowed;
+  color: var(--grey) !important;
 }
 
 h1{
@@ -294,7 +292,8 @@ h1{
 
 /* ---------- Loader etc ---------- */
 .loading{
-  height: 3rem;
+  content: var(--spinner);
+  max-height: 3rem;
 }
 
 /* ---------- Footer ---------- */
