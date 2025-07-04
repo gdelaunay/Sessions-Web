@@ -1,6 +1,7 @@
 /* ---------- Variables ---------- */
 :root {
   --darkblue: #1F4E79;
+  --mid-blue: #2e74b5;
   --blue: #5B9BD5;
   --light-blue: #BDD7EE;
   --black: #0D0D0D;
@@ -25,7 +26,9 @@
     --logo-background-color: rgba(0,0,0,0);
 
     --background-color-blue: rgba(31, 78, 121, 0.80);
-    --border-color-blue: rgba(91, 155, 213, 0.2);
+    --background-color-blue-05: rgba(31, 78, 121, 0.5);
+    --background-color-blue-01: rgba(31, 78, 121, 0.10);
+    --border-color-blue: rgba(31, 78, 121, 0.25);
 
     --background-color-grey: rgba(242, 242, 242, 0.3);
     --background-color-grey-01: rgba(242, 242, 242, 0.1);
@@ -62,7 +65,9 @@
     --logo-background-color: var(--light-grey);
 
     --background-color-blue: rgba(91, 155, 213, 0.15);
-    --border-color: rgba(189, 215, 238, 0.2);
+    --background-color-blue-05: rgba(46, 116, 181, 0.5);
+    --background-color-blue-01: rgba(46, 116, 181, 0.1);
+    --border-color-blue: rgba(46, 116, 181, 0.2);
 
     --background-color-grey: rgba(82, 82, 82, 0.3);
     --background-color-grey-01: rgba(122, 122, 122, 0.1);
@@ -240,39 +245,44 @@ li a:focus {
 }
 
 /* ----- Tables ----- */
-.table-div{
+.table-div {
   margin-top: 0;
-  border: 1px solid rgba(0, 69, 143, 0.35);
+  border: 1px solid var(--background-color-blue-05);
   border-radius: 0.75rem;
   overflow-x: hidden;
   overflow-y: scroll;
   scrollbar-width: none;
-  scrollbar-color: rgba(255, 255, 255, 0.3)  rgba(0, 69, 143, 0.20);
+  scrollbar-color: var(--background-color-grey) var(--border-color-blue);
 }
 
-tr{
+tr {
   width: 100%;
   display: flex;
-  background-color: rgba(0, 69, 143, 0.10);
-  border-top: 1px solid rgba(0, 69, 143, 0.35);
+  border-top: 1px solid var(--background-color-blue-05);
 }
 
-tr.labels{
+tr:first-of-type {
+  border-top: none !important;
+}
+
+td {
+  background-color: var(--background-color-blue-01);
+}
+
+th {
   font-weight: 600;
   text-align: center;
-  background-color: rgba(0, 69, 143, 0.20);
-  border-top: #00458f !important;
+  background-color: var(--border-color-blue);
 }
 
-td.labels{
-  font-weight: 600;
-  text-align: center;
-  background-color: rgba(0, 69, 143, 0.10);
-}
-
-td{
+td, th {
   padding: 6px 12px;
   overflow: hidden;
+  border-right: 1px solid var(--background-color-blue-05);
+}
+
+td:last-of-type, .table-div>tr:first-of-type>th:last-child {
+  border-right: none !important;
 }
 
 /* ---------- Texte ---------- */
@@ -295,6 +305,13 @@ h1{
   font-weight: 600;
   color: var(--primary-text-color);
   margin: 0 1rem;
+}
+
+h2:first-of-type {
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: block;
+  margin: -3.5rem 0 0 -0.5rem;
 }
 
 /* ---------- Loader etc ---------- */

@@ -6,38 +6,38 @@
     <span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a>
   </div>
   <div *ngIf="forecasts">
-    <span id="spot">Spot : Margaret plage - Préfailles</span><br>
+    <h2 id="spot">Spot : Margaret plage - Préfailles</h2><br>
     <div class="table-div">
-      <tr class="labels" id="days-line" >
-        <td>Date : </td>
-        <td class="day" *ngFor="let forecast of forecasts" >{{ forecast.DateTime }}</td>
+      <tr id="days-line" >
+        <th>Date : </th>
+        <th class="day" *ngFor="let forecast of forecasts" >{{ forecast.DateTime }}</th>
       </tr>
       <tr id="weather-code-line" >
-        <td class="labels">Code météo : </td>
+        <th>Code météo : </th>
         <td class="weatherCode" *ngFor="let forecast of forecasts" >{{ forecast.WeatherCode }}</td>
       </tr>
       <tr id="temperature-line" >
-        <td class="labels">Température max : </td>
+        <th>Température max : </th>
         <td class="temperature" *ngFor="let forecast of forecasts" >{{ forecast.Temperature }} °C</td>
       </tr>
       <tr id="wave-height-line" >
-        <td class="labels">Houle max : </td>
+        <th>Houle max : </th>
         <td class="waveHeight" *ngFor="let forecast of forecasts" >{{ forecast.WaveHeight }} mètres</td>
       </tr>
       <tr id="wave-direction-line" >
-        <td class="labels">Direction houle : </td>
+        <th>Direction houle : </th>
         <td class="waveDirection" *ngFor="let forecast of forecasts" >{{ forecast.WaveDirection }} degrés</td>
       </tr>
       <tr id="wave-period-line" >
-        <td class="labels">Période max: </td>
+        <th>Période max: </th>
         <td class="wavePeriod" *ngFor="let forecast of forecasts" >{{ forecast.WavePeriod }} secondes</td>
       </tr>
       <tr id="wind-speed-line" >
-        <td class="labels">Vent max: </td>
+        <th>Vent max: </th>
         <td class="windSpeed" *ngFor="let forecast of forecasts" >{{ forecast.WindSpeed }} noeuds</td>
       </tr>
       <tr id="wind-direction-line" >
-        <td class="labels">Direction vent : </td>
+        <th>Direction vent : </th>
         <td class="windDirection" *ngFor="let forecast of forecasts" >{{ forecast.WindDirection }} degrés</td>
       </tr>
     </div>
@@ -48,26 +48,13 @@
 <app-footer></app-footer>
 <style>
 
-
 #home-card{
   margin: 5rem auto;
   min-height: 60%;
   flex-shrink: 0;
 }
 
-td{
+td, th {
   width: 12.5%;
-  border-right: 1px solid rgba(0, 69, 143, 0.35);
-}
-
-td:last-of-type{
-  border-right: none;
-}
-
-#spot{
-  font-size: 1.5rem;
-  font-weight: 600;
-  display: block;
-  margin: -3.5rem 0 0 -0.5rem;
 }
 </style>
