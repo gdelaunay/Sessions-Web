@@ -52,7 +52,7 @@ L'application rechargera automatiquement quand les fichiers sources seront modif
 
 Pour générer un build de production : 
 ```bash
-  ng build --prod
+  ng build -c production
 ```
 Les fichiers générés seront dans le dossier `dist/`.
 
