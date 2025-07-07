@@ -63,7 +63,7 @@ Les fichiers générés seront dans le dossier `dist/`.
 ```bash
   docker compose up --build
 ```
-
+Configuration dans ``compose.yaml``, ``Dockerfile``, et ``nginx.conf``
 
 ## Additional Resources
 
