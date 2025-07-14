@@ -7,6 +7,17 @@ En standalone / mode invité, elle permet de visualiser les prévisions de mét�
 <br>
 Couplée avec l'API, elle permet aux utilisateurs de paramétrer leurs spots, leurs conditions idéales, et des notifications par mail basées sur les prévisions, ainsi que d'enregistrer leurs sessions.
 
+## Sommaire
+
+- [Prérequis](#prérequis)
+- [Installation](#installation)
+- [Développement](#développement)
+- [Déploiement manuel](#déploiement-manuel)
+- [Déploiement avec Docker](#déploiement-avec-docker)
+- [Développement ou déploiement avec l'API back-end](#développement-ou-déploiement-avec-lapi-back-end)
+- [Ressources additionnelles](#ressources-additionnelles)
+- [License](#license)
+-
 
 ## Prérequis
 
@@ -52,7 +63,7 @@ L'application rechargera automatiquement quand les fichiers sources seront modif
 
 ## Déploiement manuel
 
-Pour générer un build de production : 
+Pour générer un build de production :
 ```bash
 ng build -c production
 ```
@@ -75,7 +86,7 @@ docker compose up --build
 Configuration dans ``compose.yaml``, ``Dockerfile``, et ``nginx.conf``
 
 
-## Déploiement avec l'API back-end
+## Développement ou déploiement avec l'API back-end
 
 1. Fournir dans le fichier ``src/app/app.component.ts - ligne:7`` la valeur de ``sessionsApiUrl`` correspondante au mode de déploiement (``HTTP`` ou ``HTTPS``):
 ```typescript
@@ -86,6 +97,22 @@ export const sessionsApiUrl: string = sessionsApiUrl_HTTP;
 
 ## Ressources additionnelles
 
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.11.
+
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+```bash
+ng generate component component-name
+```
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+```bash
+ng generate --help
+```
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.11.  
 
 Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
