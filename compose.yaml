@@ -1,7 +1,9 @@
 services:
-  sessions-web-test:
+  server:
     build:
       context: .
+    image: sessions-web
+    container_name: sessions-web
     environment:
       NODE_ENV: production
     ports:
