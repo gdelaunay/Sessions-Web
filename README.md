@@ -98,6 +98,10 @@ Configuration dans ``compose.yaml``, ``Dockerfile``, et ``nginx.conf``
 
 1. Fournir dans le fichier ``src/app/app.component.ts - ligne:7`` la valeur de ``sessionsApiUrl`` correspondante au mode de déploiement (``DEV``, ``HTTP`` ou ``HTTPS``):
 ```typescript
+const sessionsApiUrl_DEV = 'http://localhost:5050/api';
+const sessionsApiUrl_HTTP = 'http://localhost/api';
+const sessionsApiUrl_HTTPS = 'https://mydomain.com/api';
+
 export const sessionsApiUrl: string = sessionsApiUrl_HTTP;
 ```
 2. Suivre les instruction d'installation et de déploiement (``Développement``/``Développement du front-end``/``Déploiement`` ou ``Déploiement HTTPS``) de [SurfSessions-API](https://github.com/gdelaunay/SurfSessions-API).  
