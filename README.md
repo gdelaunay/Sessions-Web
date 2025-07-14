@@ -5,7 +5,8 @@ Application web Angular 19 front-end de l'application **Sessions**.
 <br>
 En standalone / mode invité, elle permet de visualiser les prévisions de météo marine (houle, vent...) à une position donnée (lat/long).  
 <br>
-Couplée avec l'API, elle permet aux utilisateurs de paramétrer leurs spots, leurs conditions idéales, et des notifications par mail basées sur les prévisions, ainsi que d'enregistrer leurs sessions.
+Couplée avec l'API, elle permet aux utilisateurs de paramétrer leurs spots, leurs conditions idéales, et des notifications par mail basées sur les prévisions, ainsi que d'enregistrer leurs sessions.  
+<br>
 
 ## Sommaire
 
@@ -16,8 +17,9 @@ Couplée avec l'API, elle permet aux utilisateurs de paramétrer leurs spots, le
 - [Déploiement avec Docker](#déploiement-avec-docker)
 - [Développement ou déploiement avec l'API back-end](#développement-ou-déploiement-avec-lapi-back-end)
 - [Ressources additionnelles](#ressources-additionnelles)
-- [License](#license)
--
+- [License](#license)  
+<br>
+
 
 ## Prérequis
 
@@ -37,7 +39,8 @@ ng version
 Si la commande n’est pas trouvée, installer Angular CLI globalement :
 ```bash
 npm install -g @angular/cli
-```
+```  
+<br>
 
 ## Installation
 
@@ -49,7 +52,8 @@ cd SurfSessions-Web
 2. Installer les dépendances du projet :
 ```bash
 npm install
-```
+```  
+<br>
 
 ## Développement
 
@@ -58,7 +62,8 @@ Pour lancer un serveur local de développement :
 ng serve
 ```
 Une fois que le serveur tourne, ouvrir son navigateur et aller à l'adresse [`http://localhost:4200/`](http://localhost:4200/).
-L'application rechargera automatiquement quand les fichiers sources seront modifiés.
+L'application rechargera automatiquement quand les fichiers sources seront modifiés.  
+<br>
 
 
 ## Déploiement manuel
@@ -67,7 +72,8 @@ Pour générer un build de production :
 ```bash
 ng build -c production
 ```
-Les fichiers générés seront dans le dossier `dist/`.
+Les fichiers générés seront dans le dossier `dist/`.  
+<br>
 
 
 ## Déploiement avec Docker
@@ -77,13 +83,15 @@ Les fichiers générés seront dans le dossier `dist/`.
 docker --version
 docker compose version
 ```
-Si les commandes ne sont pas trouvées, installer [Docker](https://docs.docker.com/get-docker/).
+Si les commandes ne sont pas trouvées, installer [Docker](https://docs.docker.com/get-docker/).  
+<br>
 
 2. Build avec docker compose :
 ```bash
 docker compose up --build
 ```
-Configuration dans ``compose.yaml``, ``Dockerfile``, et ``nginx.conf``
+Configuration dans ``compose.yaml``, ``Dockerfile``, et ``nginx.conf``  
+<br>
 
 
 ## Développement ou déploiement avec l'API back-end
@@ -92,7 +100,8 @@ Configuration dans ``compose.yaml``, ``Dockerfile``, et ``nginx.conf``
 ```typescript
 export const sessionsApiUrl: string = sessionsApiUrl_HTTP;
 ```
-2. Suivre les instruction d'installation et de déploiement (``Développement``/``Développement du front-end``/``Déploiement`` ou ``Déploiement HTTPS``) de [SurfSessions-API](https://github.com/gdelaunay/SurfSessions-API).
+2. Suivre les instruction d'installation et de déploiement (``Développement``/``Développement du front-end``/``Déploiement`` ou ``Déploiement HTTPS``) de [SurfSessions-API](https://github.com/gdelaunay/SurfSessions-API).  
+   <br>
 
 
 ## Ressources additionnelles
@@ -107,7 +116,8 @@ For a complete list of available schematics (such as `components`, `directives`,
 ```bash
 ng generate --help
 ```
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.  
+<br>
 
 
 ## License
