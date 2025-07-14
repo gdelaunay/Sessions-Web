@@ -1,26 +1,29 @@
 # SurfSessions-Web
 
-Application web Angular front-end de l'application Sessions. En standalone/mode invité, elle permet de visualiser les prévisions de météo marine (houle, vent...) à une position donnée (lat/long).  
+Application web Angular 19 front-end de l'application **Sessions**.  
+→ API .NET back-end de l'application **Sessions** : [SurfSessions-API](https://github.com/gdelaunay/SurfSessions-API)  
 <br>
-Couplée avec l'API [SurfSessions-API](https://github.com/gdelaunay/SurfSessions-API), elle permet aux utilisateurs de paramétrer leurs spots, leurs conditions idéales, et des notifications basées sur les prévisions, ainsi que d'enregistrer leurs sessions.
+En standalone / mode invité, elle permet de visualiser les prévisions de météo marine (houle, vent...) à une position donnée (lat/long).  
+<br>
+Couplée avec l'API, elle permet aux utilisateurs de paramétrer leurs spots, leurs conditions idéales, et des notifications par mail basées sur les prévisions, ainsi que d'enregistrer leurs sessions.
 
 
 ## Prérequis
 
-Assurez-vous d'avoir **Node.js**, **npm**, et **Angular CLI** installés.
+S'assurer d'avoir **Node.js**, **npm**, et **Angular CLI** d'installés.
 
-1. Vérifier la version de Node.js et npm :
+1. Vérifier que **Node.js** et **npm** sont installés :
 ```bash
 node -v
 npm -v
 ```
-Sinon, installer [Node.js](https://nodejs.org) (npm est inclus).
+Si les commandes ne sont pas trouvées, installer [Node.js](https://nodejs.org) (npm est inclus).
 
-2. Vérifier la version d'Angular CLI :
+2. Vérifier qu'**Angular CLI** est installé :
 ```bash
 ng version
 ```
-Si la commande ng n’est pas trouvée, installer Angular CLI globalement :
+Si la commande n’est pas trouvée, installer Angular CLI globalement :
 ```bash
 npm install -g @angular/cli
 ```
@@ -37,15 +40,13 @@ cd SurfSessions-Web
 npm install
 ```
 
-## Serveur de développement
+## Développement
 
 Pour lancer un serveur local de développement :
-
 ```bash
 ng serve
 ```
-
-Une fois que le serveur tourne, ouvrir son navigateur et aller à l'adresse  [`http://localhost:4200/`](http://localhost:4200/).
+Une fois que le serveur tourne, ouvrir son navigateur et aller à l'adresse [`http://localhost:4200/`](http://localhost:4200/).
 L'application rechargera automatiquement quand les fichiers sources seront modifiés.
 
 
@@ -58,31 +59,45 @@ ng build -c production
 Les fichiers générés seront dans le dossier `dist/`.
 
 
-
 ## Déploiement avec Docker
 
+1. Vérifier que **Docker** et **docker compose** sont installés :
+```bash
+docker --version
+docker compose version
+```
+Si les commandes ne sont pas trouvées, installer [Docker](https://docs.docker.com/get-docker/).
+
+2. Build avec docker compose :
 ```bash
 docker compose up --build
 ```
 Configuration dans ``compose.yaml``, ``Dockerfile``, et ``nginx.conf``
 
-## Additional Resources
+
+## Déploiement avec l'API back-end
+
+1. Fournir dans le fichier ``src/app/app.component.ts - ligne:7`` la valeur de ``sessionsApiUrl`` correspondante au mode de déploiement (``HTTP`` ou ``HTTPS``):
+```typescript
+export const sessionsApiUrl: string = sessionsApiUrl_HTTP;
+```
+2. Suivre les instruction d'installation et de déploiement (``Développement``/``Développement du front-end``/``Déploiement`` ou ``Déploiement HTTPS``) de [SurfSessions-API](https://github.com/gdelaunay/SurfSessions-API).
+
+
+## Ressources additionnelles
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.11.  
 
 Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
 ```bash
 ng generate component component-name
 ```
-
 For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
 ```bash
 ng generate --help
 ```
-
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
 
 ## License
 
