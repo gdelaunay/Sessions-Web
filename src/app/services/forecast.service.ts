@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {sessionApiUrl} from '../app.component';
+import {sessionsApiUrl} from '../app.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ForecastService {
 
-  private dailyForecastUrl = sessionApiUrl + '/forecast/daily';
-  private hourlyForecastUrl = sessionApiUrl + '/forecast/3hourly';
+  private dailyForecastUrl = sessionsApiUrl + '/forecast/daily';
+  private hourlyForecastUrl = sessionsApiUrl + '/forecast/3hourly';
 
   constructor(private http: HttpClient) { }
 

@@ -1,10 +1,10 @@
 import {AfterViewInit, Component, NgZone} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-const localSessionUrl = 'http://localhost:5038/api';
-const distantSessionUrl = 'https://sessions.gdelaunay.fr:448/api';
+const sessionsApiUrl_HTTP = 'http://localhost:5050/api';
+const sessionsApiUrl_HTTPS = 'https://mydomain.com/api';
 
-export const sessionApiUrl: string = distantSessionUrl;
+export const sessionsApiUrl: string = sessionsApiUrl_HTTP;
 
 @Component({
   selector: 'app-root',
