@@ -96,7 +96,7 @@ Configuration dans ``compose.yaml``, ``Dockerfile``, et ``nginx.conf``
 
 ## Développement ou déploiement avec l'API back-end
 
-1. Fournir dans le fichier ``src/app/app.component.ts - ligne:7`` la valeur de ``sessionsApiUrl`` correspondante au mode de déploiement (``HTTP`` ou ``HTTPS``):
+1. Fournir dans le fichier ``src/app/app.component.ts - ligne:7`` la valeur de ``sessionsApiUrl`` correspondante au mode de déploiement (``DEV``, ``HTTP`` ou ``HTTPS``):
 ```typescript
 export const sessionsApiUrl: string = sessionsApiUrl_HTTP;
 ```

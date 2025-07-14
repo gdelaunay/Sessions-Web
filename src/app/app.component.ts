@@ -1,7 +1,8 @@
 import {AfterViewInit, Component, NgZone} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-const sessionsApiUrl_HTTP = 'http://localhost:5050/api';
+const sessionsApiUrl_DEV = 'http://localhost:5050/api';
+const sessionsApiUrl_HTTP = 'http://localhost/api';
 const sessionsApiUrl_HTTPS = 'https://mydomain.com/api';
 
 export const sessionsApiUrl: string = sessionsApiUrl_HTTP;
