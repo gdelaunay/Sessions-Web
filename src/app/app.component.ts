@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, NgZone} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import {FooterComponent} from './components/footer/footer.component';
 
 const sessionsApiUrl_DEV = 'http://localhost:5050/api';
 const sessionsApiUrl_HTTP = 'http://localhost/api';
@@ -28,6 +29,7 @@ export class AppComponent implements AfterViewInit {
         { path: '/spots', id: 'spotsBtn' },
         { path: '/alerts', id: 'alertsBtn' },
         { path: '/sessions', id: 'sessionsBtn' },
+        { path: '/guest', id: 'guestBtn' },
         { path: '/', id: 'homeBtn' }
       ];
       const match = routes.find(route => path.startsWith(route.path));
