@@ -7,7 +7,7 @@
   overflow-x: hidden;
   overflow-y: scroll;
   scrollbar-width: none;
-  scrollbar-color: var(--background-color-grey) var(--border-color-blue);
+  scrollbar-color: var(--background-color-grey) var(--background-color-blue-02);
 }
 
 tr {
@@ -27,7 +27,7 @@ td {
 th {
   font-weight: 600;
   text-align: center;
-  background-color: var(--border-color-blue);
+  background-color: var(--background-color-blue-02);
 }
 
 td, th {
