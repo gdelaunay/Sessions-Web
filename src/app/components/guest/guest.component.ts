@@ -5,17 +5,19 @@ import {HttpClient} from '@angular/common/http';
 import {ForecastService} from '../../services/forecast.service';
 import * as L from 'leaflet';
 import {ForecastComponent} from '../forecast/forecast.component';
+import {MapComponent} from '../map/map.component';
 
 @Component({
   selector: 'app-guest',
   imports: [
     FooterComponent,
-    NgIf,
-    ForecastComponent
+    ForecastComponent,
+    MapComponent,
+    NgIf
   ],
   templateUrl: './guest.component.html'
 })
-export class GuestComponent implements OnInit, AfterViewInit {
+export class GuestComponent implements OnInit {
 
   forecasts: any;
   error: any;
@@ -35,15 +37,6 @@ export class GuestComponent implements OnInit, AfterViewInit {
         this.errorUrl = err.url;
       }
     });
-  }
-
-  ngAfterViewInit() {
-    var map = L.map('map').setView([51.505, -0.09], 13);
-
-    const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
   }
 
 }

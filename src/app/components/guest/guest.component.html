@@ -1,6 +1,5 @@
 <div class="card" id="guest-card">
-  <div id="map" style="width: 600px; height: 400px;"></div>
-
+  <app-map/>
   <div *ngIf="!error && !forecasts">
     <img class="loading" alt="chargement" src="">
   </div>
@@ -14,9 +13,3 @@
 
 <app-footer/>
 
-<style>
-  #map{
-    height: 100%;
-  }
-
-</style>
