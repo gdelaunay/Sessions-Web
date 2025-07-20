@@ -27,8 +27,9 @@
 
     --background-color-blue: rgba(31, 78, 121, 0.80);
     --background-color-blue-05: rgba(31, 78, 121, 0.5);
+    --background-color-blue-03: rgba(31, 78, 121, 0.35);
+    --background-color-blue-02: rgba(31, 78, 121, 0.25);
     --background-color-blue-01: rgba(31, 78, 121, 0.10);
-    --border-color-blue: rgba(31, 78, 121, 0.25);
 
     --background-color-grey: rgba(242, 242, 242, 0.3);
     --background-color-grey-01: rgba(242, 242, 242, 0.1);
@@ -66,8 +67,9 @@
 
     --background-color-blue: rgba(91, 155, 213, 0.15);
     --background-color-blue-05: rgba(46, 116, 181, 0.5);
+    --background-color-blue-03: rgba(46, 116, 181, 0.35);
+    --background-color-blue-02: rgba(46, 116, 181, 0.2);
     --background-color-blue-01: rgba(46, 116, 181, 0.1);
-    --border-color-blue: rgba(46, 116, 181, 0.2);
 
     --background-color-grey: rgba(82, 82, 82, 0.3);
     --background-color-grey-01: rgba(122, 122, 122, 0.1);
@@ -94,16 +96,20 @@
 }
 
 /* ---------- Général ---------- */
+html, body, #main-div, app-root {
+  height: 100%;
+  width: 100%;
+  overflow: clip;
+}
+
 html {
   background: var(--blue-gradient);
   background-size: 400% 400%;
   animation: gradient 40s ease infinite;
-  height: 100%;
 }
 
 body {
   margin: 0;
-  height: 100%;
   font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
   color: var(--primary-text-color);
   background: var(--blue-transparent-gradient);
@@ -129,7 +135,8 @@ header {
 }
 
 header h1 {
-  margin-top: -0.25rem;
+  color : var(--primary-text-color);
+  margin: -0.25rem 1rem 0 1rem;
 }
 
 .logo{
@@ -147,12 +154,7 @@ main{
   flex-direction: row;
 }
 
-#main-div, app-root{
-  width: 100%;
-  height: 100%;
-}
-
-app-home, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-detail, app-session-form{
+app-home, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-detail, app-session-form, app-guest{
   display: flex;
   flex-direction: column;
   overflow: auto;
@@ -176,10 +178,10 @@ app-home, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-d
 /* ---------- Volet aside ---------- */
 aside{
   min-width: 12.5rem;
-  padding: 1.25rem 0.75rem;
+  padding: 1.25rem 0.75rem 0.75rem 0.75rem;
   background: var(--background-color-blue);
   box-shadow: 0 6px 30px var(--box-shadow-color);
-  border-right: 1px solid var(--border-color-blue);
+  border-right: 1px solid var(--background-color-blue-02);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom-right-radius: 0.75rem;
@@ -197,6 +199,10 @@ aside svg{
   margin: 0 0.5rem -0.35rem 0;
 }
 
+nav, ul {
+  height: 100%;
+}
+
 ul {
   list-style-type: none;
   margin: 0 auto;
@@ -205,6 +211,10 @@ ul {
   flex-direction: column;
   font-size: 1.25rem;
   font-weight: 400;
+}
+
+#guestBtn{
+  margin-top: auto;
 }
 
 li {
@@ -244,47 +254,6 @@ li a:focus {
   box-shadow:inset 0 0 0.5rem var(--box-shadow-color);
 }
 
-/* ----- Tables ----- */
-.table-div {
-  margin-top: 0;
-  border: 1px solid var(--background-color-blue-05);
-  border-radius: 0.75rem;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  scrollbar-width: none;
-  scrollbar-color: var(--background-color-grey) var(--border-color-blue);
-}
-
-tr {
-  width: 100%;
-  display: flex;
-  border-top: 1px solid var(--background-color-blue-05);
-}
-
-tr:first-of-type {
-  border-top: none !important;
-}
-
-td {
-  background-color: var(--background-color-blue-01);
-}
-
-th {
-  font-weight: 600;
-  text-align: center;
-  background-color: var(--border-color-blue);
-}
-
-td, th {
-  padding: 6px 12px;
-  overflow: hidden;
-  border-right: 1px solid var(--background-color-blue-05);
-}
-
-td:last-of-type, .table-div>tr:first-of-type>th:last-child {
-  border-right: none !important;
-}
-
 /* ---------- Texte ---------- */
 a {
   text-decoration: none;
@@ -300,29 +269,75 @@ a.disabled {
   color: var(--grey) !important;
 }
 
-h1{
-  font-size: 2rem;
+h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
-  color: var(--primary-text-color);
-  margin: 0 1rem;
+  margin: 0 1rem 0.5rem 1rem;
 }
 
+h1 { font-size: 2rem }
+h2 { font-size: 1.5rem }
+h3 { font-size: 1.25rem }
+h4 { font-size: 1.125rem }
+
+
 h2:first-of-type {
-  font-size: 1.5rem;
-  font-weight: 600;
   display: block;
   margin: -3.5rem 0 0 -0.5rem;
+}
+
+
+
+/* ---------- Boutons et inputs ---------- */
+
+input {
+  padding: 0.25rem;
+  font-size: 1rem;
+  color: var(--primary-text-color);
+  border-radius: 0.25rem;
+  border: 1px solid var(--background-color-blue-05);
+  background-color: var(--background-color-blue-01);
+}
+
+input:read-only {
+  border-right: 1px solid var(--background-color-blue-02);
+}
+
+button {
+  cursor:pointer;
+  margin-top: 1rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary-text-color);
+  background-color: var(--background-color-blue-01);
+  border: 1px solid var(--background-color-blue-05);
+  transition:
+    margin 0.3s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+button:hover {
+  margin-top: 1.2rem;
+  margin-bottom: -0.2rem;
+}
+
+button:hover, button:active {
+  background-color: var(--background-color-blue-02);
+}
+
+button:focus {
+  margin-top: 1.4rem;
+  margin-bottom: -0.4rem;
+  background-color: var(--background-color-blue-03);
+  box-shadow:inset 0 0 0.5rem var(--box-shadow-color);
 }
 
 /* ---------- Loader etc ---------- */
 .loading{
   content: var(--spinner);
   max-height: 3rem;
-}
-
-/* ---------- Footer ---------- */
-app-footer{
-  margin-top: auto;
 }
 
 /* ---------- Animation des dégradés en arrière plan ---------- */

@@ -1,0 +1,70 @@
+<div class="card" id="guest-card">
+  <h2 id="spot">Mode invité (Sessions-Web standalone) :</h2><br>
+
+  <div id="locationDiv">
+    <div id="locationPrompt">
+      <h4>  Sélectionner un point sur la carte, et valider pour obtenir les prévisions météo marines.</h4>
+      <br><h4>Point sélectionné : </h4>
+      <p> Latitude = 	&nbsp; &nbsp;<input #latInput type="text" readonly="true"> </p>
+      <p> Longitude = <input #lonInput type="text" readonly="true"> </p>
+      <button #validateCoordsBtn (click)="getForecasts()">Valider</button>
+    </div>
+    <app-map (setCoords)="setCoords($event)"/>
+  </div>
+
+  <div *ngIf="!error && loading">
+    <img class="loading" alt="chargement" src="">
+  </div>
+
+  <div *ngIf="error">
+    <span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a>
+  </div>
+
+  <app-forecast *ngIf="forecasts" [forecasts]="forecasts" [type]="'guest'" />
+
+  <br>⚠️ Cette page n'est qu'un aperçu de l'application <b>Sessions</b>. Pour bénéficier de l'API Sessions et obtenir
+  des prévisions détaillées, <b>créez un compte</b> et commencez à configurer vos spots préférés !
+</div>
+
+<app-footer/>
+
+<style>
+  #guest-card{
+    margin: 4rem auto;
+  }
+
+  #locationDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  #locationPrompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #locationPrompt, app-map { width: 50%; }
+
+  h4 {
+    margin: 0.5rem 0 0.75rem 0;
+    text-align: justify;
+    text-indent: 0.5rem;
+  }
+
+  p { margin: 0.5rem 0; }
+
+  input {
+    width: 10rem;
+    text-align: center;
+  }
+
+  button {
+    margin-left: auto;
+    margin-right: 25%;
+  }
+</style>
+
