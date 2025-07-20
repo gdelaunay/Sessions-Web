@@ -9,7 +9,7 @@
     <span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a>
   </div>
 
-  <app-forecast *ngIf="forecasts" [forecasts]="forecasts"/>
+  <app-forecast *ngIf="forecasts" [forecasts]="forecasts" [type]="'daily'"/>
 </div>
 
 <app-footer/>
@@ -18,6 +18,5 @@
 #home-card{
   margin: 5rem auto;
   min-height: 60%;
-  flex-shrink: 0;
 }
 </style>

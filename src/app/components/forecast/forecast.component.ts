@@ -4,7 +4,8 @@ import {NgForOf, NgIf} from '@angular/common';
 @Component({
   selector: 'app-forecast',
   imports: [
-    NgForOf
+    NgForOf,
+    NgIf
   ],
   standalone: true,
   templateUrl: './forecast.component.html',
@@ -12,4 +13,5 @@ import {NgForOf, NgIf} from '@angular/common';
 })
 export class ForecastComponent {
   @Input() forecasts: any;
+  @Input() type: any;
 }

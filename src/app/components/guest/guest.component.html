@@ -1,5 +1,10 @@
 <div class="card" id="guest-card">
-  <app-map/>
+  <h2 id="spot">Spot : Margaret plage - Préfailles</h2><br>
+
+  <div id="locationDiv">
+    <app-map/>
+  </div>
+
   <div *ngIf="!error && !forecasts">
     <img class="loading" alt="chargement" src="">
   </div>
@@ -8,8 +13,22 @@
     <span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a>
   </div>
 
-  <app-forecast *ngIf="forecasts" [forecasts]="forecasts"/>
+  <app-forecast *ngIf="forecasts" [forecasts]="forecasts" [type]="'guest'" />
+
+  <br>⚠️ Cette page n'est qu'un aperçu de l'application <b>Sessions</b>. Pour bénéficier de l'API Sessions et obtenir
+  des prévisions détaillées, <b>créez un compte</b> et commencez à configurer vos spots préférés !
 </div>
 
 <app-footer/>
+
+<style>
+  #guest-card{
+    margin: 4rem auto;
+  }
+
+  #locationDiv {
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+</style>
 

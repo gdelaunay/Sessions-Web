@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   constructor(private http: HttpClient, private forecastService: ForecastService) {  }
 
   ngOnInit() {
-    this.forecastService.getMarineForecastDaily(47.124498, -2.216052).
+    this.forecastService.getForecastDaily(47.124498, -2.216052).
     subscribe({
       next: (data) => {
         this.forecasts = data;

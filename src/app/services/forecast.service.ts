@@ -10,16 +10,17 @@ export class ForecastService {
   private dailyForecastUrl = sessionsApiUrl + '/forecast/daily';
   private hourlyForecastUrl = sessionsApiUrl + '/forecast/3hourly';
 
+  private guestForecastUrl = 'https://marine-api.open-meteo.com/v1/marine';
+  private guestForecastParams = 'daily=wave_height_max,wave_direction_dominant,wave_period_max&timezone=Europe%2FBerlin'
+
   constructor(private http: HttpClient) { }
 
-  getMarineForecastDaily( lat : number, lon: number ) {
+  getForecastDaily( lat : number, lon: number ) {
     return this.http.get<any>(`${this.dailyForecastUrl}?lat=${lat}&lon=${lon}`);
   }
 
-  /*
-  getMarineForecastDaily( lat : number, long : number) {
-    return this.http.get<any>(`${this.forecastApiUrl}/marine?latitude=${lat}&longitude=${long}&daily=wave_height_max,wave_direction_dominant,wave_period_max&timezone=Europe%2FBerlin`)
+  getGuestForecast( lat : number, lon: number ) {
+    return this.http.get<any>(`${this.guestForecastUrl}?latitude=${lat}&longitude=${lon}&${this.guestForecastParams}`);
   }
-   */
+
 }
-//https://marine-api.open-meteo.com/v1/marine?latitude=54.544587&longitude=10.227487&daily=wave_height_max,wave_direction_dominant,wave_period_max&timezone=Europe%2FBerlin
