@@ -1,10 +1,15 @@
 <div class="card" id="home-card">
+
+  <div id="map" style="width: 600px; height: 400px;"></div>
+
   <div *ngIf="!error && !forecasts">
     <img class="loading" alt="chargement" src="">
   </div>
+
   <div *ngIf="error">
     <span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a>
   </div>
+
   <div *ngIf="forecasts">
     <h2 id="spot">Spot : Margaret plage - Préfailles</h2><br>
     <div class="table-div">
@@ -47,7 +52,11 @@
 </div>
 
 <app-footer/>
+
 <style>
+  #map{
+    height: 100%;
+  }
 
   #home-card{
     margin: 5rem auto;
