@@ -24,7 +24,7 @@ export class AppComponent implements AfterViewInit {
 
       // Style des boutons aside selon l'URL
       const path = window.location.pathname;
-      console.log(path);
+
       const routes = [
         { path: '/spots', id: 'spotsBtn' },
         { path: '/alerts', id: 'alertsBtn' },
@@ -34,7 +34,6 @@ export class AppComponent implements AfterViewInit {
       ];
       const match = routes.find(route => path.startsWith(route.path));
 
-      console.log(match);
       if (match) {
         document.getElementById(match.id)?.classList.add('active');
       }
