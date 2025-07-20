@@ -1,0 +1,40 @@
+<div>
+  <div class="table-div">
+    <tr id="days-line" >
+      <th>Date : </th>
+      <th class="day" *ngFor="let forecast of forecasts" >{{ forecast.DateTime }}</th>
+    </tr>
+    <tr id="weather-code-line" >
+      <th>Code météo : </th>
+      <td class="weatherCode" *ngFor="let forecast of forecasts" >{{ forecast.WeatherCode }}</td>
+    </tr>
+    <tr id="temperature-line" >
+      <th>Température max : </th>
+      <td class="temperature" *ngFor="let forecast of forecasts" >{{ forecast.Temperature }} °C</td>
+    </tr>
+    <tr id="wave-height-line" >
+      <th>Houle max : </th>
+      <td class="waveHeight" *ngFor="let forecast of forecasts" >{{ forecast.WaveHeight }} mètres</td>
+    </tr>
+    <tr id="wave-direction-line" >
+      <th>Direction houle : </th>
+      <td class="waveDirection" *ngFor="let forecast of forecasts" >{{ forecast.WaveDirection }} degrés</td>
+    </tr>
+    <tr id="wave-period-line" >
+      <th>Période max: </th>
+      <td class="wavePeriod" *ngFor="let forecast of forecasts" >{{ forecast.WavePeriod }} secondes</td>
+    </tr>
+    <tr id="wind-speed-line" >
+      <th>Vent max: </th>
+      <td class="windSpeed" *ngFor="let forecast of forecasts" >{{ forecast.WindSpeed }} noeuds</td>
+    </tr>
+    <tr id="wind-direction-line" >
+      <th>Direction vent : </th>
+      <td class="windDirection" *ngFor="let forecast of forecasts" >{{ forecast.WindDirection }} degrés</td>
+    </tr>
+  </div>
+</div>
+
+<style>
+
+</style>

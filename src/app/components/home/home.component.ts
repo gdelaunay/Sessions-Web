@@ -3,13 +3,14 @@ import {FooterComponent} from '../footer/footer.component';
 import {HttpClient} from '@angular/common/http';
 import {ForecastService} from '../../services/forecast.service';
 import {NgForOf, NgIf} from '@angular/common';
+import {ForecastComponent} from '../forecast/forecast.component';
 
 @Component({
   selector: 'app-home',
   imports: [
     FooterComponent,
     NgIf,
-    NgForOf
+    ForecastComponent
   ],
   templateUrl: './home.component.html'
 })

@@ -4,13 +4,14 @@ import {NgForOf, NgIf} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
 import {ForecastService} from '../../services/forecast.service';
 import * as L from 'leaflet';
+import {ForecastComponent} from '../forecast/forecast.component';
 
 @Component({
   selector: 'app-guest',
   imports: [
     FooterComponent,
-    NgForOf,
-    NgIf
+    NgIf,
+    ForecastComponent
   ],
   templateUrl: './guest.component.html'
 })
