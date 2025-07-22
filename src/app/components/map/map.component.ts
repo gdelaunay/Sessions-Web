@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, EventEmitter, OnDestroy, Output} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Output} from '@angular/core';
 import * as L from 'leaflet';
 import {Icon} from 'leaflet';
 
@@ -28,7 +28,7 @@ export class MapComponent implements AfterViewInit {
       iconUrl: './marker.png'
     });
 
-    const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(this.map);
@@ -41,7 +41,7 @@ export class MapComponent implements AfterViewInit {
       this.marker.remove(); // supprime l’ancien
     }
     this.marker = L.marker(e.latlng, { icon: this.myIcon, draggable: true }).addTo(this.map);
-    this.marker.on('dragend', (e: any) => {
+    this.marker.on('dragend', () => {
       // @ts-ignore
       this.outCoords.emit({ lat: this.marker.getLatLng().lat, lon: this.marker.getLatLng().lng } );
     });

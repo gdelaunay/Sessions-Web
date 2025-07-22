@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {FooterComponent} from '../footer/footer.component';
 import {NgIf} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
