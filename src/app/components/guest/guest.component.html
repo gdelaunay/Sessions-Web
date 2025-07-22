@@ -1,5 +1,5 @@
 <div class="card" id="guest-card">
-  <h2 id="spot">Mode invité (Sessions-Web standalone) :</h2><br>
+  <h2 id="spot">Mode invité (Web standalone) :</h2><br>
 
   <div id="locationDiv">
     <div id="locationPrompt">
@@ -29,8 +29,14 @@
 <app-footer/>
 
 <style>
-  #guest-card{
-    margin: 4rem 2.8rem;
+
+  /* ----- Portrait (mobile & tablette) ----- */
+  @media (orientation: portrait) {
+    #locationDiv { flex-direction: column !important }
+    #locationPrompt, app-map { width: 100% !important }
+    #locationPrompt {justify-content: start !important; order: 1}
+    h4, p { margin-top: 0.2rem !important; margin-bottom: 0.2rem !important }
+    h4 ~ br { display: none }
   }
 
   #locationDiv {
@@ -51,11 +57,11 @@
   app-map { width: 45%; }
 
   h4 {
-    margin: 0.5rem 0 0.75rem 0;
+    margin: 0 0.4rem 0.6rem 0.2rem;
     text-align: center;
   }
 
-  p { margin: 0.5rem 0; }
+  p { margin: 0.4rem 0; }
 
   input {
     width: 10rem;
@@ -63,8 +69,7 @@
   }
 
   button {
-    margin-left: auto;
-    margin-right: 25%;
+    margin: 0.6rem 25% 0.6rem auto;
   }
 </style>
 
