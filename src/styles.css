@@ -12,7 +12,7 @@
   --lighter-grey: #F2F2F2;
   --white: #FCFCFC;
 
-  --spinner: url("/spinner.svg")
+  --spinner: url("assets/spinner.svg")
 }
 
 /* ----- Thème clair ----- */
