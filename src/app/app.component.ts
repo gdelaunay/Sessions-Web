@@ -1,11 +1,9 @@
 import {AfterViewInit, Component, NgZone, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {FooterComponent} from './components/footer/footer.component';
 
 const sessionsApiUrl_DEV = 'http://localhost:5050/api';
 const sessionsApiUrl_HTTP = 'http://localhost/api';
 const sessionsApiUrl_HTTPS = 'https://mydomain.com/api';
-const mySessionsApiUrl_HTTPS = 'https://sessions.gdelaunay.fr/api';
 
 export const sessionsApiUrl: string = sessionsApiUrl_HTTP;
 
