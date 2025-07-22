@@ -103,10 +103,42 @@
 }
 
 
-/* ----- Portrait ----- */
+/* ----- Portrait (mobile & tablette) ----- */
 @media (orientation: portrait){
-  aside{
-    display: none;
+  main{
+    flex-direction: column !important;
+  }
+
+  aside {
+    order: 1;
+    width: 100%;
+    height: auto !important;
+  }
+
+  ul {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+  }
+
+  ul > div {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    margin-right: -2.5rem;
+  }
+
+  .card{
+    padding: 0.6rem 0.4rem 0.4rem 0.4rem !important;
+  }
+
+  h1 { font-size: 1.6rem }
+  h2 { font-size: 1.2rem !important}
+  h3 { font-size: 1.1rem !important}
+  h4 { font-size: 1rem !important}
+  h5 { font-size: 0.9rem !important}
+
+  h2:first-of-type {
+    margin: -2.5rem 0 -0.6rem -0.2rem !important;
   }
 }
 
@@ -171,7 +203,7 @@ header h1 {
 }
 
 /* ----- ZOOMED ----- */
-.zoomed header {  padding: 0.1rem; }
+.zoomed header {  padding: 0.2rem; }
 .zoomed #title { justify-content: center; }
 .zoomed header h1 { font-size: 1.5rem; }
 .zoomed .logo { height: 2rem; }
@@ -196,8 +228,9 @@ app-home, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-d
 }
 
 .card{
-  margin: 2.8rem;
-  max-width: 90%;
+  margin: 3.4rem auto auto auto;
+  min-width: 60%;
+  max-width: 95%;
   padding: 1.5rem 1rem 1rem 1rem;
   background: var(--background-color-grey);
   box-shadow: 0 6px 30px var(--box-shadow-color);
@@ -324,7 +357,7 @@ h5 { font-size: 1rem }
 
 h2:first-of-type {
   display: block;
-  margin: -3.8rem 0 0 -0.5rem;
+  margin: -3.8rem 0 0 -0.6rem;
 }
 
 
