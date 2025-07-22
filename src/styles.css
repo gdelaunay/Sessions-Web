@@ -55,6 +55,7 @@
 
 }
 
+
 /* ----- Thème foncé ----- */
 @media (prefers-color-scheme: dark) {
 
@@ -95,7 +96,27 @@
 
 }
 
+
+/* ----- Paysage ----- */
+@media (orientation: landscape) {
+
+}
+
+
+/* ----- Portrait ----- */
+@media (orientation: portrait){
+  aside{
+    display: none;
+  }
+}
+
+
+
 /* ---------- Général ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html, body, #main-div, app-root {
   height: 100%;
   width: 100%;
@@ -118,6 +139,7 @@ body {
   animation: gradient 30s ease infinite;
 }
 
+
 /* ---------- Header ---------- */
 header {
   padding: 0.4rem 0.8rem;
@@ -135,25 +157,35 @@ header {
   align-items: center;
 }
 
+
 header h1 {
   color : var(--primary-text-color);
   margin: 0 0.8rem;
 }
 
-.logo{
-  height: 2.5rem;
+.logo {
+  height: 2.4rem;
   padding: 2px;
   border-radius: 50%;
   background-color: var(--logo-background-color);
 }
 
+/* ----- ZOOMED ----- */
+.zoomed header {  padding: 0.1rem; }
+.zoomed #title { justify-content: center; }
+.zoomed header h1 { font-size: 1.5rem; }
+.zoomed .logo { height: 2rem; }
+
+
 /* ---------- Main ---------- */
 main{
-  height: calc(100% - 3.75rem - 1px);
+  height: calc(100% - 2.8rem - 5px);
   width: 100%;
   display: flex;
   flex-direction: row;
 }
+
+.zoomed main{ height: calc(100% - 2rem - 4px); }
 
 app-home, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-detail, app-session-form, app-guest{
   display: flex;
@@ -165,7 +197,7 @@ app-home, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-d
 
 .card{
   margin: 2.8rem;
-  min-width: 90%;
+  max-width: 90%;
   padding: 1.5rem 1rem 1rem 1rem;
   background: var(--background-color-grey);
   box-shadow: 0 6px 30px var(--box-shadow-color);
@@ -177,8 +209,10 @@ app-home, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-d
   border-radius: 0.75rem;
 }
 
+
 /* ---------- Volet aside ---------- */
 aside{
+  height: 100%;
   min-width: 11.2rem;
   padding: 0.8rem 0.6rem 0.3rem 0.6rem;
   background: var(--background-color-blue);
@@ -201,9 +235,7 @@ aside svg{
   margin: 0 0.5rem -0.35rem 0;
 }
 
-nav, ul {
-  height: 100%;
-}
+nav, ul { height: 100%; }
 
 ul {
   list-style-type: none;
@@ -255,6 +287,13 @@ li a:focus {
   border: 1px solid var(--border-color-grey);
   box-shadow:inset 0 0 0.5rem var(--box-shadow-color);
 }
+
+/* ----- ZOOMED ----- */
+.zoomed aside { min-width: 0; padding: 0.6rem 0.4rem 0.2rem 0.4rem; }
+.zoomed ul { font-size: 0; }
+.zoomed aside svg { margin: 0 auto; width: 1.8rem; height: 1.8rem; }
+.zoomed li a { display: flex; justify-content: center;  padding: 0.2rem 0.6rem;}
+
 
 /* ---------- Texte ---------- */
 a {

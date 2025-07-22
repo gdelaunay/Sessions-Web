@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, NgZone} from '@angular/core';
+import {AfterViewInit, Component, NgZone, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {FooterComponent} from './components/footer/footer.component';
 
@@ -15,9 +15,24 @@ export const sessionsApiUrl: string = sessionsApiUrl_HTTP;
   template: "<router-outlet/>"
 })
 
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'SurfSessions-Web';
   constructor(private ngZone: NgZone) {}
+
+  ngOnInit() {
+    this.checkZoom()
+    window.addEventListener('resize', this.checkZoom);
+  }
+
+  // Affichage spécifique quand zoom navigateur > 150% (desktop)
+  checkZoom () {
+    if (window.devicePixelRatio > 1.5) {
+      document.documentElement.classList.add('zoomed');
+    } else {
+      document.documentElement.classList.remove('zoomed');
+    }
+  }
+
   ngAfterViewInit() {
 
     this.ngZone.runOutsideAngular(() => {
