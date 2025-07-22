@@ -1,6 +1,6 @@
 <!-- DAILY FORECAST -->
-<div *ngIf="type == 'daily'">
-  <div class="table-div">
+<div class="table-div" *ngIf="type == 'daily'">
+  <table>
     <tr id="days-line" >
       <th>Date : </th>
       <th class="day" *ngFor="let forecast of forecasts" >{{ forecast.DateTime }}</th>
@@ -15,47 +15,45 @@
     </tr>
     <tr id="wave-height-line" >
       <th>Houle max : </th>
-      <td class="waveHeight" *ngFor="let forecast of forecasts" >{{ forecast.WaveHeight }} mètres</td>
+      <td class="waveHeight" *ngFor="let forecast of forecasts" >{{ forecast.WaveHeight }} m</td>
     </tr>
     <tr id="wave-direction-line" >
       <th>Direction houle : </th>
-      <td class="waveDirection" *ngFor="let forecast of forecasts" >{{ forecast.WaveDirection }} degrés</td>
+      <td class="waveDirection" *ngFor="let forecast of forecasts" >{{ forecast.WaveDirection }} °</td>
     </tr>
     <tr id="wave-period-line" >
       <th>Période max: </th>
-      <td class="wavePeriod" *ngFor="let forecast of forecasts" >{{ forecast.WavePeriod }} secondes</td>
+      <td class="wavePeriod" *ngFor="let forecast of forecasts" >{{ forecast.WavePeriod }} s</td>
     </tr>
     <tr id="wind-speed-line" >
       <th>Vent max: </th>
-      <td class="windSpeed" *ngFor="let forecast of forecasts" >{{ forecast.WindSpeed }} noeuds</td>
+      <td class="windSpeed" *ngFor="let forecast of forecasts" >{{ forecast.WindSpeed }} nds</td>
     </tr>
     <tr id="wind-direction-line" >
       <th>Direction vent : </th>
-      <td class="windDirection" *ngFor="let forecast of forecasts" >{{ forecast.WindDirection }} degrés</td>
+      <td class="windDirection" *ngFor="let forecast of forecasts" >{{ forecast.WindDirection }} °</td>
     </tr>
-  </div>
+  </table>
 </div>
 
 <!-- GUEST FORECAST -->
-<div *ngIf="type == 'guest'">
-  <div class="table-div">
-    <tr id="days-line" >
-      <th>Date : </th>
-      <th class="day" *ngFor="let day of forecasts.daily.time;" >{{ day }}</th>
-    </tr>
-    <tr id="wave-height-line" >
-      <th>Houle : </th>
-      <td class="waveHeight" *ngFor="let waveHeight of forecasts.daily.wave_height_max;" >{{ waveHeight }} mètres</td>
-    </tr>
-    <tr id="wave-period-line" >
-      <th>Période : </th>
-      <td class="wavePeriod" *ngFor="let wavePeriod of forecasts.daily.wave_period_max;" >{{ wavePeriod }} secondes</td>
-    </tr>
-    <tr id="wave-direction-line" >
-      <th>Direction : </th>
-      <td class="waveDirection" *ngFor="let waveDirection of forecasts.daily.wave_direction_dominant;" >{{ waveDirection }} degrés</td>
-    </tr>
-  </div>
-
-</div>
-
+<div class="table-div" *ngIf="type == 'guest'">
+<table>
+  <tr id="days-line" >
+    <th>Date : </th>
+    <th class="day" *ngFor="let day of forecasts.daily.time;" >{{ day }}</th>
+  </tr>
+  <tr id="wave-height-line" >
+    <th>Houle : </th>
+    <td class="waveHeight" *ngFor="let waveHeight of forecasts.daily.wave_height_max;" >{{ waveHeight }} m</td>
+  </tr>
+  <tr id="wave-period-line" >
+    <th>Période : </th>
+    <td class="wavePeriod" *ngFor="let wavePeriod of forecasts.daily.wave_period_max;" >{{ wavePeriod }} s</td>
+  </tr>
+  <tr id="wave-direction-line" >
+    <th>Direction : </th>
+    <td class="waveDirection" *ngFor="let waveDirection of forecasts.daily.wave_direction_dominant;" >{{ waveDirection }} °</td>
+  </tr>
+</table>
+<div>
