@@ -99,7 +99,7 @@
 html, body, #main-div, app-root {
   height: 100%;
   width: 100%;
-  overflow: clip;
+  overflow: hidden;
 }
 
 html {
@@ -110,6 +110,7 @@ html {
 
 body {
   margin: 0;
+  font-size: 0.9rem;
   font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
   color: var(--primary-text-color);
   background: var(--blue-transparent-gradient);
@@ -119,7 +120,7 @@ body {
 
 /* ---------- Header ---------- */
 header {
-  padding: 0.5rem 1.175rem;
+  padding: 0.4rem 0.8rem;
   background-color: var(--background-color-grey);
   box-shadow: 0 4px 20px var(--box-shadow-color);
   border-bottom: 1px solid var(--border-color-grey);
@@ -136,7 +137,7 @@ header {
 
 header h1 {
   color : var(--primary-text-color);
-  margin: -0.25rem 1rem 0 1rem;
+  margin: 0rem 0.8rem;
 }
 
 .logo{
@@ -157,14 +158,15 @@ main{
 app-home, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-detail, app-session-form, app-guest{
   display: flex;
   flex-direction: column;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: auto;
   height: 100%;
 }
 
 .card{
-  margin: 1.5rem auto;
-  width: 90%;
-  padding: 16px;
+  margin: 2.8rem;
+  min-width: 90%;
+  padding: 1.4rem 1rem 1rem 1rem;
   background: var(--background-color-grey);
   box-shadow: 0 6px 30px var(--box-shadow-color);
   border: 1px solid var(--border-color-grey);
@@ -177,8 +179,8 @@ app-home, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-d
 
 /* ---------- Volet aside ---------- */
 aside{
-  min-width: 12.5rem;
-  padding: 1.25rem 0.75rem 0.75rem 0.75rem;
+  min-width: 11.2rem;
+  padding: 0.8rem 0.6rem 0.3rem 0.6rem;
   background: var(--background-color-blue);
   box-shadow: 0 6px 30px var(--box-shadow-color);
   border-right: 1px solid var(--background-color-blue-02);
@@ -194,8 +196,8 @@ aside svg{
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 1.6rem;
+  height: 1.6rem;
   margin: 0 0.5rem -0.35rem 0;
 }
 
@@ -209,7 +211,7 @@ ul {
   padding: 0;
   display: flex;
   flex-direction: column;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 400;
 }
 
@@ -223,7 +225,7 @@ li {
 
 li a {
   display: block;
-  padding: 0.55rem 1rem;
+  padding: 0.4rem 1rem;
   border-radius: 0.5rem;
   color: var(--aside-text-color);
   stroke: var(--aside-text-color);
@@ -274,15 +276,16 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 1rem 0.5rem 1rem;
 }
 
-h1 { font-size: 2rem }
-h2 { font-size: 1.5rem }
-h3 { font-size: 1.25rem }
-h4 { font-size: 1.125rem }
+h1 { font-size: 1.8rem }
+h2 { font-size: 1.4rem }
+h3 { font-size: 1.2rem }
+h4 { font-size: 1.1rem }
+h5 { font-size: 1rem }
 
 
 h2:first-of-type {
   display: block;
-  margin: -3.5rem 0 0 -0.5rem;
+  margin: -3.8rem 0 0 -0.5rem;
 }
 
 
