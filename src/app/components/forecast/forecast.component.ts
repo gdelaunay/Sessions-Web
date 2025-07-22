@@ -20,7 +20,10 @@ export class ForecastComponent implements AfterViewInit {
 
     function updateMask() {
       const maxScrollLeft = tableDiv.scrollWidth - tableDiv.clientWidth;
-
+      if (maxScrollLeft <= 0) {
+        tableDiv.style.maskImage = 'none';
+        return;
+      }
       if (tableDiv.scrollLeft === 0) {
         tableDiv.style.maskImage =
             'linear-gradient(to right, black 0%, black 95%, transparent 100%)';

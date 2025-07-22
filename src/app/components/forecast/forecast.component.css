@@ -24,6 +24,7 @@
 
 table {
   margin-top: 0;
+  min-width: calc(100% - 4px);
   overflow: hidden;
   border: 1px solid var(--background-color-blue-05);
   border-radius: 0.75rem;
