@@ -9,7 +9,7 @@
       <p> Longitude = <input #lonInput type="text" readonly="true"> </p>
       <button #validateCoordsBtn (click)="getForecasts()">Valider</button>
     </div>
-    <app-map (setCoords)="setCoords($event)"/>
+    <app-map (outCoords)="updateCoords($event)"/>
   </div>
 
   <div *ngIf="!error && loading">

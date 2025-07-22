@@ -47,7 +47,7 @@ export class GuestComponent {
     this.loading = false;
   }
 
-  setCoords(e: { lat: number; lon: number }) {
+  updateCoords(e: { lat: number; lon: number }) {
     this.latInput.nativeElement.value = roundTo(e.lat, 6);
     this.lonInput.nativeElement.value = roundTo(e.lon, 6);
   }
