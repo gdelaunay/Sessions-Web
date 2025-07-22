@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, EventEmitter, OnDestroy, Output} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Output} from '@angular/core';
 import * as L from 'leaflet';
 import {Icon} from 'leaflet';
 
@@ -9,18 +9,26 @@ import {Icon} from 'leaflet';
 })
 
 export class MapComponent implements AfterViewInit {
-  @Output() setCoords = new EventEmitter<{ lat: number, lon: number }>();
+  @Output() outCoords = new EventEmitter<{ lat: number, lon: number }>();
   map : any;
   marker: L.Marker | null = null;
+  myIcon = L.icon({
+    iconUrl: '/media/marker.png',       // chemin vers ton image
+    iconSize: [32, 38],
+    iconAnchor: [16, 38],
+    shadowUrl: '/media/marker-shadow.png',
+    shadowSize: [38, 32],
+    shadowAnchor: [6, 30]
+  });
 
   ngAfterViewInit() {
     this.map = L.map('map').setView([47.20, -1.56], 5);
 
     Icon.Default.mergeOptions({
-      shadowUrl: ''
+      iconUrl: './marker.png'
     });
 
-    const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(this.map);
@@ -32,7 +40,11 @@ export class MapComponent implements AfterViewInit {
     if (this.marker) {
       this.marker.remove(); // supprime l’ancien
     }
-    this.marker = L.marker(e.latlng).addTo(this.map);
-    this.setCoords.emit({ lat: e.latlng.lat, lon: e.latlng.lng } );
+    this.marker = L.marker(e.latlng, { icon: this.myIcon, draggable: true }).addTo(this.map);
+    this.marker.on('dragend', () => {
+      // @ts-ignore
+      this.outCoords.emit({ lat: this.marker.getLatLng().lat, lon: this.marker.getLatLng().lng } );
+    });
+    this.outCoords.emit({ lat: e.latlng.lat, lon: e.latlng.lng } );
   }
 }

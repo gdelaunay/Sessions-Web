@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {FooterComponent} from '../footer/footer.component';
 import {NgIf} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
@@ -47,7 +47,7 @@ export class GuestComponent {
     this.loading = false;
   }
 
-  setCoords(e: { lat: number; lon: number }) {
+  updateCoords(e: { lat: number; lon: number }) {
     this.latInput.nativeElement.value = roundTo(e.lat, 6);
     this.lonInput.nativeElement.value = roundTo(e.lon, 6);
   }
