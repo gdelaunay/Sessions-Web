@@ -166,7 +166,7 @@ app-home, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-d
 .card{
   margin: 2.8rem;
   min-width: 90%;
-  padding: 1.8rem 1rem 1rem 1rem;
+  padding: 1.5rem 1rem 1rem 1rem;
   background: var(--background-color-grey);
   box-shadow: 0 6px 30px var(--box-shadow-color);
   border: 1px solid var(--border-color-grey);
