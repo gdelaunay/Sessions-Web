@@ -102,7 +102,6 @@
 
 }
 
-
 /* ----- Portrait (mobile & tablette) ----- */
 @media (orientation: portrait){
   main{
@@ -113,6 +112,7 @@
     order: 1;
     width: 100%;
     height: auto !important;
+    padding: 0.4rem 0.2rem !important;
   }
 
   ul {
@@ -122,14 +122,23 @@
 
   ul > div {
     display: flex;
+    flex-direction: row !important;
     justify-content: center;
     flex: 1;
-    margin-right: -2.5rem;
+    margin-right: -2.6rem;
+  }
+
+  li {
+    margin: 0.1rem 0.2rem 0.4rem 0.2rem !important;
+  }
+
+  li > a {
+    padding: 0.4rem 0.6rem !important;
   }
 
   .card{
-    margin-top: 2.4rem !important;
-    padding: 0.6rem 0.4rem 0.4rem 0.4rem !important;
+    margin-top: 2.6rem !important;
+    padding: 0.4rem !important;
   }
 
   h1 { font-size: 1.6rem }
@@ -139,7 +148,7 @@
   h5 { font-size: 0.9rem !important}
 
   h2:first-of-type {
-    margin: -2.5rem 0 -0.6rem -0.2rem !important;
+    margin: -2.4rem 0 -0.6rem -0.2rem !important;
   }
 }
 
@@ -229,10 +238,10 @@ app-home, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-d
 }
 
 .card{
-  margin: 3.4rem auto auto auto;
+  margin: 3.6rem auto 0.8rem auto;
   min-width: 60%;
   max-width: 95%;
-  padding: 1.5rem 1rem 1rem 1rem;
+  padding: 1rem;
   background: var(--background-color-grey);
   box-shadow: 0 6px 30px var(--box-shadow-color);
   border: 1px solid var(--border-color-grey);
@@ -248,7 +257,7 @@ app-home, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-d
 aside{
   height: 100%;
   min-width: 11.2rem;
-  padding: 0.8rem 0.6rem 0.3rem 0.6rem;
+  padding: 0.6rem 0.6rem 0.2rem 0.6rem;
   background: var(--background-color-blue);
   box-shadow: 0 6px 30px var(--box-shadow-color);
   border-right: 1px solid var(--background-color-blue-02);
@@ -281,12 +290,17 @@ ul {
   font-weight: 400;
 }
 
+ul > div {
+  display: flex;
+  flex-direction: column;
+}
+
 #guestBtn{
   margin-top: auto;
 }
 
 li {
-  margin: 0 0 0.55rem 0;
+  margin: 0 0 0.6rem 0;
 }
 
 li a {
@@ -358,7 +372,8 @@ h5 { font-size: 1rem }
 
 h2:first-of-type {
   display: block;
-  margin: -3.8rem 0 0 -0.6rem;
+  position: absolute;
+  margin: -3.2rem 0 0 -0.6rem;
 }
 
 
