@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, EventEmitter, Output} from '@angular/core';
 import * as L from 'leaflet';
-import {Icon} from 'leaflet';
 
 @Component({
   selector: 'app-map',
@@ -12,8 +11,10 @@ export class MapComponent implements AfterViewInit {
   @Output() outCoords = new EventEmitter<{ lat: number, lon: number }>();
   map : any;
   marker: L.Marker | null = null;
+  markerUrl = window.getComputedStyle(document.body).getPropertyValue('--markerUrl').replace(/"/g, '');
+
   myIcon = L.icon({
-    iconUrl: '/media/marker.png',       // chemin vers ton image
+    iconUrl: this.markerUrl,
     iconSize: [32, 38],
     iconAnchor: [16, 38],
     shadowUrl: '/media/marker-shadow.png',
@@ -24,21 +25,18 @@ export class MapComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.map = L.map('map').setView([47.20, -1.56], 5);
 
-    Icon.Default.mergeOptions({
-      iconUrl: './marker.png'
-    });
-
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      className: 'map-tiles'
     }).addTo(this.map);
 
-    this.map.on('click', (e: any) => this.onMapClick(e));
+    this.map.on('click', (e: any) => this.setMarker(e));
   }
 
-  onMapClick(e : any){
+  setMarker(e : any){
     if (this.marker) {
-      this.marker.remove(); // supprime l’ancien
+      this.marker.remove();
     }
     this.marker = L.marker(e.latlng, { icon: this.myIcon, draggable: true }).addTo(this.map);
     this.marker.on('dragend', () => {
