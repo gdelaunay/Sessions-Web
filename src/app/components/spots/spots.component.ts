@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, QueryList, View
 import {NgForOf, NgIf} from '@angular/common';
 import {FooterComponent} from '../footer/footer.component';
 import { HttpClient } from '@angular/common/http';
-import {SpotsService} from '../../services/spots.service';
+import {SpotService} from '../../services/spot.service';
 import {RouterLink} from '@angular/router';
 import {AnimationService} from '../../services/animation.service';
 import {MapComponent} from '../map/map.component';
@@ -28,25 +28,24 @@ export class SpotsComponent implements OnInit, AfterViewInit, OnDestroy {
   errorUrl: any;
   loading: boolean = false;
 
-  constructor(private http: HttpClient, private spotsService: SpotsService, private animationService: AnimationService) {  }
+  constructor(private http: HttpClient, private spotService: SpotService, private animationService: AnimationService) {  }
 
   ngOnInit(){
   this.error = null;
-    this.loading = true;
-    this.spotsService.getSpots()
-      .subscribe({
-        next: (data) => {
-          this.spots = data;
-          this.loading = false;
-        },
-        error: (err) => {
-          console.error('Erreur :', err);
-          this.error = `HTTP ${err.status} - ${err.statusText} : `;
-          this.errorUrl = err.url;
-          this.loading = false;
-        }
-      });
-
+  this.loading = true;
+  this.spotService.getSpots()
+    .subscribe({
+      next: (data) => {
+        this.spots = data;
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Erreur :', err);
+        this.error = `HTTP ${err.status} - ${err.statusText} : `;
+        this.errorUrl = err.url;
+        this.loading = false;
+      }
+    });
   }
 
   ngAfterViewInit(){

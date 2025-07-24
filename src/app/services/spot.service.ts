@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class SpotsService {
+export class SpotService {
 
   private spotsUrl = sessionsApiUrl + '/spot';
 
@@ -21,7 +21,7 @@ export class SpotsService {
     return this.http.post(this.spotsUrl, data, { observe: 'response' })
   }
   updateSpot( id : number, data: any ) {
-    return this.http.put(`${this.spotsUrl}/${id}`, data)
+    return this.http.put(`${this.spotsUrl}/${id}`, data, { observe: 'response' })
   }
   deleteSpot( id : number) {
     console.log( id )

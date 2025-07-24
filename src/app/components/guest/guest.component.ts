@@ -24,11 +24,11 @@ export class GuestComponent {
   errorUrl: any;
   loading: boolean = false;
 
-  constructor(private http: HttpClient, private forecastService: ForecastService) {  }
-
   @ViewChild('validateCoordsBtn') validateCoordsBtn!: ElementRef;
   @ViewChild('latInput') latInput!: ElementRef;
   @ViewChild('lonInput') lonInput!: ElementRef;
+
+  constructor(private http: HttpClient, private forecastService: ForecastService) {  }
 
   getForecasts(){
     this.validateCoordsBtn.nativeElement.blur();
@@ -49,7 +49,7 @@ export class GuestComponent {
     });
   }
 
-  updateCoords(e: { lat: number; lon: number }) {
+  updatePosition(e: { lat: number; lon: number }) {
     this.latInput.nativeElement.value = roundTo(e.lat, 6);
     this.lonInput.nativeElement.value = roundTo(e.lon, 6);
   }
