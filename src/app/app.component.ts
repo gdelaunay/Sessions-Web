@@ -36,9 +36,9 @@ export class AppComponent implements  AfterViewInit, OnDestroy {
     const path = window.location.pathname;
 
     const routes = [
-      { path: '/spots', id: 'spotsBtn' },
-      { path: '/alerts', id: 'alertsBtn' },
-      { path: '/sessions', id: 'sessionsBtn' },
+      { path: '/spot', id: 'spotsBtn' },
+      { path: '/alert', id: 'alertsBtn' },
+      { path: '/session', id: 'sessionsBtn' },
       { path: '/guest', id: 'guestBtn' },
       { path: '/', id: 'homeBtn' }
     ];
