@@ -23,6 +23,7 @@
   :root {
     --primary-text-color: var(--darkblue);
     --secondary-text-color: var(--white);
+    --disabled-text-color: var(--grey);
     --aside-text-color: var(--secondary-text-color);
 
     --logo-background-color: rgba(0,0,0,0);
@@ -66,6 +67,7 @@
   :root {
     --primary-text-color: var(--lighter-grey);
     --secondary-text-color: var(--darkblue);
+    --disabled-text-color: var(--grey);
     --aside-text-color: var(--primary-text-color);
 
     --logo-background-color: var(--light-grey);
@@ -114,9 +116,7 @@
 
 /* ----- Portrait (mobile & tablette) ----- */
 @media (orientation: portrait){
-  body {
-    font-size: 0.8rem !important;
-  }
+  body { font-size: 0.8rem !important; }
 
   main{
     flex-direction: column !important;
@@ -166,6 +166,9 @@
   }
 
   .toolbar-card button { font-size: 0 !important; text-indent: 0 !important}
+
+  input { font-size: 0.9rem !important; }
+
 }
 
 /* ---------- Réinitialisation (user agent stylesheet) ---------- */
@@ -367,6 +370,49 @@ li a:focus {
 .zoomed li a { display: flex; justify-content: center;  padding: 0.2rem 0.6rem;}
 
 
+/* ---------- Texte ---------- */
+p {
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--dark-grey);
+}
+
+a:hover, a:focus {
+  color: var(--grey);
+}
+
+a.disabled {
+  cursor: not-allowed;
+  color: var(--disabled-text-color) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+h2, h3, h4 {
+  text-indent: 0.4rem;
+}
+
+h1 { font-size: 1.8rem }
+h2 { font-size: 1.4rem }
+h3 { font-size: 1.2rem }
+h4 { font-size: 1.1rem }
+h5 { font-size: 1rem }
+
+
+.card:not(.toolbar-card) > h2:first-of-type {
+  display: block;
+  position: absolute;
+  margin: -3.2rem 0 0 -1rem;
+}
+
+
 /* ---------- Toolbar ---------- */
 .toolbar-card{
   min-width: calc(100% - 2rem);
@@ -407,55 +453,15 @@ li a:focus {
   margin-bottom: -0.3rem;
 }
 
-/* ---------- Texte ---------- */
-p {
-  display: block;
-  margin-bottom: 0.4rem;
-}
 
-a {
-  text-decoration: none;
-  color: var(--dark-grey);
-}
-
-a:hover, a:focus {
-  color: var(--grey);
-}
-
-a.disabled {
-  cursor: not-allowed;
-  color: var(--grey) !important;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  margin-bottom: 0.2rem;
-}
-
-h2, h3, h4 {
-  text-indent: 0.4rem;
-}
-
-h1 { font-size: 1.8rem }
-h2 { font-size: 1.4rem }
-h3 { font-size: 1.2rem }
-h4 { font-size: 1.1rem }
-h5 { font-size: 1rem }
-
-
-.card:not(.toolbar-card) > h2:first-of-type {
-  display: block;
-  position: absolute;
-  margin: -3.2rem 0 0 -1rem;
-}
-
+/* ----- Formulaires ----- */
 
 
 /* ---------- Boutons et inputs ---------- */
 
 input {
   padding: 0.25rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--primary-text-color);
   border-radius: 0.25rem;
   border: 1px solid var(--background-color-blue-05);
@@ -482,6 +488,15 @@ button {
     margin 0.3s ease,
     background-color 0.25s ease,
     border-color 0.25s ease;
+}
+
+button:disabled {
+  cursor: initial;
+  color: var(--disabled-text-color) !important;
+  border: 1px solid var(--disabled-text-color);
+  margin-top: 0.2rem !important;
+  margin-bottom: -0.2rem !important;
+  background-color: var(--background-color-blue-01) !important;
 }
 
 button:hover {
