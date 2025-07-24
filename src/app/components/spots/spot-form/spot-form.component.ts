@@ -68,7 +68,7 @@ export class SpotFormComponent implements OnInit {
       next: (res) => {
         if (res.headers.get('Location')) {
           this.router.navigate(["/spot/", res.headers.get('Location')?.split('/').pop()]).then();
-        };
+        }
         this.loading = false;
       },
       error: (err) => { this.showError(err) }
@@ -80,7 +80,7 @@ export class SpotFormComponent implements OnInit {
       next: (res) => {
         if (res.headers.get('Location')) {
           this.router.navigate(["/spot/", res.headers.get('Location')?.split('/').pop()]).then();
-        };
+        }
         this.loading = false;
       },
       error: (err) => { this.showError(err) }
