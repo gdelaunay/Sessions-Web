@@ -1,10 +1,9 @@
-import {Component, Host, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForOf, NgIf} from '@angular/common';
 import {FooterComponent} from '../footer/footer.component';
 import { HttpClient } from '@angular/common/http';
 import {SpotsService} from '../../services/spots.service';
 import {RouterLink} from '@angular/router';
-import {AppComponent} from '../../app.component';
 
 @Component({
   selector: 'app-spots',

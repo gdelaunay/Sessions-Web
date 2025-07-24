@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FooterComponent} from '../footer/footer.component';
 import {HttpClient} from '@angular/common/http';
 import {ForecastService} from '../../services/forecast.service';
-import {NgForOf, NgIf} from '@angular/common';
+import {NgIf} from '@angular/common';
 import {ForecastComponent} from '../forecast/forecast.component';
 
 @Component({

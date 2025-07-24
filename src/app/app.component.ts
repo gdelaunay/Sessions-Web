@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, NgZone, OnInit} from '@angular/core';
+import {AfterViewInit, Component, NgZone} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 const sessionsApiUrl_DEV = 'http://localhost:5050/api';
@@ -75,13 +75,8 @@ export class AppComponent implements  AfterViewInit {
 
           startIdleAnimation(card);
 
-          const onMouseMove = (e: MouseEvent) => {
-            stopIdleAnimation();
-          };
-
-          const onMouseLeave = () => {
-            startIdleAnimation(card);
-          };
+          const onMouseMove = () => { stopIdleAnimation(); };
+          const onMouseLeave = () => { startIdleAnimation(card); };
 
           card.addEventListener('mousemove', onMouseMove);
           card.addEventListener('mouseleave', onMouseLeave);
