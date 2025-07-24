@@ -19,27 +19,31 @@ export class AppComponent implements  AfterViewInit {
 
   ngAfterViewInit() {
 
+    // Style des boutons aside selon l'URL
+    const path = window.location.pathname;
+
+    const routes = [
+      { path: '/spots', id: 'spotsBtn' },
+      { path: '/alerts', id: 'alertsBtn' },
+      { path: '/sessions', id: 'sessionsBtn' },
+      { path: '/guest', id: 'guestBtn' },
+      { path: '/', id: 'homeBtn' }
+    ];
+    const match = routes.find(route => path.startsWith(route.path));
+
+    if (match) {
+      document.getElementById(match.id)?.classList.add('active');
+    }
+
+    this.initAnimations();
+  }
+
+  public initAnimations(): void {
     this.ngZone.runOutsideAngular(() => {
-
-      // Style des boutons aside selon l'URL
-      const path = window.location.pathname;
-
-      const routes = [
-        { path: '/spots', id: 'spotsBtn' },
-        { path: '/alerts', id: 'alertsBtn' },
-        { path: '/sessions', id: 'sessionsBtn' },
-        { path: '/guest', id: 'guestBtn' },
-        { path: '/', id: 'homeBtn' }
-      ];
-      const match = routes.find(route => path.startsWith(route.path));
-
-      if (match) {
-        document.getElementById(match.id)?.classList.add('active');
-      }
 
       // Animation 3D de la carte/container principal
       setTimeout(() => {
-        let cards = document.getElementsByClassName('card');
+        let cards = document.querySelectorAll('.card:not(.toolbar-card)');
         if (cards.length == 0) return;
 
         // Animation inactivité
@@ -60,6 +64,7 @@ export class AppComponent implements  AfterViewInit {
           }
           animate();
         }
+
         function stopIdleAnimation() {
           cancelAnimationFrame(animationFrame);
         }
@@ -70,23 +75,20 @@ export class AppComponent implements  AfterViewInit {
 
           startIdleAnimation(card);
 
-          card.addEventListener('mousemove', (e) => {
+          const onMouseMove = (e: MouseEvent) => {
             stopIdleAnimation();
-            const rect = card.getBoundingClientRect();
-            const x = (e.clientX - rect.left) / rect.width - 0.5;
-            const y = (e.clientY - rect.top) / rect.height - 0.5;
+          };
 
-            const rotX = y * 10;
-            const rotY = x * 10;
-            card.style.transform = `rotateX(${-rotX}deg) rotateY(${rotY}deg)`;
-          });
-
-          card.addEventListener('mouseleave', () => {
-            card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+          const onMouseLeave = () => {
             startIdleAnimation(card);
-          });
+          };
+
+          card.addEventListener('mousemove', onMouseMove);
+          card.addEventListener('mouseleave', onMouseLeave);
+
         }
       }, 0);
     });
   }
+
 }

@@ -32,19 +32,21 @@ export class GuestComponent {
 
   getForecasts(){
     this.validateCoordsBtn.nativeElement.blur();
+    this.error = null;
     this.loading = true;
     this.forecastService.getGuestForecast(this.latInput.nativeElement.value, this.lonInput.nativeElement.value).
     subscribe({
       next: (data) => {
         this.forecasts = data;
+        this.loading = false;
       },
       error: (err) => {
         console.error('Erreur :', err);
         this.error = `HTTP ${err.status} - ${err.statusText} : `;
         this.errorUrl = err.url;
+        this.loading = false;
       }
     });
-    this.loading = false;
   }
 
   updateCoords(e: { lat: number; lon: number }) {

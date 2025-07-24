@@ -1,10 +1,33 @@
-<div class="card" id="spots-card">
-  <h1>Spots works </h1>
-  <div *ngIf="true">
-    <img class="loading" alt="chargement" src="" style="margin: 2rem">
-  </div>
+<div class="card toolbar-card">
+  <h2>Liste de mes spots :</h2>
+  <button id="refreshSpotsBtn" (click)="refreshSpots($event)">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+  </button>
+  <button id="newSpotBtn" [routerLink]="['/spot/form', 'new']">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="21"></line><line x1="3" y1="12" x2="21" y2="12"></line></svg>
+    <h4>Créer un spot</h4>
+  </button>
 </div>
+
+<div *ngIf="error || loading" class="card">
+  <img *ngIf="loading" class="loading" alt="chargement" src="" style="margin: 2rem">
+  <div *ngIf="error"><span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a></div>
+</div>
+
+<div *ngFor="let spot of this.spots" class="card spot-card">
+  <h2>{{ spot.Name }}</h2>
+  <p> Latitude = {{ spot.Latitude }} </p>
+  <p> Longitude = {{ spot.Longitude }} </p>
+</div>
+
 <app-footer></app-footer>
+
 <style>
+
+  .spot-card{
+    margin-top: 2.6rem;
+    min-width: 60%;
+    max-width: 90%;
+  }
 
 </style>

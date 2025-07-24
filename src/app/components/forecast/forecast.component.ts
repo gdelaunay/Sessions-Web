@@ -40,4 +40,5 @@ export class ForecastComponent implements AfterViewInit {
     window.addEventListener('resize', updateMask);
     updateMask();
   }
+  // TODO : ngOnDestroy() → removeEventListener() → PARTOUT
 }

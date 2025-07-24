@@ -1,9 +1,4 @@
-﻿table {
-  all: unset;
-  display: table;
-}
-
-/* ----- Portrait (mobile & tablette) ----- */
+﻿/* ----- Portrait (mobile & tablette) ----- */
 @media (orientation: portrait) {
   td, th {
     padding: 0.2rem 0.4rem !important;
@@ -23,6 +18,7 @@
 }
 
 table {
+  display: table;
   margin-top: 0;
   min-width: calc(100% - 4px);
   overflow: hidden;
