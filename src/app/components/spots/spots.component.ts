@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import {SpotsService} from '../../services/spots.service';
 import {RouterLink} from '@angular/router';
 import {AnimationService} from '../../services/animation.service';
+import {MapComponent} from '../map/map.component';
 
 @Component({
   selector: 'app-spots',
@@ -12,7 +13,8 @@ import {AnimationService} from '../../services/animation.service';
     NgIf,
     FooterComponent,
     RouterLink,
-    NgForOf
+    NgForOf,
+    MapComponent
   ],
   templateUrl: './spots.component.html'
 })
