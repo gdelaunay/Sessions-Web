@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {NgForOf, NgIf} from '@angular/common';
 import {FooterComponent} from '../footer/footer.component';
 import { HttpClient } from '@angular/common/http';
 import {SpotsService} from '../../services/spots.service';
 import {RouterLink} from '@angular/router';
+import {AnimationService} from '../../services/animation.service';
 
 @Component({
   selector: 'app-spots',
@@ -16,16 +17,19 @@ import {RouterLink} from '@angular/router';
   templateUrl: './spots.component.html'
 })
 
-export class SpotsComponent implements OnInit {
+export class SpotsComponent implements OnInit, AfterViewInit, OnDestroy {
+
+  @ViewChildren('spotCard') spotCardsRef!: QueryList<ElementRef>;
 
   spots: any[] = [];
   error: any;
   errorUrl: any;
   loading: boolean = false;
 
-  constructor(private http: HttpClient, private spotsService: SpotsService) {  }
+  constructor(private http: HttpClient, private spotsService: SpotsService, private animationService: AnimationService) {  }
 
   ngOnInit(){
+
     this.loading = true;
     this.spotsService.getSpots()
       .subscribe({
@@ -40,6 +44,21 @@ export class SpotsComponent implements OnInit {
           this.loading = false;
         }
       });
+
+  }
+
+  ngAfterViewInit(){
+
+    this.spotCardsRef.forEach(ref => {
+      this.animationService.startAnimation(ref.nativeElement, 'idle');
+    });
+
+    this.spotCardsRef.changes.subscribe((refs: QueryList<ElementRef>) => {
+      refs.forEach(ref => {
+        this.animationService.startAnimation(ref.nativeElement, 'idle');
+      });
+    });
+
   }
 
   refreshSpots(e: Event) {
@@ -47,4 +66,9 @@ export class SpotsComponent implements OnInit {
     this.ngOnInit();
   }
 
+  ngOnDestroy(){
+    this.spotCardsRef.forEach(ref => {
+      this.animationService.clearAnimation(ref.nativeElement);
+    });
+  }
 }
