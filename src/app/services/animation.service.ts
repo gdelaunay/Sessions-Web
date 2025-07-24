@@ -91,7 +91,7 @@ export class AnimationService {
         this.startIdleAnimation(card);
       };
 
-      card.addEventListener('mousemove', onMouseMove);
+      card.addEventListener('mouseover', onMouseMove);
       card.addEventListener('mouseleave', onMouseLeave);
 
       this.listeners.set(card, { mousemove: onMouseMove, mouseleave: onMouseLeave });
