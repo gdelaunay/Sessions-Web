@@ -56,11 +56,11 @@ export class AnimationService {
   private attachIdleListeners(card: HTMLElement) {
     this.ngZone.runOutsideAngular(() => {
       const onMouseOver = () => {
+        card.style.transform = 'rotateX(0deg) rotateY(0deg)';
         this.stopIdleAnimation(card);
       };
 
       const onMouseLeave = () => {
-        card.style.transform = 'rotateX(0deg) rotateY(0deg)';
         this.startIdleAnimation(card);
       };
 
@@ -73,7 +73,9 @@ export class AnimationService {
 
   private attachIdleHoverListeners(card: HTMLElement) {
     this.ngZone.runOutsideAngular(() => {
+
       const onMouseMove = ((e: MouseEvent) => {
+        card.style.transform = 'rotateX(0deg) rotateY(0deg)';
         this.stopIdleAnimation(card);
 
         const rect = card.getBoundingClientRect();
@@ -86,19 +88,13 @@ export class AnimationService {
       }) as EventListener;
 
       const onMouseLeave = () => {
-        card.style.transform = 'rotateX(0deg) rotateY(0deg)';
         this.startIdleAnimation(card);
-      };
-
-      const onMouseOver = () => {
-        this.stopIdleAnimation(card);
       };
 
       card.addEventListener('mousemove', onMouseMove);
       card.addEventListener('mouseleave', onMouseLeave);
-      card.addEventListener('mouseover', onMouseOver);
 
-      this.listeners.set(card, { mousemove: onMouseMove, mouseleave: onMouseLeave, mouseover: onMouseOver });
+      this.listeners.set(card, { mousemove: onMouseMove, mouseleave: onMouseLeave });
     });
   }
 
