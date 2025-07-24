@@ -1,17 +1,17 @@
 <div class="card toolbar-card">
-  <h2>Liste de mes spots :</h2>
+  <h2>Mes spots</h2>
   <button id="refreshSpotsBtn" (click)="refreshSpots($event)">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
   </button>
   <button id="newSpotBtn" [routerLink]="['/spot/form', 'new']">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="21"></line><line x1="3" y1="12" x2="21" y2="12"></line></svg>
-    <h4>Créer un spot</h4>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><line x1="1" y1="12" x2="23" y2="12"></line></svg>
+    Nouveau
   </button>
 </div>
 
 <div *ngIf="error || loading" class="card main-card">
   <h2 *ngIf="loading">Chargement ...</h2>
-  <h2 *ngIf="error">Erreur :</h2>
+  <h2 *ngIf="error">Erreur !</h2>
   <img *ngIf="loading" class="loading" alt="chargement" src="" style="margin: 2rem">
   <div *ngIf="error"><span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a></div>
 </div>

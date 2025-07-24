@@ -29,7 +29,7 @@ export class SpotsComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(private http: HttpClient, private spotsService: SpotsService, private animationService: AnimationService) {  }
 
   ngOnInit(){
-
+  this.error = null;
     this.loading = true;
     this.spotsService.getSpots()
       .subscribe({

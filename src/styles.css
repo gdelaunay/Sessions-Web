@@ -195,6 +195,13 @@ body {
   animation: gradient 30s ease infinite;
 }
 
+svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 
 /* ---------- Header ---------- */
 header {
@@ -284,11 +291,6 @@ aside{
 }
 
 aside svg{
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
   width: 1.6rem;
   height: 1.6rem;
   margin: 0 0.5rem -0.35rem 0;
@@ -372,6 +374,28 @@ li a:focus {
   flex: 1;
 }
 
+.toolbar-card button {
+  font-size: 0.8rem;
+  padding: 0 0.5rem;
+  text-indent: 0.4rem;
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+}
+
+.toolbar-card button svg{
+  width: 1rem;
+  height: 1rem;
+}
+
+.toolbar-card button:hover {
+  margin-top: 0.3rem;
+  margin-bottom: -0.1rem;
+}
+
+.toolbar-card button:focus {
+  margin-top: 0.5rem;
+  margin-bottom: -0.3rem;
+}
 
 /* ---------- Texte ---------- */
 p {
@@ -464,21 +488,6 @@ button:focus {
   margin-bottom: -0.4rem;
   background-color: var(--background-color-blue-03);
   box-shadow:inset 0 0 0.5rem var(--box-shadow-color);
-}
-
-button svg{
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  width: 1.6rem;
-  height: 1.6rem;
-}
-
-button h2, button h3, button h4, button h5 {
-  margin-bottom: -0.2rem;
-  margin-right: 0.2rem;
 }
 
 .leaflet-marker-icon {
