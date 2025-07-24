@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnDestroy, QueryList, ViewChildren} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {AnimationService} from './services/animation.service';
 
