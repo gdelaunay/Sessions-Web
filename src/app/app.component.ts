@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnDestroy} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {AnimationService} from './services/animation.service';
 
@@ -14,13 +14,23 @@ export const sessionsApiUrl: string = sessionsApiUrl_HTTP;
   template: "<router-outlet/>"
 })
 
-export class AppComponent implements  AfterViewInit, OnDestroy {
+export class AppComponent implements  OnInit, AfterViewInit, OnDestroy {
   title = 'SurfSessions-Web';
 
   constructor(private animationService: AnimationService) {}
 
-  ngAfterViewInit() {
+  ngOnInit() {
+    // Affichage spécifique quand zoom navigateur > 150% (desktop ou mobile/tablette paysage)
+    window.addEventListener('resize', () => {
+      if (window.devicePixelRatio > 1.5) {
+        document.documentElement.classList.add('zoomed');
+      } else {
+        document.documentElement.classList.remove('zoomed');
+      }
+    });
+  }
 
+  ngAfterViewInit() {
     // Style des boutons aside selon l'URL
     this.highlightCurrentPage();
 
@@ -29,7 +39,6 @@ export class AppComponent implements  AfterViewInit, OnDestroy {
       const mainCards = document.querySelectorAll('.card.main-card');
       mainCards.forEach(card => this.animationService.startAnimation(card as HTMLElement, 'idle-hover'));
     });
-
   }
 
   highlightCurrentPage(){
