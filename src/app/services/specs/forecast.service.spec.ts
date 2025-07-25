@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ForecastService } from './forecast.service';
+import { ForecastService } from '../forecast.service';
 
 describe('ForecastService', () => {
   let service: ForecastService;

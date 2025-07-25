@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FooterComponent} from '../footer/footer.component';
 import {HttpClient} from '@angular/common/http';
 import {ForecastService} from '../../services/forecast.service';
-import {NgForOf, NgIf} from '@angular/common';
+import {NgIf} from '@angular/common';
 import {ForecastComponent} from '../forecast/forecast.component';
 
 @Component({
@@ -23,8 +23,9 @@ export class HomeComponent implements OnInit {
   constructor(private http: HttpClient, private forecastService: ForecastService) {  }
 
   ngOnInit() {
-    this.forecastService.getForecastDaily(47.124498, -2.216052).
-    subscribe({
+    this.error = null;
+    this.forecastService.getForecastDaily(47.124498, -2.216052)
+      .subscribe({
       next: (data) => {
         this.forecasts = data;
       },
@@ -34,8 +35,6 @@ export class HomeComponent implements OnInit {
         this.errorUrl = err.url;
       }
     });
-
-
   }
 
 }

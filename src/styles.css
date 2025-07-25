@@ -12,6 +12,8 @@
   --lighter-grey: #F2F2F2;
   --white: #FCFCFC;
 
+  --map-tiles-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+
   --spinner: url("assets/spinner.svg")
 }
 
@@ -21,6 +23,7 @@
   :root {
     --primary-text-color: var(--darkblue);
     --secondary-text-color: var(--white);
+    --disabled-text-color: var(--grey);
     --aside-text-color: var(--secondary-text-color);
 
     --logo-background-color: rgba(0,0,0,0);
@@ -51,6 +54,8 @@
       #1F4E7959 75%,
       #5B9BD559 100%
     );
+
+    --markerUrl: '/media/marker.png';
   }
 
 }
@@ -62,6 +67,7 @@
   :root {
     --primary-text-color: var(--lighter-grey);
     --secondary-text-color: var(--darkblue);
+    --disabled-text-color: var(--grey);
     --aside-text-color: var(--primary-text-color);
 
     --logo-background-color: var(--light-grey);
@@ -92,6 +98,12 @@
       rgba(20, 51, 78, 0.15) 75%,
       rgba(66, 113, 156, 0.15) 100%
     );
+
+    --markerUrl: '/media/marker-dark.png';
+  }
+
+  .map-tiles {
+    filter:var(--map-tiles-filter, none);
   }
 
 }
@@ -104,6 +116,8 @@
 
 /* ----- Portrait (mobile & tablette) ----- */
 @media (orientation: portrait){
+  body { font-size: 0.8rem !important; }
+
   main{
     flex-direction: column !important;
   }
@@ -136,7 +150,7 @@
     padding: 0.4rem 0.6rem !important;
   }
 
-  .card{
+  .card:not(.toolbar-card){
     margin-top: 2.6rem !important;
     padding: 0.4rem !important;
   }
@@ -147,11 +161,20 @@
   h4 { font-size: 1rem !important}
   h5 { font-size: 0.9rem !important}
 
-  h2:first-of-type {
+  .card:not(.toolbar-card) > h2:first-of-type {
     margin: -2.4rem 0 -0.6rem -0.2rem !important;
   }
+
+  .toolbar-card button { font-size: 0 !important; text-indent: 0 !important}
+
+  input { font-size: 0.9rem !important; }
+
 }
 
+/* ---------- Réinitialisation (user agent stylesheet) ---------- */
+table, h1, h2, h3, h4, h5, p {
+  all: unset;
+}
 
 
 /* ---------- Général ---------- */
@@ -181,6 +204,13 @@ body {
   animation: gradient 30s ease infinite;
 }
 
+svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 
 /* ---------- Header ---------- */
 header {
@@ -238,6 +268,8 @@ app-home, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-d
 }
 
 .card{
+
+  will-change: transform;
   margin: 3.6rem auto 0.8rem auto;
   min-width: 60%;
   max-width: 95%;
@@ -268,11 +300,6 @@ aside{
 }
 
 aside svg{
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
   width: 1.6rem;
   height: 1.6rem;
   margin: 0 0.5rem -0.35rem 0;
@@ -344,6 +371,11 @@ li a:focus {
 
 
 /* ---------- Texte ---------- */
+p {
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
 a {
   text-decoration: none;
   color: var(--dark-grey);
@@ -355,12 +387,16 @@ a:hover, a:focus {
 
 a.disabled {
   cursor: not-allowed;
-  color: var(--grey) !important;
+  color: var(--disabled-text-color) !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
-  margin: 0 1rem 0.5rem 1rem;
+  margin-bottom: 0.2rem;
+}
+
+h2, h3, h4 {
+  text-indent: 0.4rem;
 }
 
 h1 { font-size: 1.8rem }
@@ -370,19 +406,62 @@ h4 { font-size: 1.1rem }
 h5 { font-size: 1rem }
 
 
-h2:first-of-type {
+.card:not(.toolbar-card) > h2:first-of-type {
   display: block;
   position: absolute;
-  margin: -3.2rem 0 0 -0.6rem;
+  margin: -3.2rem 0 0 -1rem;
 }
 
+
+/* ---------- Toolbar ---------- */
+.toolbar-card{
+  min-width: calc(100% - 2rem);
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+  padding: 0.4rem;
+}
+
+.toolbar-card > h2 {
+  flex: 1;
+}
+
+.toolbar-card button {
+  font-size: 0.8rem;
+  padding: 0 0.5rem;
+  text-indent: 0.4rem;
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+}
+
+.toolbar-card button svg{
+  width: 1rem;
+  height: 1rem;
+}
+
+.toolbar-card button span {
+  margin-top: 0.1rem;
+}
+
+.toolbar-card button:hover {
+  margin-top: 0.3rem;
+  margin-bottom: -0.1rem;
+}
+
+.toolbar-card button:focus {
+  margin-top: 0.5rem;
+  margin-bottom: -0.3rem;
+}
+
+
+/* ----- Formulaires ----- */
 
 
 /* ---------- Boutons et inputs ---------- */
 
 input {
   padding: 0.25rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--primary-text-color);
   border-radius: 0.25rem;
   border: 1px solid var(--background-color-blue-05);
@@ -394,9 +473,11 @@ input:read-only {
 }
 
 button {
+  display: flex;
+  align-items: center;
   cursor:pointer;
-  margin-top: 1rem;
-  padding: 0.25rem 0.75rem;
+  padding: 0.3rem 0.6rem;
+  margin: 0 0.2rem;
   border-radius: 0.5rem;
   font-size: 1rem;
   font-weight: 600;
@@ -409,8 +490,17 @@ button {
     border-color 0.25s ease;
 }
 
+button:disabled {
+  cursor: initial;
+  color: var(--disabled-text-color) !important;
+  border: 1px solid var(--disabled-text-color);
+  margin-top: 0.2rem !important;
+  margin-bottom: -0.2rem !important;
+  background-color: var(--background-color-blue-01) !important;
+}
+
 button:hover {
-  margin-top: 1.2rem;
+  margin-top: 0.2rem;
   margin-bottom: -0.2rem;
 }
 
@@ -419,7 +509,7 @@ button:hover, button:active {
 }
 
 button:focus {
-  margin-top: 1.4rem;
+  margin-top: 0.4rem;
   margin-bottom: -0.4rem;
   background-color: var(--background-color-blue-03);
   box-shadow:inset 0 0 0.5rem var(--box-shadow-color);
@@ -433,6 +523,7 @@ button:focus {
 .loading{
   content: var(--spinner);
   max-height: 3rem;
+  margin: 0.2rem !important;
 }
 
 /* ---------- Animation des dégradés en arrière plan ---------- */

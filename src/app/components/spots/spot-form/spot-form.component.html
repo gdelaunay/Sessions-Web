@@ -1,10 +1,63 @@
-<div class="card" id="spots-form">
-  <h1>Spot-form works </h1>
-  <div *ngIf="true">
-    <img class="loading" alt="chargement" src="" style="margin: 2rem">
+<div class="card main-card" id="spots-form">
+  <h2 *ngIf="loading">Chargement ...</h2>
+  <h2 *ngIf="error">Erreur !</h2>
+  <img *ngIf="loading" class="loading" alt="chargement" src="" style="margin: 2rem">
+  <div *ngIf="error"><span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a></div>
+  <h2> {{ spot?.Id ? 'Modifier spot : ' + spot.Name + ' (#' + spot.Id + ')' : 'Nouveau spot :' }}</h2>
+  <div id="form-div">
+    <form #spotForm="ngForm" (ngSubmit)="saveSpot()">
+      <p><label for="name"><h4>Nom : </h4></label>
+      <input type="text" id="name" name="spotName" [(ngModel)]="spot.Name" required></p>
+      <h4 id="form-prompt">Sélectionner la position de votre spot sur la carte pour obtenir les coordonnées.</h4>
+      <p><label for="latitude"><h4> Latitude : &nbsp;&nbsp;</h4></label>
+      <input #latInput id="latitude" name="latitude" [(ngModel)]="spot.Latitude" type="number" step="0.01" required></p>
+      <p><label for="longitude"><h4> Longitude : </h4></label>
+      <input #lonInput id="longitude" name="longitude" [(ngModel)]="spot.Longitude" type="number" step="0.01" required></p>
+      <br><button type="submit" [disabled]="!spotForm.form.valid">{{ spot?.Id ? 'Modifier' : 'Créer' }}</button>
+    </form>
+    <app-map mapId='form-map' (outCoords)="updatePosition($event)"/>
   </div>
 </div>
+
 <app-footer></app-footer>
 <style>
+
+  #form-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 0 1rem 0 0;
+  }
+
+  form { width: 55%; }
+  app-map { width: 45%; }
+
+  p {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0.6rem 0.2rem 0.2rem 0.2rem;
+  }
+
+  p:first-of-type { margin: 0.2rem auto 0.2rem auto}
+
+  #name { width: 70% }
+  #latitude, #longitude { width: 35% }
+  #name, #latitude, #longitude { margin-left: 1rem }
+
+  #form-prompt {
+    text-align: center;
+    margin: 1.2rem 1rem 0.4rem auto;
+  }
+
+  form button { margin-left: 70%; }
 
 </style>

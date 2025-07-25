@@ -1,10 +1,51 @@
-<div class="card" id="spots-card">
-  <h1>Spots works </h1>
-  <div *ngIf="true">
-    <img class="loading" alt="chargement" src="" style="margin: 2rem">
+<div class="card toolbar-card">
+  <h2>Mes spots :</h2>
+  <button id="refreshSpotsBtn" (click)="refreshSpots($event)">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+  </button>
+  <button id="newSpotBtn" [routerLink]="['/spot/form', 'new']">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><line x1="1" y1="12" x2="23" y2="12"></line></svg>
+    <span>Nouveau</span>
+  </button>
+</div>
+
+<div *ngIf="error || loading" class="card main-card">
+  <h2 *ngIf="loading">Chargement ...</h2>
+  <h2 *ngIf="error">Erreur !</h2>
+  <img *ngIf="loading" class="loading" alt="chargement" src="" style="margin: 2rem">
+  <div *ngIf="error"><span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a></div>
+</div>
+
+<div *ngFor="let spot of this.spots" class="card spot-card" #spotCard>
+  <h2>{{ spot.Name }}</h2>
+  <app-map [mapId]="'map-' + spot.Id" type="readonly" [lat]="spot.Latitude" [lon]="spot.Longitude" ></app-map>
+  <div class="spot-details">
+    <p> Latitude = <b>{{ spot.Latitude }}</b> </p>
+    <p> Longitude = <b>{{ spot.Longitude }}</b> </p>
   </div>
 </div>
+
 <app-footer></app-footer>
+
 <style>
+  /* ----- Portrait (mobile & tablette) ----- */
+  @media (orientation: portrait) {
+    .spot-card {
+      margin: 1.8rem 1rem 0.8rem 1rem !important;
+      max-width: 100% !important;
+    }
+  }
+
+  .spot-card{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2.6rem;
+    min-width: 60%;
+    max-width: 90%;
+  }
+
+  .spot-details {
+    padding: 1rem;
+  }
 
 </style>

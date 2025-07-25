@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input} from '@angular/core';
 import {NgForOf, NgIf} from '@angular/common';
 
 @Component({
@@ -40,4 +40,5 @@ export class ForecastComponent implements AfterViewInit {
     window.addEventListener('resize', updateMask);
     updateMask();
   }
+  // TODO : ngOnDestroy() → removeEventListener() → PARTOUT
 }

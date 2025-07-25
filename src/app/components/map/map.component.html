@@ -1,6 +1,13 @@
-<div id="map"></div>
+<div [id]="mapId" [class]="'map ' + type"></div>
 
 <style>
+  /* ----- Portrait (mobile & tablette) ----- */
+  @media (orientation: portrait) {
+    .map.readonly{
+      width: 8rem !important;
+      height: 6rem !important;
+    }
+  }
 
   :host {
     display: flex;
@@ -8,11 +15,19 @@
     justify-content: center;
   }
 
-  #map {
-    width: 32rem;
-    height: 16rem;
+  .map {
     border-radius: 0.75rem;
     cursor: pointer;
+  }
+
+  .map.classic{
+    width: 32rem;
+    height: 16rem;
+  }
+
+  .map.readonly{
+    width: 12rem;
+    height: 8rem;
   }
 
 </style>

@@ -24,30 +24,32 @@ export class GuestComponent {
   errorUrl: any;
   loading: boolean = false;
 
-  constructor(private http: HttpClient, private forecastService: ForecastService) {  }
-
   @ViewChild('validateCoordsBtn') validateCoordsBtn!: ElementRef;
   @ViewChild('latInput') latInput!: ElementRef;
   @ViewChild('lonInput') lonInput!: ElementRef;
 
+  constructor(private http: HttpClient, private forecastService: ForecastService) {  }
+
   getForecasts(){
     this.validateCoordsBtn.nativeElement.blur();
+    this.error = null;
     this.loading = true;
     this.forecastService.getGuestForecast(this.latInput.nativeElement.value, this.lonInput.nativeElement.value).
     subscribe({
       next: (data) => {
         this.forecasts = data;
+        this.loading = false;
       },
       error: (err) => {
         console.error('Erreur :', err);
         this.error = `HTTP ${err.status} - ${err.statusText} : `;
         this.errorUrl = err.url;
+        this.loading = false;
       }
     });
-    this.loading = false;
   }
 
-  updateCoords(e: { lat: number; lon: number }) {
+  updatePosition(e: { lat: number; lon: number }) {
     this.latInput.nativeElement.value = roundTo(e.lat, 6);
     this.lonInput.nativeElement.value = roundTo(e.lon, 6);
   }
