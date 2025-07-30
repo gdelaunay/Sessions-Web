@@ -21,6 +21,14 @@
 
 <app-footer></app-footer>
 <style>
+  @media (orientation: portrait) {
+    #form-div  { flex-direction: column !important; margin-bottom: 0 !important }
+    form, app-map { width: 100% !important }
+    form {justify-content: start !important; order: 1}
+    h4, p { margin: 0.4rem 0 !important }
+    h4 ~ br { display: none }
+  }
+
 
   #form-div {
     display: flex;

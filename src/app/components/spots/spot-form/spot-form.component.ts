@@ -35,8 +35,8 @@ export class SpotFormComponent implements OnInit {
     this.error = null;
     this.spot = {
       "Name": "",
-      "Latitude": 0,
-      "Longitude": 0,
+      "Latitude": null,
+      "Longitude": null,
       "Sessions": [
       ]
     }

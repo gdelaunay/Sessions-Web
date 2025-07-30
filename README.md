@@ -86,7 +86,7 @@ docker compose version
 Si les commandes ne sont pas trouvées, installer [Docker](https://docs.docker.com/get-docker/).  
 <br>
 
-2. Build avec docker compose :
+2. Run avec docker compose :
 ```bash
 docker compose up --build
 ```
