@@ -5,7 +5,6 @@ import {FooterComponent} from '../footer/footer.component';
 @Component({
   selector: 'app-sessions',
   imports: [
-    NgIf,
     FooterComponent
   ],
   templateUrl: './sessions.component.html'

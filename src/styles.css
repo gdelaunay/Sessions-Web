@@ -268,7 +268,6 @@ app-home, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-d
 }
 
 .card{
-
   will-change: transform;
   margin: 3.6rem auto 0.8rem auto;
   min-width: 60%;
