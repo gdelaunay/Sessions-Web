@@ -16,7 +16,7 @@
   <div *ngIf="error"><span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a></div>
 </div>
 
-<div *ngFor="let spot of this.spots" class="card spot-card" #spotCard>
+<div *ngFor="let spot of this.spots" class="card spot-card" #spotCard [routerLink]="['/spot/' + spot.Id ]">
   <h2>{{ spot.Name }}</h2>
   <app-map [mapId]="'map-' + spot.Id" type="readonly" [lat]="spot.Latitude" [lon]="spot.Longitude" ></app-map>
   <div class="spot-details">
@@ -28,24 +28,9 @@
 <app-footer></app-footer>
 
 <style>
-  /* ----- Portrait (mobile & tablette) ----- */
-  @media (orientation: portrait) {
-    .spot-card {
-      margin: 1.8rem 1rem 0.8rem 1rem !important;
-      max-width: 100% !important;
-    }
-  }
 
-  .spot-card{
-    display: flex;
-    flex-direction: row;
-    margin-top: 2.6rem;
-    min-width: 60%;
-    max-width: 90%;
-  }
-
-  .spot-details {
-    padding: 1rem;
+  .spot-card {
+    cursor: pointer;
   }
 
 </style>
