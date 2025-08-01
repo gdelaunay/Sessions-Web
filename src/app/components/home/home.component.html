@@ -10,7 +10,6 @@
     <span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a>
   </div>
 
-  <app-forecast *ngIf="dailyForecasts" [forecasts]="dailyForecasts" [type]="'daily'"/>
   <app-forecast *ngIf="hourly3Forecasts" [forecasts]="hourly3Forecasts" [type]="'3hourly'"/>
 </div>
 

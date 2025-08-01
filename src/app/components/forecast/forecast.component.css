@@ -50,6 +50,6 @@ tr:first-of-type > th, tr:first-of-type > td {
   border-top: none !important;
 }
 
-td:last-of-type, table>tr:first-of-type>th:last-child {
+td:last-of-type, #day-group-line>th:last-child, #datetime-line>th:last-child {
   border-right: none !important;
 }

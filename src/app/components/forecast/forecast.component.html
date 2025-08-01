@@ -1,5 +1,5 @@
 <!-- DAILY & 3HOURLY FORECAST -->
-<div class="table-div" *ngIf="type == 'daily' || '3hourly'">
+<div class="table-div" *ngIf="type == 'daily' || type == '3hourly'">
   <table>
     <tr id="day-group-line" *ngIf="type == '3hourly'">
       <th>Date :</th>
@@ -54,7 +54,7 @@
 <!-- GUEST FORECAST -->
 <div class="table-div" *ngIf="type == 'guest'">
 <table>
-  <tr id="days-line" >
+  <tr id="datetime-line" >
     <th>Date : </th>
     <th class="day" *ngFor="let day of forecasts.daily.time;" >{{ day }}</th>
   </tr>
