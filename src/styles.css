@@ -200,6 +200,7 @@ body {
   font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
   color: var(--primary-text-color);
   background: var(--blue-transparent-gradient);
+  scrollbar-color: var(--background-color-blue-05) transparent;
   background-size: 500% 600%;
   animation: gradient 30s ease infinite;
 }
