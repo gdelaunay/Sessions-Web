@@ -1,9 +1,23 @@
-<!-- DAILY FORECAST -->
-<div class="table-div" *ngIf="type == 'daily'">
+<!-- DAILY & 3HOURLY FORECAST -->
+<div class="table-div" *ngIf="type == 'daily' || '3hourly'">
   <table>
-    <tr id="days-line" >
-      <th>Date : </th>
-      <th class="day" *ngFor="let forecast of forecasts" >{{ forecast.DateTime }}</th>
+    <tr id="day-group-line" *ngIf="type == '3hourly'">
+      <th>Date :</th>
+      <ng-container *ngFor="let group of groupedForecasts | keyvalue">
+        <th [attr.colspan]="group.value.length">
+          {{ group.key | date:'EEEE dd/MM' | titlecase}}
+        </th>
+      </ng-container>
+    </tr>
+    <tr id="datetime-line" >
+      <ng-container *ngIf="type == 'daily'">
+        <th>Date : </th>
+        <th class="day" *ngFor="let forecast of forecasts" >{{ forecast.DateTime | date:'EEEE dd/MM' | titlecase}}</th>
+      </ng-container>
+      <ng-container *ngIf="type == '3hourly'">
+        <th>Heure : </th>
+        <th class="day" *ngFor="let forecast of forecasts" >{{ forecast.DateTime | date:'HH' }} h</th>
+      </ng-container>
     </tr>
     <tr id="weather-code-line" >
       <th>Code météo : </th>
@@ -35,6 +49,7 @@
     </tr>
   </table>
 </div>
+
 
 <!-- GUEST FORECAST -->
 <div class="table-div" *ngIf="type == 'guest'">

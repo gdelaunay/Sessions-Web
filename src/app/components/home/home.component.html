@@ -1,15 +1,17 @@
 <div class="card main-card" id="home-card">
   <h2 id="spot">Spot : Margaret plage - Préfailles</h2>
 
-  <div *ngIf="!error && !forecasts">
-    <img class="loading" alt="chargement" src="">
-  </div>
+  <h2 *ngIf="loading">Chargement ...</h2>
+  <h2 *ngIf="error">Erreur !</h2>
+  <img *ngIf="loading" class="loading" alt="chargement" src="" style="margin: 2rem">
+  <div *ngIf="error"><span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a></div>
 
   <div *ngIf="error">
     <span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a>
   </div>
 
-  <app-forecast *ngIf="forecasts" [forecasts]="forecasts" [type]="'daily'"/>
+  <app-forecast *ngIf="dailyForecasts" [forecasts]="dailyForecasts" [type]="'daily'"/>
+  <app-forecast *ngIf="hourly3Forecasts" [forecasts]="hourly3Forecasts" [type]="'3hourly'"/>
 </div>
 
 <app-footer/>

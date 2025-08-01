@@ -16,25 +16,43 @@ import {ForecastComponent} from '../forecast/forecast.component';
 })
 export class HomeComponent implements OnInit {
 
-  forecasts: any;
+  dailyForecasts: any;
+  hourly3Forecasts: any;
+  loading: boolean = false;
   error: any;
   errorUrl: any;
 
   constructor(private http: HttpClient, private forecastService: ForecastService) {  }
 
   ngOnInit() {
+    this.loading = true;
     this.error = null;
     this.forecastService.getForecastDaily(47.124498, -2.216052)
       .subscribe({
       next: (data) => {
-        this.forecasts = data;
+        this.dailyForecasts = data;
+        this.loading = false;
       },
       error: (err) => {
         console.error('Erreur :', err);
         this.error = `HTTP ${err.status} - ${err.statusText} : `;
         this.errorUrl = err.url;
+        this.loading = false;
       }
     });
+    this.forecastService.getForecast3Hourly(47.124498, -2.216052)
+      .subscribe({
+        next: (data) => {
+          this.hourly3Forecasts = data;
+          this.loading = false;
+        },
+        error: (err) => {
+          console.error('Erreur :', err);
+          this.error = `HTTP ${err.status} - ${err.statusText} : `;
+          this.errorUrl = err.url;
+          this.loading = false;
+        }
+      });
   }
 
 }

@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, Input, OnDestroy} from '@angular/core';
-import {NgForOf, NgIf} from '@angular/common';
+import {AfterViewInit, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {DatePipe, KeyValuePipe, NgForOf, NgIf, TitleCasePipe} from '@angular/common';
 
 type ForecastType = 'daily' | '3hourly' | 'guest';
 
@@ -7,16 +7,20 @@ type ForecastType = 'daily' | '3hourly' | 'guest';
   selector: 'app-forecast',
   imports: [
     NgForOf,
-    NgIf
+    NgIf,
+    KeyValuePipe,
+    DatePipe,
+    TitleCasePipe
   ],
   standalone: true,
   templateUrl: './forecast.component.html',
   styleUrl: './forecast.component.css'
 })
-export class ForecastComponent implements AfterViewInit, OnDestroy {
+export class ForecastComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() forecasts: any;
   @Input() type: ForecastType = 'daily';
 
+  public groupedForecasts: { [date: string]: any[] } = {};
   private tableDiv!: HTMLElement;
   private updateMask = () => {
     const maxScrollLeft = this.tableDiv.scrollWidth - this.tableDiv.clientWidth;
@@ -35,6 +39,17 @@ export class ForecastComponent implements AfterViewInit, OnDestroy {
         'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)';
     }
   };
+
+  ngOnInit(){
+    if (this.type === '3hourly') {
+      this.groupedForecasts = this.forecasts?.reduce((acc: any, item: any) => {
+        const date = item.DateTime.slice(0, 10);
+        acc[date] = acc[date] || [];
+        acc[date].push(item);
+        return acc;
+      }, {}) || {};
+    }
+  }
 
   ngAfterViewInit() {
     this.tableDiv = document.querySelector('.table-div') as HTMLElement;

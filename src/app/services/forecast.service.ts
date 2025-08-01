@@ -8,7 +8,7 @@ import {sessionsApiUrl} from '../app.component';
 export class ForecastService {
 
   private dailyForecastUrl = sessionsApiUrl + '/forecast/daily';
-  private hourlyForecastUrl = sessionsApiUrl + '/forecast/3hourly';
+  private hourly3ForecastUrl = sessionsApiUrl + '/forecast/3hourly';
 
   private guestForecastUrl = 'https://marine-api.open-meteo.com/v1/marine';
   private guestForecastParams = 'daily=wave_height_max,wave_direction_dominant,wave_period_max&timezone=Europe%2FBerlin'
@@ -17,6 +17,10 @@ export class ForecastService {
 
   getForecastDaily( lat : number, lon: number ) {
     return this.http.get<any>(`${this.dailyForecastUrl}?lat=${lat}&lon=${lon}`);
+  }
+
+  getForecast3Hourly( lat : number, lon: number ) {
+    return this.http.get<any>(`${this.hourly3ForecastUrl}?lat=${lat}&lon=${lon}`);
   }
 
   getGuestForecast( lat : number, lon: number ) {
