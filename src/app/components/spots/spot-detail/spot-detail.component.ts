@@ -8,6 +8,7 @@ import {MapComponent} from '../../map/map.component';
 import {ForecastComponent} from '../../forecast/forecast.component';
 import {ForecastService} from '../../../services/forecast.service';
 import {AnimationService} from '../../../services/animation.service';
+import {ToastrService} from 'ngx-toastr';
 
 type ErrorType = 'spot' | 'forecast';
 
@@ -35,7 +36,11 @@ export class SpotDetailComponent implements OnInit, AfterViewInit {
 
   @ViewChildren('forecastCard') forecastCardsRef!: QueryList<ElementRef>;
 
-  constructor(private http: HttpClient, private spotService: SpotService, private forecastService: ForecastService, private animationService: AnimationService, private route: ActivatedRoute) {
+  constructor(private spotService: SpotService,
+              private forecastService: ForecastService,
+              private animationService: AnimationService,
+              private toastrService: ToastrService,
+              private route: ActivatedRoute) {
     this.route.params.subscribe( params => this.spotId = params['id']);
   }
 
@@ -83,7 +88,7 @@ export class SpotDetailComponent implements OnInit, AfterViewInit {
   deleteSpot(e: Event){
     (e.currentTarget as HTMLButtonElement).blur();
     if(confirm("Êtes-vous sûr·e de vouloir supprimer le spot " + this.spot.Name + " ?")) {
-
+      this.toastrService.success("Spot supprimé ! ")
     }
   }
 
