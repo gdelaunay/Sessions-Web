@@ -16,7 +16,7 @@
   <div *ngIf="error"><span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a></div>
 </div>
 
-<div *ngFor="let spot of this.spots" class="card spot-card" #spotCard [routerLink]="['/spot/' + spot.Id ]">
+<div #spotCard *ngFor="let spot of this.spots" class="card spot-card" [routerLink]="['/spot/' + spot.Id ]">
   <h2>{{ spot.Name }}</h2>
   <app-map [mapId]="'map-' + spot.Id" type="readonly" [lat]="spot.Latitude" [lon]="spot.Longitude" ></app-map>
   <div class="spot-details">

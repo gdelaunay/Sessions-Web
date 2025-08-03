@@ -14,7 +14,7 @@
   <div class="spot-card">
     <img *ngIf="loadingSpot" class="loading" alt="chargement" src="" style="margin: 2rem">
     <div *ngIf="errorSpot"><span style="font-weight: 600;">{{ errorSpot }}</span><a href="{{ errorUrlSpot }}">{{ errorUrlSpot }}</a></div>
-    <app-map [mapId]="'map-' + spot.Id" type="readonly" [lat]="spot.Latitude" [lon]="spot.Longitude" ></app-map>
+    <app-map *ngIf="spot" [mapId]="'map-' + spot.Id" type="readonly" [lat]="spot.Latitude" [lon]="spot.Longitude" ></app-map>
     <div *ngIf="spot" class="spot-details">
         <p> Latitude = <b>{{ spot.Latitude }}</b> </p>
         <p> Longitude = <b>{{ spot.Longitude }}</b> </p>
