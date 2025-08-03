@@ -416,9 +416,9 @@ li a:focus {
 }
 
 
-/* ----- Spot card ----- */
+/* ----- Spot cards, Session cards ----- */
 
-.spot-card{
+.spot-card, .session-card{
   display: flex;
   flex-direction: row;
   margin-top: 2.6rem;
@@ -426,10 +426,9 @@ li a:focus {
   max-width: 95%;
 }
 
-.spot-details {
+.spot-details, .session-details {
   padding: 1rem;
 }
-
 
 /* ---------- Texte ---------- */
 p {
