@@ -12,6 +12,13 @@
   --lighter-grey: #F2F2F2;
   --white: #FCFCFC;
 
+  --green: #008000;
+  --red: #CC0000;
+
+  --red-03: rgba(204, 0, 0, 0.3);
+  --red-02: rgba(204, 0, 0, 0.2);
+  --red-01: rgba(204, 0, 0, 0.1);
+
   --map-tiles-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
 
   --spinner: url("assets/spinner.svg")
@@ -415,6 +422,9 @@ li a:focus {
   margin-bottom: -0.3rem;
 }
 
+.deleteBtn { color: var(--red); border-color: var(--red); background-color: var(--red-01); }
+.deleteBtn:hover, .deleteBtn:active { background-color: var(--red-02); }
+.deleteBtn:focus { background-color: var(--red-03); box-shadow:inset 0 0 0.5rem var(--box-shadow-color); }
 
 /* ----- Spot cards, Session cards ----- */
 
@@ -531,8 +541,12 @@ button:focus {
   box-shadow:inset 0 0 0.5rem var(--box-shadow-color);
 }
 
-.leaflet-marker-icon {
+.map.classic .leaflet-marker-icon {
   cursor: grab !important;
+}
+
+.map.readonly .leaflet-marker-icon {
+  cursor: inherit !important;
 }
 
 /* ---------- Loader etc ---------- */

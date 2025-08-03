@@ -80,8 +80,11 @@ export class SpotDetailComponent implements OnInit, AfterViewInit {
 
   }
 
-  refreshSpot(){
+  deleteSpot(e: Event){
+    (e.currentTarget as HTMLButtonElement).blur();
+    if(confirm("Êtes-vous sûr·e de vouloir supprimer le spot " + this.spot.Name + " ?")) {
 
+    }
   }
 
   showError(err: any, type: ErrorType) {
