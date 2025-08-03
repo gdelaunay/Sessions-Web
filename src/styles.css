@@ -142,17 +142,24 @@
     margin-right: -2.6rem;
   }
 
-  li {
-    margin: 0.1rem 0.2rem 0.4rem 0.2rem !important;
-  }
+  li { margin: 0.1rem 0.2rem 0.4rem 0.2rem !important; }
 
-  li > a {
-    padding: 0.4rem 0.6rem !important;
-  }
+  li > a { padding: 0.4rem 0.6rem !important; }
 
-  .card:not(.toolbar-card){
-    margin-top: 2.6rem !important;
-    padding: 0.4rem !important;
+  .card { padding: 0.4rem !important; }
+
+  .main-card { margin-top: 2.6rem !important; }
+
+  .card:not(.toolbar-card) > h2:first-of-type { margin: -2.4rem 0 -0.6rem -0.2rem !important; }
+
+  .toolbar-card button { font-size: 0 !important; text-indent: 0 !important}
+
+  .toolbar-card { min-width: 95% !important; }
+
+  .spot-card {
+    margin-top: 1.8rem !important;
+    min-width: 92.5% !important;
+    max-width: 92.5% !important;
   }
 
   h1 { font-size: 1.6rem }
@@ -161,14 +168,7 @@
   h4 { font-size: 1rem !important}
   h5 { font-size: 0.9rem !important}
 
-  .card:not(.toolbar-card) > h2:first-of-type {
-    margin: -2.4rem 0 -0.6rem -0.2rem !important;
-  }
-
-  .toolbar-card button { font-size: 0 !important; text-indent: 0 !important}
-
   input { font-size: 0.9rem !important; }
-
 }
 
 /* ---------- Réinitialisation (user agent stylesheet) ---------- */
@@ -200,6 +200,7 @@ body {
   font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
   color: var(--primary-text-color);
   background: var(--blue-transparent-gradient);
+  scrollbar-color: var(--background-color-blue-05) transparent;
   background-size: 500% 600%;
   animation: gradient 30s ease infinite;
 }
@@ -269,9 +270,9 @@ app-home, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-d
 
 .card{
   will-change: transform;
-  margin: 3.6rem auto 0.8rem auto;
   min-width: 60%;
   max-width: 95%;
+  margin : 1rem auto;
   padding: 1rem;
   background: var(--background-color-grey);
   box-shadow: 0 6px 30px var(--box-shadow-color);
@@ -281,6 +282,10 @@ app-home, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-d
   transform-style: preserve-3d;
   transition: transform 0.1s ease;
   border-radius: 0.75rem;
+}
+
+.main-card {
+  margin-top: 3.6rem;
 }
 
 
@@ -362,11 +367,68 @@ li a:focus {
   box-shadow:inset 0 0 0.5rem var(--box-shadow-color);
 }
 
-/* ----- ZOOMED ----- */
+/* ----- Volet aside - ZOOMED ----- */
 .zoomed aside { min-width: 0; padding: 0.6rem 0.4rem 0.2rem 0.4rem; }
 .zoomed ul { font-size: 0; }
 .zoomed aside svg { margin: 0 auto; width: 1.8rem; height: 1.8rem; }
 .zoomed li a { display: flex; justify-content: center;  padding: 0.2rem 0.6rem;}
+
+
+/* ---------- Toolbar card ---------- */
+.toolbar-card{
+  min-width: 97.5%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 1rem auto 0.5rem auto;
+  padding: 0.4rem;
+}
+
+.toolbar-card > h2 {
+  flex: 1;
+}
+
+.toolbar-card button {
+  font-size: 0.8rem;
+  padding: 0 0.5rem;
+  text-indent: 0.4rem;
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+}
+
+.toolbar-card button svg{
+  width: 1rem;
+  height: 1rem;
+}
+
+.toolbar-card button span {
+  margin-top: 0.1rem;
+}
+
+.toolbar-card button:hover {
+  margin-top: 0.3rem;
+  margin-bottom: -0.1rem;
+}
+
+.toolbar-card button:focus {
+  margin-top: 0.5rem;
+  margin-bottom: -0.3rem;
+}
+
+
+/* ----- Spot card ----- */
+
+.spot-card{
+  display: flex;
+  flex-direction: row;
+  margin-top: 2.6rem;
+  min-width: 60%;
+  max-width: 95%;
+}
+
+.spot-details {
+  padding: 1rem;
+}
 
 
 /* ---------- Texte ---------- */
@@ -410,50 +472,6 @@ h5 { font-size: 1rem }
   position: absolute;
   margin: -3.2rem 0 0 -1rem;
 }
-
-
-/* ---------- Toolbar ---------- */
-.toolbar-card{
-  min-width: calc(100% - 2rem);
-  display: flex;
-  flex-direction: row;
-  margin: 1rem;
-  padding: 0.4rem;
-}
-
-.toolbar-card > h2 {
-  flex: 1;
-}
-
-.toolbar-card button {
-  font-size: 0.8rem;
-  padding: 0 0.5rem;
-  text-indent: 0.4rem;
-  margin-top: 0.1rem;
-  margin-bottom: 0.1rem;
-}
-
-.toolbar-card button svg{
-  width: 1rem;
-  height: 1rem;
-}
-
-.toolbar-card button span {
-  margin-top: 0.1rem;
-}
-
-.toolbar-card button:hover {
-  margin-top: 0.3rem;
-  margin-bottom: -0.1rem;
-}
-
-.toolbar-card button:focus {
-  margin-top: 0.5rem;
-  margin-bottom: -0.3rem;
-}
-
-
-/* ----- Formulaires ----- */
 
 
 /* ---------- Boutons et inputs ---------- */
