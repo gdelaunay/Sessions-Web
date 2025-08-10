@@ -1,6 +1,5 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {FooterComponent} from '../footer/footer.component';
-import {NgIf} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
 import {ForecastService} from '../../services/forecast.service';
 import {ForecastComponent} from '../forecast/forecast.component';
@@ -12,8 +11,7 @@ import {roundTo} from '../../utils';
   imports: [
     FooterComponent,
     ForecastComponent,
-    MapComponent,
-    NgIf
+    MapComponent
   ],
   templateUrl: './guest.component.html'
 })

@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChildren} from '@angular/core';
-import {DatePipe, NgForOf, NgIf} from "@angular/common";
+import {DatePipe} from "@angular/common";
 import {FooterComponent} from '../footer/footer.component';
 import {HttpClient} from '@angular/common/http';
 import {AnimationService} from '../../services/animation.service';

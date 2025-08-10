@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {NgIf} from "@angular/common";
 import {FooterComponent} from '../../footer/footer.component';
 
 @Component({

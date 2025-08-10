@@ -1,13 +1,11 @@
 import {AfterViewInit, Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {DatePipe, KeyValuePipe, NgForOf, NgIf, TitleCasePipe} from '@angular/common';
+import {DatePipe, KeyValuePipe, TitleCasePipe} from '@angular/common';
 
 type ForecastType = 'daily' | '3hourly' | 'guest';
 
 @Component({
   selector: 'app-forecast',
   imports: [
-    NgForOf,
-    NgIf,
     KeyValuePipe,
     DatePipe,
     TitleCasePipe
@@ -64,4 +62,6 @@ export class ForecastComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     window.removeEventListener('resize', this.updateMask);
   }
+
+  protected readonly Object = Object;
 }

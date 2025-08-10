@@ -1,5 +1,4 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {NgIf} from "@angular/common";
 import {MapComponent} from '../../map/map.component';
 import {FooterComponent} from '../../footer/footer.component';
 import {SpotService} from '../../../services/spot.service';
@@ -10,7 +9,6 @@ import {roundTo} from '../../../utils';
 @Component({
   selector: 'app-spot-form',
   imports: [
-    NgIf,
     FooterComponent,
     FormsModule,
     MapComponent

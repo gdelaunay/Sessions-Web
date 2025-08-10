@@ -1,5 +1,4 @@
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChildren} from '@angular/core';
-import {NgForOf, NgIf} from '@angular/common';
 import {FooterComponent} from '../footer/footer.component';
 import { HttpClient } from '@angular/common/http';
 import {SpotService} from '../../services/spot.service';
@@ -10,10 +9,8 @@ import {MapComponent} from '../map/map.component';
 @Component({
   selector: 'app-spots',
   imports: [
-    NgIf,
     FooterComponent,
     RouterLink,
-    NgForOf,
     MapComponent
   ],
   templateUrl: './spots.component.html'

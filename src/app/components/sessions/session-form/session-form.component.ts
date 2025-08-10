@@ -1,8 +1,6 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {NgIf} from "@angular/common";
+import {Component, OnInit} from '@angular/core';
 import {SessionService} from '../../../services/session.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {roundTo} from '../../../utils';
 
 @Component({
   selector: 'app-session-form',
