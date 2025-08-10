@@ -6,6 +6,7 @@ import {SpotService} from '../../../services/spot.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {roundTo} from '../../../utils';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-spot-form',
@@ -27,7 +28,7 @@ export class SpotFormComponent implements OnInit {
   @ViewChild('latInput') latInput!: ElementRef;
   @ViewChild('lonInput') lonInput!: ElementRef;
 
-  constructor(private spotService: SpotService, private route: ActivatedRoute, private router: Router) {
+  constructor(private spotService: SpotService, private toastrService: ToastrService, private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe( params => this.spotFormParam = params['param']);
   }
 
@@ -49,7 +50,7 @@ export class SpotFormComponent implements OnInit {
             this.spot = data;
             this.loading = false;
           },
-          error: (err) => { this.showError(err) }
+          error: (err) => { this.loading = false; this.showError(err) }
         });
     }
   }
@@ -68,10 +69,11 @@ export class SpotFormComponent implements OnInit {
       next: (res) => {
         if (res.headers.get('Location')) {
           this.router.navigate(["/spot/", res.headers.get('Location')?.split('/').pop()]).then();
+          this.toastrService.success(" Le spot \"" + this.spot.Name + "\" a bien été créé.")
         }
         this.loading = false;
       },
-      error: (err) => { this.showError(err) }
+      error: (err) => { this.loading = false; this.toastrService.error(err.message) }
     })
   }
 
@@ -80,10 +82,11 @@ export class SpotFormComponent implements OnInit {
       next: (res) => {
         if (res.headers.get('Location')) {
           this.router.navigate(["/spot/", res.headers.get('Location')?.split('/').pop()]).then();
+          this.toastrService.success(" Le spot \"" + this.spot.Name + "\" a bien été modifié.")
         }
         this.loading = false;
       },
-      error: (err) => { this.showError(err) }
+      error: (err) => { this.loading = false; this.toastrService.error(err.message) }
     })
   }
 
