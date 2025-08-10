@@ -53,7 +53,7 @@ export class SessionFormComponent implements OnInit {
             this.session = data;
             this.loading = false;
           },
-          error: (err) => { this.showError(err) }
+          error: (err) => { this.loading = false; this.showError(err) }
         });
     }
   }
@@ -75,7 +75,7 @@ export class SessionFormComponent implements OnInit {
         }
         this.loading = false;
       },
-      error: (err) => { this.showError(err) }
+      error: (err) => { this.loading = false; this.showError(err) }
     })
   }
 

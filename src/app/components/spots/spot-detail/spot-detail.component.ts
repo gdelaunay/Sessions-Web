@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren} from '@angular/core';
+import {NgIf} from "@angular/common";
 import {FooterComponent} from '../../footer/footer.component';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
 import {SpotService} from '../../../services/spot.service';
 import {MapComponent} from '../../map/map.component';
 import {ForecastComponent} from '../../forecast/forecast.component';
@@ -88,7 +90,7 @@ export class SpotDetailComponent implements OnInit, AfterViewInit {
     if(confirm("Êtes-vous sûr·e de vouloir supprimer le spot \"" + this.spot.Name + "\" ?")) {
       this.spotService.deleteSpot(this.spot.Id).subscribe({
         next: () => {
-          this.router.navigate(["/spot"]).then();
+          this.router.navigate(["/spots"]).then();
           this.toastrService.success(" Le spot \"" + this.spot.Name + "\" a été supprimé.")
         },
         error: (err) => { this.toastrService.error(err.message) }
