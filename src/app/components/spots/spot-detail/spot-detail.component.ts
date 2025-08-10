@@ -87,8 +87,8 @@ export class SpotDetailComponent implements OnInit, AfterViewInit {
     (e.currentTarget as HTMLButtonElement).blur();
     if(confirm("Êtes-vous sûr·e de vouloir supprimer le spot \"" + this.spot.Name + "\" ?")) {
       this.spotService.deleteSpot(this.spot.Id).subscribe({
-        next: (res) => {
-          this.router.navigate(["/spot"]).then(r => {});
+        next: () => {
+          this.router.navigate(["/spot"]).then();
           this.toastrService.success(" Le spot \"" + this.spot.Name + "\" a été supprimé.")
         },
         error: (err) => { this.toastrService.error(err.message) }
