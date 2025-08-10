@@ -67,11 +67,11 @@ export class SpotFormComponent implements OnInit {
   createNewSpot() {
     this.spotService.createSpot(this.spot).subscribe({
       next: (res) => {
+        this.loading = false;
         if (res.headers.get('Location')) {
           this.router.navigate(["/spot/", res.headers.get('Location')?.split('/').pop()]).then();
           this.toastrService.success(" Le spot \"" + this.spot.Name + "\" a bien été créé.")
         }
-        this.loading = false;
       },
       error: (err) => { this.loading = false; this.toastrService.error(err.message) }
     })
@@ -80,11 +80,9 @@ export class SpotFormComponent implements OnInit {
   updateSpot() {
     this.spotService.updateSpot(this.spotFormParam, this.spot).subscribe({
       next: (res) => {
-        if (res.headers.get('Location')) {
-          this.router.navigate(["/spot/", res.headers.get('Location')?.split('/').pop()]).then();
-          this.toastrService.success(" Le spot \"" + this.spot.Name + "\" a bien été modifié.")
-        }
         this.loading = false;
+        this.router.navigate(["/spot/", this.spot.Id]).then();
+        this.toastrService.success(" Le spot \"" + this.spot.Name + "\" a bien été modifié.");
       },
       error: (err) => { this.loading = false; this.toastrService.error(err.message) }
     })
