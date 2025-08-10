@@ -49,7 +49,6 @@ export class SpotsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(){
-
     this.spotCardsRef.forEach(ref => {
       this.animationService.startAnimation(ref.nativeElement, 'idle');
     });
@@ -59,7 +58,6 @@ export class SpotsComponent implements OnInit, AfterViewInit, OnDestroy {
         this.animationService.startAnimation(ref.nativeElement, 'idle');
       });
     });
-
   }
 
   refreshSpots(e: Event) {
