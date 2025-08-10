@@ -12,8 +12,6 @@ import {MapComponent} from '../map/map.component';
   imports: [
     FooterComponent,
     RouterLink,
-    NgIf,
-    NgForOf,
     DatePipe,
     MapComponent
   ],

@@ -9,23 +9,31 @@
   </button>
 </div>
 
-<div *ngIf="error || loading" class="card main-card">
-  <h2 *ngIf="loading">Chargement ...</h2>
-  <h2 *ngIf="error">Erreur !</h2>
-  <img *ngIf="loading" class="loading" alt="chargement" src="" style="margin: 2rem">
-  <div *ngIf="error"><span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a></div>
-</div>
-
-<div #sessionCard *ngFor="let session of this.sessions" class="card session-card"><!-- [routerLink]="['/session/' + session.Id ] -->
-  <h2>{{ session.StartTime | date:'dd/MM/YY'}} - {{ session.Spot.Name }}</h2>
-  <app-map [mapId]="'map-' + session.Spot.Id" type="readonly" [lat]="session.Spot.Latitude" [lon]="session.Spot.Longitude" ></app-map>
-  <div class="session-details">
-    <p> Heure de début : <b> {{ session.StartTime | date:'HH:mm'}} </b> </p>
-    <p> Heure de fin : <b> {{ session.EndTime | date:'HH:mm'}} </b> </p>
-    <p> Note attribuée : <b> {{ session.Rating }} / 5 </b> </p>
-    <p> Commentaire : <b> {{ session.Comment }} </b> </p>
+@if (error || loading) {
+  <div class="card main-card">
+    @if (loading) {
+      <h2> Chargement ... </h2>
+      <img class="loading" alt="chargement" src="" style="margin: 2rem">
+    }
+    @if (error) {
+      <h2> Erreur ! </h2>
+      <div><span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a></div>
+    }
   </div>
-</div>
+}
+
+@for (session of this.sessions; track session.id) {
+  <div #sessionCard class="card session-card"><!-- [routerLink]="['/session/' + session.Id ] -->
+    <h2>{{ session.StartTime | date:'dd/MM/yy' }} - {{ session.Spot.Name }}</h2>
+    <app-map [mapId]="'map-' + session.Spot.Id" type="readonly" [lat]="session.Spot.Latitude" [lon]="session.Spot.Longitude" ></app-map>
+    <div class="session-details">
+      <p> Heure de début : <b> {{ session.StartTime | date:'HH:mm'}} </b> </p>
+      <p> Heure de fin : <b> {{ session.EndTime | date:'HH:mm'}} </b> </p>
+      <p> Note attribuée : <b> {{ session.Rating }} / 5 </b> </p>
+      <p> Commentaire : <b> {{ session.Comment }} </b> </p>
+    </div>
+  </div>
+}
 
 <app-footer></app-footer>
 
