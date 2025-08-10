@@ -49,7 +49,7 @@ export class SpotFormComponent implements OnInit {
             this.spot = data;
             this.loading = false;
           },
-          error: (err) => { this.showError(err) }
+          error: (err) => { this.loading = false; this.showError(err) }
         });
     }
   }
@@ -71,7 +71,7 @@ export class SpotFormComponent implements OnInit {
         }
         this.loading = false;
       },
-      error: (err) => { this.showError(err) }
+      error: (err) => { this.loading = false; this.showError(err) }
     })
   }
 
@@ -83,7 +83,7 @@ export class SpotFormComponent implements OnInit {
         }
         this.loading = false;
       },
-      error: (err) => { this.showError(err) }
+      error: (err) => { this.loading = false; this.showError(err) }
     })
   }
 
