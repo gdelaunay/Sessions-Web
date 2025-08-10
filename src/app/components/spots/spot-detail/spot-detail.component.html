@@ -1,7 +1,5 @@
 <div class="card toolbar-card">
-  <h2 *ngIf="loadingSpot">Chargement ...</h2>
-  <h2 *ngIf="errorSpot">Erreur !</h2>
-  <h2 *ngIf="spot">{{ spot.Name }}</h2>
+  <h2>  @if (loadingSpot) { Chargement ... } @else if (errorSpot) { Erreur ! } @else if (spot) { {{ spot.Name }} }</h2>
   <button class="editBtn" [routerLink]="['/spot/form', '{{ spot.id }}']">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
     <span>Modifier</span>
@@ -12,27 +10,36 @@
   </button>
   <div class="break" style="flex-basis: 100%; height: 0"></div>
 
-  <div class="spot-card">
-    <img *ngIf="loadingSpot" class="loading" alt="chargement" src="" style="margin: 2rem">
-    <div *ngIf="errorSpot"><span style="font-weight: 600;">{{ errorSpot }}</span><a href="{{ errorUrlSpot }}">{{ errorUrlSpot }}</a></div>
-    <app-map *ngIf="spot" [mapId]="'map-' + spot.Id" type="readonly" [lat]="spot.Latitude" [lon]="spot.Longitude" ></app-map>
-    <div *ngIf="spot" class="spot-details">
-        <p> Latitude = <b>{{ spot.Latitude }}</b> </p>
-        <p> Longitude = <b>{{ spot.Longitude }}</b> </p>
+  @if (loadingSpot || errorSpot || spot) {
+    <div class="spot-card">
+      @if (loadingSpot) { <img class="loading" alt="chargement" src="" style="margin: 2rem"> }
+      @if (errorSpot) { <div><span style="font-weight: 600;">{{ errorSpot }}</span><a href="{{ errorUrlSpot }}">{{ errorUrlSpot }}</a></div> }
+      @if (spot) {
+        <app-map [mapId]="'map-' + spot.Id" type="readonly" [lat]="spot.Latitude" [lon]="spot.Longitude" ></app-map>
+        <div class="spot-details">
+            <p> Latitude = <b>{{ spot.Latitude }}</b> </p>
+            <p> Longitude = <b>{{ spot.Longitude }}</b> </p>
+        </div>
+      }
     </div>
+  }
+
+</div>
+
+@if (loadingForecast || errorForecast || forecasts) {
+  <div class="card main-card" id="spot-forecast-card" #forecastCard>
+    <h2></h2>
+    @if (loadingForecast) {
+      <h2> Chargement ... </h2>
+      <img class="loading" alt="chargement" src="" style="margin: 2rem">
+    } @else if (errorForecast) {
+      <h2>Erreur !</h2>
+      <div><span style="font-weight: 600;">{{ errorForecast }}</span><a href="{{ errorUrlForecast }}">{{ errorUrlForecast }}</a></div>
+    } @else if (forecasts) {
+      <app-forecast [forecasts]="forecasts" [type]="'3hourly'"/>
+    }
   </div>
-
-</div>
-
-<div class="card main-card" id="spot-forecast-card" #forecastCard>
-  <h2></h2>
-  <h2 *ngIf="loadingForecast">Chargement ...</h2>
-  <h2 *ngIf="errorForecast">Erreur !</h2>
-  <img *ngIf="loadingForecast" class="loading" alt="chargement" src="" style="margin: 2rem">
-  <div *ngIf="errorForecast"><span style="font-weight: 600;">{{ errorForecast }}</span><a href="{{ errorUrlForecast }}">{{ errorUrlForecast }}</a></div>
-  <app-forecast *ngIf="forecasts" [forecasts]="forecasts" [type]="'3hourly'"/>
-</div>
-
+}
 
 
 

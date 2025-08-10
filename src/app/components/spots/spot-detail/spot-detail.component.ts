@@ -15,7 +15,6 @@ type ErrorType = 'spot' | 'forecast';
 @Component({
   selector: 'app-spot-detail',
   imports: [
-    NgIf,
     FooterComponent,
     RouterLink,
     MapComponent,
@@ -92,7 +91,7 @@ export class SpotDetailComponent implements OnInit, AfterViewInit {
       // TODO : fix delete
       this.spotService.deleteSpot(this.spot.Id).subscribe({
         next: (res) => {
-          this.router.navigate(["/spot"]);
+          this.router.navigate(["/spot"]).then(r => {});
           this.toastrService.success(" Le spot \"" + this.spot.Name + "\" a été supprimé.")
         },
         error: (err) => { this.toastrService.error(err.message) }
@@ -114,4 +113,5 @@ export class SpotDetailComponent implements OnInit, AfterViewInit {
     }
 
   }
+
 }
