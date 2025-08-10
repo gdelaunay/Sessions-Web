@@ -1,8 +1,6 @@
 import {AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren} from '@angular/core';
-import {NgIf} from "@angular/common";
 import {FooterComponent} from '../../footer/footer.component';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
 import {SpotService} from '../../../services/spot.service';
 import {MapComponent} from '../../map/map.component';
 import {ForecastComponent} from '../../forecast/forecast.component';

@@ -77,7 +77,7 @@ export class SpotFormComponent implements OnInit {
 
   updateSpot() {
     this.spotService.updateSpot(this.spotFormParam, this.spot).subscribe({
-      next: (res) => {
+      next: () => {
         this.loading = false;
         this.router.navigate(["/spot/", this.spot.Id]).then();
         this.toastrService.success(" Le spot \"" + this.spot.Name + "\" a bien été modifié.");
