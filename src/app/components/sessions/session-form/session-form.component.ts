@@ -46,18 +46,27 @@ export class SessionFormComponent implements OnInit {
     this.loading = true;
 
     this.session = {
-      "spot": {
+      "Spot": {
         "Id": null,
         "Name": "",
         "Latitude": 0,
         "Longitude": 0,
         "Sessions": []
       },
-      "forecast": {},
-      "startTime": null,
-      "endTime": null,
-      "rating": 0,
-      "comment": ""
+      "Forecast": {
+        "dateTime": "26/05/2025",
+        "weatherCode": 3,
+        "temperature": 18,
+        "waveHeight": 1.9,
+        "waveDirection": 264,
+        "wavePeriod": 8.4,
+        "windSpeed": 22,
+        "windDirection": 102
+      },
+      "StartTime": null,
+      "EndTime": null,
+      "Rating": 0,
+      "Comment": ""
     }
 
     if(this.spotIdParam !== undefined) {
@@ -68,7 +77,6 @@ export class SessionFormComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.spots = data;
-          this.loading = false;
         },
         error: (err) => { this.loading = false; this.toastrService.error("Erreur dans les récupération des spots : " + err.message) }
       });
@@ -79,19 +87,23 @@ export class SessionFormComponent implements OnInit {
         .subscribe({
           next: (data) => {
             this.session = data;
-            this.startTime = this.session.startTime.toISOString().substring(11, 16);
-            this.endTime = this.session.endTime.toISOString().substring(11, 16);
+            console.log(this.session);
+            this.startTime = this.session.StartTime.substring(11, 16);
+            this.endTime = this.session.EndTime.substring(11, 16);
             this.loading = false;
           },
           error: (err) => { this.loading = false; this.showError(err) }
         });
+    } else {
+      this.loading = false;
     }
+
   }
 
   saveSession() {
     this.loading = true;
-    this.session.startTime = new Date(`${this.date}T${this.startTime}`).toISOString();
-    this.session.endTime = new Date(`${this.date}T${this.endTime}`).toISOString();
+    this.session.StartTime = new Date(`${this.date}T${this.startTime}`).toISOString();
+    this.session.EndTime = new Date(`${this.date}T${this.endTime}`).toISOString();
 
     if (this.sessionFormParam == 'new') {
       this.createNewSession();
