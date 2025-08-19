@@ -19,6 +19,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 export class SessionFormComponent implements OnInit {
   sessionFormParam: any;
+  spotIdParam: any;
   session: any;
   spots: any;
   error: any;
@@ -37,6 +38,7 @@ export class SessionFormComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router) {
     this.route.params.subscribe( params => this.sessionFormParam = params['param']);
+    this.route.queryParams.subscribe(params => { this.spotIdParam = params['id']; });
   }
 
   ngOnInit() {
@@ -58,6 +60,9 @@ export class SessionFormComponent implements OnInit {
       "comment": ""
     }
 
+    if(this.spotIdParam !== undefined) {
+      this.session.spot.Id = this.spotIdParam;
+    }
 
     this.spotService.getSpots()
       .subscribe({
