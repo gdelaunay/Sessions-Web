@@ -115,10 +115,8 @@ export class SessionFormComponent implements OnInit {
   createNewSession() {
     this.sessionService.createSession(this.session).subscribe({
       next: (res) => {
-        if (res.headers.get('Location')) {
-          this.router.navigate(["/session/", res.headers.get('Location')?.split('/').pop()]).then();
+          this.router.navigate(["/sessions"]).then();
           this.toastrService.success(" La session a bien été créée.")
-        }
         this.loading = false;
       },
       error: (err) => { this.loading = false; this.toastrService.error(err.message) }
@@ -129,7 +127,7 @@ export class SessionFormComponent implements OnInit {
     this.sessionService.updateSession(this.sessionFormParam, this.session).subscribe({
       next: () => {
         this.loading = false;
-        this.router.navigate(["/session/", this.session.Id]).then();
+        this.router.navigate(["/sessions"]).then();
         this.toastrService.success(" La session a bien été modifiée.");
       },
       error: (err) => { this.loading = false; this.toastrService.error(err.message) }

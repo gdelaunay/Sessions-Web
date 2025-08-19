@@ -188,6 +188,10 @@
     max-width: 92.5% !important;
   }
 
+  .session-details{
+    margin-top: 1rem !important;
+  }
+
   h1 { font-size: 1.6rem }
   h2 { font-size: 1.2rem !important}
   h3 { font-size: 1.1rem !important}
@@ -459,7 +463,11 @@ li a:focus {
   max-width: 95%;
 }
 
-.spot-details, .session-details {
+.session-card app-map, .session-details {
+  margin-top: 0.4rem;
+}
+
+.spot-details, .session-details{
   padding: 1rem;
 }
 
