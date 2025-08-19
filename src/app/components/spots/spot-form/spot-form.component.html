@@ -10,13 +10,13 @@
   <h2> {{ spot?.Id ? 'Modifier spot : ' + spot.Name + ' (#' + spot.Id + ')' : 'Nouveau spot :' }}</h2>
   <div id="form-div">
     <form #spotForm="ngForm" (ngSubmit)="saveSpot()">
-      <p><label for="name"><h4>Nom : </h4></label>
-      <input type="text" id="name" name="spotName" [(ngModel)]="spot.Name" required></p>
-      <h4 id="form-prompt">Sélectionner la position de votre spot sur la carte pour obtenir les coordonnées.</h4>
-      <p><label for="latitude"><h4> Latitude : &nbsp;&nbsp;</h4></label>
-      <input #latInput id="latitude" name="latitude" [(ngModel)]="spot.Latitude" type="number" step="0.01" required></p>
-      <p><label for="longitude"><h4> Longitude : </h4></label>
-      <input #lonInput id="longitude" name="longitude" [(ngModel)]="spot.Longitude" type="number" step="0.01" required></p>
+      <div class="form-group"><label for="name"><h4>Nom : </h4></label>
+      <input type="text" id="name" name="spotName" [(ngModel)]="spot.Name" required></div>
+      <h5 id="form-prompt">Sélectionner la position du spot sur la carte pour obtenir les coordonnées.</h5>
+      <div class="form-group"><label for="latitude"><h4> Latitude : &nbsp;&nbsp;</h4></label>
+      <input #latInput id="latitude" name="latitude" [(ngModel)]="spot.Latitude" type="number" step="0.01" required></div>
+      <div class="form-group"><label for="longitude"><h4> Longitude : </h4></label>
+      <input #lonInput id="longitude" name="longitude" [(ngModel)]="spot.Longitude" type="number" step="0.01" required></div>
       <br><button type="submit" [disabled]="!spotForm.form.valid">{{ spot?.Id ? 'Modifier' : 'Créer' }}</button>
     </form>
     <app-map mapId='form-map' (outCoords)="updatePosition($event)"/>
@@ -26,50 +26,23 @@
 <app-footer></app-footer>
 <style>
   @media (orientation: portrait) {
-    #form-div  { flex-direction: column !important; margin-bottom: 0 !important }
     form, app-map { width: 100% !important }
-    form {justify-content: start !important; order: 1}
-    h4, p { margin: 0.4rem 0 !important }
+    h4, .form-group { margin: 0.4rem 0 !important }
     h4 ~ br { display: none }
-  }
-
-
-  #form-div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: start;
-    width: 100%;
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    padding: 0 1rem 0 0;
   }
 
   form { width: 55%; }
   app-map { width: 45%; }
 
-  p {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 0.6rem 0.2rem 0.2rem 0.2rem;
-  }
-
-  p:first-of-type { margin: 0.2rem auto 0.2rem auto}
+  .form-group:first-of-type { margin: 0.2rem auto 0.2rem auto}
 
   #name { width: 70% }
   #latitude, #longitude { width: 35% }
-  #name, #latitude, #longitude { margin-left: 1rem }
+  label { margin-right: 1rem }
 
   #form-prompt {
     text-align: center;
     margin: 1.2rem 1rem 0.4rem auto;
   }
-
-  form button { margin-left: 70%; }
 
 </style>
