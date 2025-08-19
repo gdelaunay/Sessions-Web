@@ -1,31 +1,41 @@
-<div [id]="mapId" [class]="'map ' + type"></div>
+<div [class]="'map-wrapper ' + type">
+  <div [id]="mapId" [class]="'map ' + type"></div>
+</div>
 
 <style>
   /* ----- Portrait (mobile & tablette) ----- */
   @media (orientation: portrait) {
-    .map.readonly{
+    .map-wrapper.readonly{
       width: 8rem !important;
       height: 6rem !important;
     }
   }
 
-  :host {
+  .map{
+    width: 100%;
+    height: 100%;
+    transform: scale(1.02);
+    transform-origin: top left;
+  }
+
+  .map-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .map {
+  .map-wrapper {
     border-radius: 0.75rem;
     cursor: pointer;
+    overflow: hidden;
   }
 
-  .map.classic{
+  .map-wrapper.classic{
     width: 32rem;
     height: 16rem;
   }
 
-  .map.readonly{
+  .map-wrapper.readonly{
     width: 12rem;
     height: 8rem;
     cursor: inherit;
