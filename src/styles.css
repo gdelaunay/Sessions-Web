@@ -123,6 +123,11 @@
     filter:var(--map-tiles-filter, none);
   }
 
+  select:focus {
+    color: var(--secondary-text-color);
+    background-color: var(--lighter-grey-08);
+  }
+
 }
 
 
@@ -533,12 +538,6 @@ input, select, textarea {
   border-radius: 0.25rem;
   border: 1px solid var(--background-color-blue-05);
   background-color: var(--background-color-blue-01);
-}
-
-select:focus {
-  color: var(--secondary-text-color);
-  background-color: var(--lighter-grey-08);
-
 }
 
 input:read-only {
