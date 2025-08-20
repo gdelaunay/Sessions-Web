@@ -70,7 +70,7 @@ export class SessionFormComponent implements OnInit {
     }
 
     if(this.spotIdParam !== undefined) {
-      this.session.spot.Id = this.spotIdParam;
+      this.session.Spot.Id = this.spotIdParam;
     }
 
     this.spotService.getSpots()
@@ -87,7 +87,6 @@ export class SessionFormComponent implements OnInit {
         .subscribe({
           next: (data) => {
             this.session = data;
-            console.log(this.session);
             this.startTime = this.session.StartTime.substring(11, 16);
             this.endTime = this.session.EndTime.substring(11, 16);
             this.loading = false;
@@ -114,7 +113,7 @@ export class SessionFormComponent implements OnInit {
 
   createNewSession() {
     this.sessionService.createSession(this.session).subscribe({
-      next: (res) => {
+      next: () => {
           this.router.navigate(["/sessions"]).then();
           this.toastrService.success(" La session a bien été créée.")
         this.loading = false;

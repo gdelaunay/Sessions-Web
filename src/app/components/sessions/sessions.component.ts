@@ -1,10 +1,9 @@
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {DatePipe, TitleCasePipe} from "@angular/common";
 import {FooterComponent} from '../footer/footer.component';
-import {HttpClient} from '@angular/common/http';
 import {AnimationService} from '../../services/animation.service';
 import {SessionService} from '../../services/session.service';
-import {ActivatedRoute, Router, RouterLink} from '@angular/router';
+import {RouterLink} from '@angular/router';
 import {MapComponent} from '../map/map.component';
 import {ToastrService} from 'ngx-toastr';
 
@@ -30,8 +29,7 @@ export class SessionsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(private sessionService: SessionService,
               private animationService: AnimationService,
-              private toastrService: ToastrService,
-              private router: Router) {  }
+              private toastrService: ToastrService) {  }
 
   ngOnInit(){
     this.error = null;
