@@ -12,15 +12,16 @@
     <app-map mapId='guest-map' (outCoords)="updatePosition($event)"/>
   </div>
 
-  <div *ngIf="!error && loading">
-    <img class="loading" alt="chargement" src="">
-  </div>
+  @if (loading) {
+    <h2> Chargement ... </h2>
+    <img class="loading" alt="chargement" src="" style="margin: 2rem">
+  }
+  @if (error) {
+    <h2> Erreur ! </h2>
+    <div><span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a></div>
+  }
 
-  <div *ngIf="error">
-    <span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a>
-  </div>
-
-  <app-forecast *ngIf="forecasts" [forecasts]="forecasts" [type]="'guest'" />
+  @if (forecasts) { <app-forecast [forecasts]="forecasts" [type]="'guest'" /> }
 
   <br>⚠️ Cette page n'est qu'un aperçu de l'application <b>Sessions</b>. Pour bénéficier de l'API Sessions et obtenir
   des prévisions détaillées, <b>créez un compte</b> et commencez à configurer vos spots préférés !

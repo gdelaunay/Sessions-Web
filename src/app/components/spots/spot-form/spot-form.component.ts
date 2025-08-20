@@ -1,5 +1,4 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {NgIf} from "@angular/common";
 import {MapComponent} from '../../map/map.component';
 import {FooterComponent} from '../../footer/footer.component';
 import {SpotService} from '../../../services/spot.service';
@@ -11,7 +10,6 @@ import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-spot-form',
   imports: [
-    NgIf,
     FooterComponent,
     FormsModule,
     MapComponent
@@ -79,7 +77,7 @@ export class SpotFormComponent implements OnInit {
 
   updateSpot() {
     this.spotService.updateSpot(this.spotFormParam, this.spot).subscribe({
-      next: (res) => {
+      next: () => {
         this.loading = false;
         this.router.navigate(["/spot/", this.spot.Id]).then();
         this.toastrService.success(" Le spot \"" + this.spot.Name + "\" a bien été modifié.");

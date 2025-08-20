@@ -1,74 +1,81 @@
 <!-- DAILY & 3HOURLY FORECAST -->
-<div class="table-div" *ngIf="type == 'daily' || type == '3hourly'">
-  <table>
-    <tr id="day-group-line" *ngIf="type == '3hourly'">
-      <th>Date :</th>
-      <ng-container *ngFor="let group of groupedForecasts | keyvalue">
-        <th [attr.colspan]="group.value.length">
-          {{ group.key | date:'EEEE dd/MM' | titlecase}}
-        </th>
-      </ng-container>
-    </tr>
-    <tr id="datetime-line" >
-      <ng-container *ngIf="type == 'daily'">
-        <th>Date : </th>
-        <th class="day" *ngFor="let forecast of forecasts" >{{ forecast.DateTime | date:'EEEE dd/MM' | titlecase}}</th>
-      </ng-container>
-      <ng-container *ngIf="type == '3hourly'">
-        <th>Heure : </th>
-        <th class="day" *ngFor="let forecast of forecasts" >{{ forecast.DateTime | date:'HH' }} h</th>
-      </ng-container>
-    </tr>
-    <tr id="weather-code-line" >
-      <th>Code météo : </th>
-      <td class="weatherCode" *ngFor="let forecast of forecasts" >{{ forecast.WeatherCode }}</td>
-    </tr>
-    <tr id="temperature-line" >
-      <th>Température max : </th>
-      <td class="temperature" *ngFor="let forecast of forecasts" >{{ forecast.Temperature }} °C</td>
-    </tr>
-    <tr id="wave-height-line" >
-      <th>Houle max : </th>
-      <td class="waveHeight" *ngFor="let forecast of forecasts" >{{ forecast.WaveHeight }} m</td>
-    </tr>
-    <tr id="wave-direction-line" >
-      <th>Direction houle : </th>
-      <td class="waveDirection" *ngFor="let forecast of forecasts" >{{ forecast.WaveDirection }} °</td>
-    </tr>
-    <tr id="wave-period-line" >
-      <th>Période max: </th>
-      <td class="wavePeriod" *ngFor="let forecast of forecasts" >{{ forecast.WavePeriod }} s</td>
-    </tr>
-    <tr id="wind-speed-line" >
-      <th>Vent max: </th>
-      <td class="windSpeed" *ngFor="let forecast of forecasts" >{{ forecast.WindSpeed }} nds</td>
-    </tr>
-    <tr id="wind-direction-line" >
-      <th>Direction vent : </th>
-      <td class="windDirection" *ngFor="let forecast of forecasts" >{{ forecast.WindDirection }} °</td>
-    </tr>
-  </table>
-</div>
+@if (type == 'daily' || type == '3hourly') {
+  <div class="table-div">
+    <table>
+
+      @if (type == '3hourly') {
+        <tr id="day-group-line">
+          <th>Date :</th>
+          @for (group of groupedForecasts | keyvalue;  track $index) {
+            <th [attr.colspan]="group.value.length">
+              {{ group.key | date:'EEEE dd/MM' | titlecase}}
+            </th>
+          }
+        </tr>
+      }
+
+      <tr id="datetime-line">
+        @if (type == 'daily') {
+          <th>Date : </th>
+          @for (forecast of forecasts;  track $index) { <th class="day">{{ forecast.DateTime | date:'EEEE dd/MM' | titlecase}}</th> }
+        } @else if (type == '3hourly') {
+          <th>Heure : </th>
+          @for (forecast of forecasts;  track $index) { <th class="day">{{ forecast.DateTime | date:'HH' }} h</th> }
+        }
+      </tr>
+      <tr id="weather-code-line" >
+        <th>Code météo : </th>
+        @for (forecast of forecasts;  track $index) { <td class="weatherCode">{{ forecast.WeatherCode }}</td> }
+      </tr>
+      <tr id="temperature-line" >
+        <th>Température max : </th>
+        @for (forecast of forecasts;  track $index) { <td class="temperature">{{ forecast.Temperature }} °C</td> }
+      </tr>
+      <tr id="wave-height-line" >
+        <th>Houle max : </th>
+        @for (forecast of forecasts;  track $index) { <td class="waveHeight">{{ forecast.WaveHeight }} m</td> }
+      </tr>
+      <tr id="wave-direction-line" >
+        <th>Direction houle : </th>
+        @for (forecast of forecasts;  track $index) { <td class="waveDirection">{{ forecast.WaveDirection }} °</td> }
+      </tr>
+      <tr id="wave-period-line" >
+        <th>Période max: </th>
+        @for (forecast of forecasts;  track $index) { <td class="wavePeriod">{{ forecast.WavePeriod }} s</td> }
+      </tr>
+      <tr id="wind-speed-line" >
+        <th>Vent max: </th>
+        @for (forecast of forecasts;  track $index) { <td class="windSpeed">{{ forecast.WindSpeed }} nds</td> }
+      </tr>
+      <tr id="wind-direction-line" >
+        <th>Direction vent : </th>
+        @for (forecast of forecasts;  track $index) { <td class="windDirection">{{ forecast.WindDirection }} °</td> }
+      </tr>
+    </table>
+  </div>
+}
 
 
 <!-- GUEST FORECAST -->
-<div class="table-div" *ngIf="type == 'guest'">
-<table>
-  <tr id="datetime-line" >
-    <th>Date : </th>
-    <th class="day" *ngFor="let day of forecasts.daily.time;" >{{ day }}</th>
-  </tr>
-  <tr id="wave-height-line" >
-    <th>Houle : </th>
-    <td class="waveHeight" *ngFor="let waveHeight of forecasts.daily.wave_height_max;" >{{ waveHeight }} m</td>
-  </tr>
-  <tr id="wave-period-line" >
-    <th>Période : </th>
-    <td class="wavePeriod" *ngFor="let wavePeriod of forecasts.daily.wave_period_max;" >{{ wavePeriod }} s</td>
-  </tr>
-  <tr id="wave-direction-line" >
-    <th>Direction : </th>
-    <td class="waveDirection" *ngFor="let waveDirection of forecasts.daily.wave_direction_dominant;" >{{ waveDirection }} °</td>
-  </tr>
-</table>
-</div>
+@if (type == 'guest') {
+  <div class="table-div">
+  <table>
+    <tr id="datetime-line" >
+      <th>Date : </th>
+      @for (day of Object.values(forecasts.daily.time);  track $index) { <th class="day" >{{ day }}</th> }
+    </tr>
+    <tr id="wave-height-line" >
+      <th>Houle : </th>
+      @for (waveHeight of Object.values(forecasts.daily.wave_height_max);  track $index) { <td class="waveHeight">{{ waveHeight }} m</td> }
+    </tr>
+    <tr id="wave-period-line" >
+      <th>Période : </th>
+      @for (wavePeriod of Object.values(forecasts.daily.wave_period_max);  track $index) { <td class="wavePeriod">{{ wavePeriod }} s</td> }
+    </tr>
+    <tr id="wave-direction-line" >
+      <th>Direction : </th>
+      @for (waveDirection of Object.values(forecasts.daily.wave_direction_dominant);  track $index) { <td class="waveDirection">{{ waveDirection }} °</td> }
+    </tr>
+  </table>
+  </div>
+}

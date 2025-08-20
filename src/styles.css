@@ -11,6 +11,7 @@
   --grey: #A5A5A5;
   --light-grey: #DBDBDB;
   --lighter-grey: #F2F2F2;
+  --lighter-grey-08: rgba(242, 242, 242, 0.75);
   --white: #FCFCFC;
 
   --green: #008000;
@@ -122,6 +123,11 @@
     filter:var(--map-tiles-filter, none);
   }
 
+  select:focus {
+    color: var(--secondary-text-color);
+    background-color: var(--lighter-grey-08);
+  }
+
 }
 
 
@@ -182,6 +188,10 @@
     max-width: 92.5% !important;
   }
 
+  .session-details{
+    margin-top: 1rem !important;
+  }
+
   h1 { font-size: 1.6rem }
   h2 { font-size: 1.2rem !important}
   h3 { font-size: 1.1rem !important}
@@ -189,6 +199,10 @@
   h5 { font-size: 0.9rem !important}
 
   input { font-size: 0.9rem !important; }
+
+  #form-div  { flex-direction: column !important; margin-bottom: 0 !important }
+  form {justify-content: start !important; order: 1}
+  form { padding: 0 !important }
 }
 
 /* ---------- Réinitialisation (user agent stylesheet) ---------- */
@@ -449,7 +463,11 @@ li a:focus {
   max-width: 95%;
 }
 
-.spot-details, .session-details {
+.session-card app-map, .session-details {
+  margin-top: 0.4rem;
+}
+
+.spot-details, .session-details{
   padding: 1rem;
 }
 
@@ -496,9 +514,32 @@ h5 { font-size: 1rem }
 }
 
 
-/* ---------- Boutons et inputs ---------- */
+/* ---------- Formulaire, boutons et inputs ---------- */
+#form-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+}
 
-input {
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 0 1rem 0 0;
+}
+
+.form-group {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0.6rem 0.2rem 0.2rem 0.2rem;
+}
+
+form button { margin-left: 70%; }
+
+input, select, textarea {
   padding: 0.25rem;
   font-size: 0.9rem;
   color: var(--primary-text-color);
@@ -553,6 +594,7 @@ button:focus {
   background-color: var(--background-color-blue-03);
   box-shadow:inset 0 0 0.5rem var(--box-shadow-color);
 }
+
 
 .map.classic .leaflet-marker-icon {
   cursor: grab !important;

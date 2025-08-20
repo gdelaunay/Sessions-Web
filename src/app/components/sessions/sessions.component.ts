@@ -1,21 +1,21 @@
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChildren} from '@angular/core';
-import {DatePipe, NgForOf, NgIf} from "@angular/common";
+import {DatePipe, TitleCasePipe} from "@angular/common";
 import {FooterComponent} from '../footer/footer.component';
 import {HttpClient} from '@angular/common/http';
 import {AnimationService} from '../../services/animation.service';
 import {SessionService} from '../../services/session.service';
-import {RouterLink} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {MapComponent} from '../map/map.component';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-sessions',
   imports: [
     FooterComponent,
     RouterLink,
-    NgIf,
-    NgForOf,
     DatePipe,
-    MapComponent
+    MapComponent,
+    TitleCasePipe
   ],
   templateUrl: './sessions.component.html'
 })
@@ -28,7 +28,10 @@ export class SessionsComponent implements OnInit, AfterViewInit, OnDestroy {
   errorUrl: any;
   loading: boolean = false;
 
-  constructor(private http: HttpClient, private sessionService: SessionService, private animationService: AnimationService) {  }
+  constructor(private sessionService: SessionService,
+              private animationService: AnimationService,
+              private toastrService: ToastrService,
+              private router: Router) {  }
 
   ngOnInit(){
     this.error = null;
@@ -63,6 +66,19 @@ export class SessionsComponent implements OnInit, AfterViewInit, OnDestroy {
   refreshSessions(e: Event) {
     (e.currentTarget as HTMLButtonElement).blur();
     this.ngOnInit();
+  }
+
+  deleteSession(e: Event, sessionId: number){
+    (e.currentTarget as HTMLButtonElement).blur();
+    if(confirm("Êtes-vous sûr·e de vouloir supprimer la session ?")) {
+      this.sessionService.deleteSession(sessionId).subscribe({
+        next: () => {
+          this.ngOnInit();
+          this.toastrService.success(" La session a été supprimée.")
+        },
+        error: (err) => { this.toastrService.error(err.message) }
+      })
+    }
   }
 
   ngOnDestroy(){
