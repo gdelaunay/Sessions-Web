@@ -1,0 +1,109 @@
+<div class="card main-card" id="login-card">
+  <h2>Connexion</h2>
+
+
+  @if (loading) {
+    <h2> Chargement ... </h2>
+    <img class="loading" alt="chargement" src="" style="margin: 2rem">
+  }
+  @if (error) {
+    <h2> Erreur ! </h2>
+    <div><span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a></div>
+  }
+
+  <div id="form-div">
+    <form #loginForm="ngForm" (ngSubmit)="login()">
+      <div class="form-group"><label for="username"><h4>Nom d'utilisateur ou e-mail : </h4></label>
+        <input type="text" id="username" name="username" required></div>
+      <div class="form-group"><label for="password"><h4>Mot de passe : </h4></label>
+        <input type="password" id="password" name="password" required></div>
+      <label id="rememberme">
+        <input type="checkbox" checked="checked" name="rememberme" [defaultChecked]="false"> Se rappeler de moi
+      </label>
+      <div id="login-btns">
+        <br>
+        <button type="submit" [disabled]="!loginForm.form.valid">&nbsp; Se connecter &nbsp;</button>
+        <button class="google-login"><img class="google-login" alt="Se connecter avec Google" src="google-icon.svg"></button>
+      </div>
+      <div id="new-account">
+        Vous n'avez pas encore de compte ?
+        <a href="/new-account">Créer un compte</a>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+<app-footer/>
+
+<style>
+  /* ----- Portrait (mobile & tablette) ----- */
+  @media (orientation: portrait) {
+
+    #new-account { margin-bottom: -0.2rem !important; }
+
+    .form-group { width: calc(100% - 0.4rem) !important; }
+    #form-div { flex-direction: row !important; }
+    input[type=text], input[type=password] { width: 100% !important; }
+  }
+
+  .form-group {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0.8rem;
+  }
+
+  label {
+    margin-bottom: 0.4rem;
+    text-align: center;
+  }
+
+  #rememberme {
+    width: 100%;
+    margin-top: -0.4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  input {
+    margin-left: 0;
+    width: 20rem;
+    height: 2.2rem;
+  }
+
+  button {
+    margin-left: 0;
+    height: 2.6rem;
+  }
+
+  #login-btns {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .google-login {
+    height: 2.8rem;
+    width: 2.8rem;
+    border-radius: 50%;
+    padding: 0 !important;
+  }
+
+  img.google-login { margin-left: -1px; }
+
+  #new-account {
+    width: 100%;
+    text-align: center;
+    margin-bottom: -0.5rem;
+  }
+
+</style>
