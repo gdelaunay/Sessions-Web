@@ -114,7 +114,7 @@ export class SessionFormComponent implements OnInit {
 
   createNewSession() {
     this.sessionService.createSession(this.session).subscribe({
-      next: (res) => {
+      next: () => {
           this.router.navigate(["/sessions"]).then();
           this.toastrService.success(" La session a bien été créée.")
         this.loading = false;
