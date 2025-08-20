@@ -7,7 +7,7 @@
     <h2> Erreur ! </h2>
     <div><span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a></div>
   }
-  <h2> {{ spot?.Id ? 'Modifier spot : ' + spot.Name + ' (#' + spot.Id + ')' : 'Nouveau spot :' }}</h2>
+  <h2> {{ spot?.Id ? 'Modifier spot : ' + spot.Name + ' (#' + spot.Id + ')' : 'Nouveau spot' }}</h2>
   <div id="form-div">
     <form #spotForm="ngForm" (ngSubmit)="saveSpot()">
       <div class="form-group"><label for="name"><h4>Nom : </h4></label>
@@ -31,14 +31,13 @@
     h4 ~ br { display: none }
   }
 
-  form { width: 55%; }
+  form { width: 55%; padding: 0 1rem 0 0; }
   app-map { width: 45%; }
 
   .form-group:first-of-type { margin: 0.2rem auto 0.2rem auto}
 
   #name { width: 70% }
   #latitude, #longitude { width: 35% }
-  label { margin-right: 1rem }
 
   #form-prompt {
     text-align: center;
