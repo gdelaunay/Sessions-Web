@@ -22,7 +22,7 @@
   </div>
 }
 
-@for (spot of this.spots; track spot.id) {
+@for (spot of this.spots; track $index) {
   <div #spotCard class="card spot-card" [routerLink]="['/spot/' + spot.Id ]">
     <h2>{{ spot.Name }}</h2>
     <app-map [mapId]="'map-' + spot.Id" type="readonly" [lat]="spot.Latitude" [lon]="spot.Longitude" ></app-map>

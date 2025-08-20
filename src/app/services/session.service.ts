@@ -25,7 +25,6 @@ export class SessionService {
     return this.http.put(`${this.sessionsUrl}/${id}`, data, { observe: 'response' })
   }
   deleteSession( id : number) {
-    console.log( id )
     return this.http.delete(`${this.sessionsUrl}/${id}`)
   }
 }

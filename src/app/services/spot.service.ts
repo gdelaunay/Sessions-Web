@@ -24,7 +24,6 @@ export class SpotService {
     return this.http.put(`${this.spotsUrl}/${id}`, data, { observe: 'response' })
   }
   deleteSpot( id : number) {
-    console.log( id )
     return this.http.delete(`${this.spotsUrl}/${id}`)
   }
 }
