@@ -8,7 +8,7 @@
     <div><span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a></div>
   }
   <h2> {{ spot?.Id ? 'Modifier spot : ' + spot.Name + ' (#' + spot.Id + ')' : 'Nouveau spot' }}</h2>
-  <div id="form-div">
+  <div class="form-div">
     <form #spotForm="ngForm" (ngSubmit)="saveSpot()">
       <div class="form-group"><label for="name"><h4>Nom : </h4></label>
       <input type="text" id="name" name="spotName" [(ngModel)]="spot.Name" required></div>

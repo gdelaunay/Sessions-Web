@@ -200,7 +200,7 @@
 
   input { font-size: 0.9rem !important; }
 
-  #form-div  { flex-direction: column !important; margin-bottom: 0 !important }
+  .form-div  { flex-direction: column !important; margin-bottom: 0 !important }
   form {justify-content: start !important; order: 1}
   form { padding: 0 !important }
 }
@@ -294,7 +294,7 @@ main{
 
 .zoomed main{ height: calc(100% - 2rem - 4px); }
 
-app-home, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-detail, app-session-form, app-guest, app-login-page{
+app-home, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-detail, app-session-form, app-guest, app-login-page, app-new-account-page{
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -516,7 +516,7 @@ h5 { font-size: 1rem }
 
 
 /* ---------- Formulaire, boutons et inputs ---------- */
-#form-div {
+.form-div {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -539,7 +539,7 @@ form {
 
 form button { margin-left: 70%; }
 
-input[type="checkbox"] { max-height: 1rem; max-width: 1rem; margin-right: 0.4rem; margin-bottom: 0rem; cursor: pointer; }
+input[type="checkbox"] { max-height: 1rem; max-width: 1rem; margin-right: 0.4rem; margin-bottom: 0; cursor: pointer; }
 
 input, select, textarea {
   padding: 0.25rem;

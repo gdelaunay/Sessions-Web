@@ -10,7 +10,7 @@
   @if (session.Id) { <h2> Modifier session : {{ session.StartTime | date:'EEEE dd/MM/yyyy' | titlecase }} - {{ session.Spot.Name }}</h2> }
   @else if (!error && !loading) { <h2> Nouvelle session </h2> }
 
-  <div id="form-div">
+  <div class="form-div">
     <form #sessionForm="ngForm" (ngSubmit)="saveSession()">
       <div class="form-group spot"><label for="spot"><h4>Spot : </h4></label>
         <select id="spot" name="spotName" [(ngModel)]="session.Spot.Id" required>
