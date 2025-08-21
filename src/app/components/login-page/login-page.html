@@ -11,7 +11,7 @@
     <div><span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a></div>
   }
 
-  <div id="form-div">
+  <div class="form-div">
     <form #loginForm="ngForm" (ngSubmit)="login()">
       <div class="form-group"><label for="username"><h4>Nom d'utilisateur ou e-mail : </h4></label>
         <input type="text" id="username" name="username" required></div>
@@ -43,7 +43,7 @@
     #new-account { margin-bottom: -0.2rem !important; }
 
     .form-group { width: calc(100% - 0.4rem) !important; }
-    #form-div { flex-direction: row !important; }
+    .form-div { flex-direction: row !important; }
     input[type=text], input[type=password] { width: 100% !important; }
   }
 
@@ -53,9 +53,12 @@
     margin-bottom: 0.8rem;
   }
 
+  .form-group:first-of-type { margin-top: 0 !important; }
+
   label {
     margin-bottom: 0.4rem;
-    text-align: center;
+    text-align: start;
+    width: 92%;
   }
 
   #rememberme {

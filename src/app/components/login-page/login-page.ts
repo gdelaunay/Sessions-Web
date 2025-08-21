@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import {FooterComponent} from '../footer/footer.component';
-import {ForecastComponent} from '../forecast/forecast.component';
-import {MapComponent} from '../map/map.component';
 import {FormsModule} from '@angular/forms';
 
 @Component({
@@ -10,9 +8,9 @@ import {FormsModule} from '@angular/forms';
     FooterComponent,
     FormsModule
   ],
-  templateUrl: './login-page.component.html'
+  templateUrl: './login-page.html'
 })
-export class LoginPageComponent {
+export class LoginPage {
   error: any;
   errorUrl: any;
   loading: boolean = false;
