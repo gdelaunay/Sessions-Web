@@ -40,11 +40,12 @@
   /* ----- Portrait (mobile & tablette) ----- */
   @media (orientation: portrait) {
 
-    #new-account { margin-bottom: -0.2rem !important; }
-
+    #new-account { margin-bottom: 0 !important; }
+    .form-group:first-of-type { margin-top: 0.4rem !important; }
     .form-group { width: calc(100% - 0.4rem) !important; }
     .form-div { flex-direction: row !important; }
     input[type=text], input[type=password] { width: 100% !important; }
+    label { width: 98% !important; }
   }
 
   .form-group {
@@ -53,7 +54,7 @@
     margin-bottom: 0.8rem;
   }
 
-  .form-group:first-of-type { margin-top: 0 !important; }
+  .form-group:first-of-type { margin-top: 0; }
 
   label {
     margin-bottom: 0.4rem;
