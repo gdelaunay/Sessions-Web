@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SpotFormComponent } from './spot-form.component';
+import { Spots } from './spots';
 
-describe('SpotFormComponent', () => {
-  let component: SpotFormComponent;
-  let fixture: ComponentFixture<SpotFormComponent>;
+describe('Spots', () => {
+  let component: Spots;
+  let fixture: ComponentFixture<Spots>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SpotFormComponent]
+      imports: [Spots]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SpotFormComponent);
+    fixture = TestBed.createComponent(Spots);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

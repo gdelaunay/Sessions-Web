@@ -4,7 +4,7 @@ import {FooterComponent} from '../footer/footer.component';
 import {AnimationService} from '../../services/animation.service';
 import {SessionService} from '../../services/session.service';
 import {RouterLink} from '@angular/router';
-import {MapComponent} from '../map/map.component';
+import {Map} from '../map/map';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({
@@ -13,12 +13,12 @@ import {ToastrService} from 'ngx-toastr';
     FooterComponent,
     RouterLink,
     DatePipe,
-    MapComponent,
+    Map,
     TitleCasePipe
   ],
-  templateUrl: './sessions.component.html'
+  templateUrl: './sessions.html'
 })
-export class SessionsComponent implements OnInit, AfterViewInit, OnDestroy {
+export class Sessions implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChildren('sessionCard') sessionCardsRef!: QueryList<ElementRef>;
 

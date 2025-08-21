@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {sessionsApiUrl} from '../app.component';
+import {sessionsApiUrl} from '../app';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({

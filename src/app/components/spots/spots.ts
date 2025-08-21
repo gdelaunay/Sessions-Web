@@ -4,19 +4,19 @@ import { HttpClient } from '@angular/common/http';
 import {SpotService} from '../../services/spot.service';
 import {RouterLink} from '@angular/router';
 import {AnimationService} from '../../services/animation.service';
-import {MapComponent} from '../map/map.component';
+import {Map} from '../map/map';
 
 @Component({
   selector: 'app-spots',
   imports: [
     FooterComponent,
     RouterLink,
-    MapComponent
+    Map
   ],
-  templateUrl: './spots.component.html'
+  templateUrl: './spots.html'
 })
 
-export class SpotsComponent implements OnInit, AfterViewInit, OnDestroy {
+export class Spots implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChildren('spotCard') spotCardsRef!: QueryList<ElementRef>;
 

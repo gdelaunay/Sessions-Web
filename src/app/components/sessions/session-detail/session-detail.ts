@@ -6,8 +6,8 @@ import {FooterComponent} from '../../footer/footer.component';
   imports: [
     FooterComponent
   ],
-  templateUrl: './session-detail.component.html'
+  templateUrl: './session-detail.html'
 })
-export class SessionDetailComponent {
+export class SessionDetail {
 
 }

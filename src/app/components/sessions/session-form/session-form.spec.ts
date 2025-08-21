@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SpotDetailComponent } from './spot-detail.component';
+import { SessionForm } from './session-form';
 
-describe('SpotDetailComponent', () => {
-  let component: SpotDetailComponent;
-  let fixture: ComponentFixture<SpotDetailComponent>;
+describe('SessionForm', () => {
+  let component: SessionForm;
+  let fixture: ComponentFixture<SessionForm>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SpotDetailComponent]
+      imports: [SessionForm]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SpotDetailComponent);
+    fixture = TestBed.createComponent(SessionForm);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

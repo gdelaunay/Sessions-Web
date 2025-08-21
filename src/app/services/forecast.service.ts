@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {sessionsApiUrl} from '../app.component';
+import {sessionsApiUrl} from '../app';
 
 @Injectable({
   providedIn: 'root'

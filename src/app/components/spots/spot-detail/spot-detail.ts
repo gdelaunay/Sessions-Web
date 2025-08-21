@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren} f
 import {FooterComponent} from '../../footer/footer.component';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {SpotService} from '../../../services/spot.service';
-import {MapComponent} from '../../map/map.component';
+import {Map} from '../../map/map';
 import {ForecastComponent} from '../../forecast/forecast.component';
 import {ForecastService} from '../../../services/forecast.service';
 import {AnimationService} from '../../../services/animation.service';
@@ -15,12 +15,12 @@ type ErrorType = 'spot' | 'forecast';
   imports: [
     FooterComponent,
     RouterLink,
-    MapComponent,
+    Map,
     ForecastComponent
   ],
-  templateUrl: './spot-detail.component.html'
+  templateUrl: './spot-detail.html'
 })
-export class SpotDetailComponent implements OnInit, AfterViewInit {
+export class SpotDetail implements OnInit, AfterViewInit {
   spotId: any;
   spot: any;
   forecasts: any;

@@ -4,10 +4,10 @@ import * as L from 'leaflet';
 @Component({
   selector: 'app-map',
   imports: [],
-  templateUrl: './map.component.html'
+  templateUrl: './map.html'
 })
 
-export class MapComponent implements AfterViewInit {
+export class Map implements AfterViewInit {
   @Input() mapId: string = 'map-' + Math.floor(Math.random() * 10000);
   @Input() type: 'classic' | 'readonly' = 'classic';
   @Input() lat: number = 0;

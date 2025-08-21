@@ -14,10 +14,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  templateUrl: './session-form.component.html'
+  templateUrl: './session-form.html'
 })
 
-export class SessionFormComponent implements OnInit {
+export class SessionForm implements OnInit {
   sessionFormParam: any;
   spotIdParam: any;
   session: any;

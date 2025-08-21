@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {MapComponent} from '../../map/map.component';
+import {Map} from '../../map/map';
 import {FooterComponent} from '../../footer/footer.component';
 import {SpotService} from '../../../services/spot.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -12,11 +12,11 @@ import {ToastrService} from 'ngx-toastr';
   imports: [
     FooterComponent,
     FormsModule,
-    MapComponent
+    Map
   ],
-  templateUrl: './spot-form.component.html'
+  templateUrl: './spot-form.html'
 })
-export class SpotFormComponent implements OnInit {
+export class SpotForm implements OnInit {
   spotFormParam: any;
   spot: any;
   error: any;

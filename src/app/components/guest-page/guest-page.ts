@@ -3,19 +3,19 @@ import {FooterComponent} from '../footer/footer.component';
 import {HttpClient} from '@angular/common/http';
 import {ForecastService} from '../../services/forecast.service';
 import {ForecastComponent} from '../forecast/forecast.component';
-import {MapComponent} from '../map/map.component';
+import {Map} from '../map/map';
 import {roundTo} from '../../utils';
 
 @Component({
-  selector: 'app-guest',
+  selector: 'app-guest-page',
   imports: [
     FooterComponent,
     ForecastComponent,
-    MapComponent
+    Map
   ],
-  templateUrl: './guest.component.html'
+  templateUrl: './guest-page.html'
 })
-export class GuestComponent {
+export class GuestPage {
 
   forecasts: any;
   error: any;

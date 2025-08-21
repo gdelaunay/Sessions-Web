@@ -14,7 +14,7 @@ export const sessionsApiUrl: string = sessionsApiUrl_HTTP;
   template: "<router-outlet/>"
 })
 
-export class AppComponent implements  OnInit, AfterViewInit, OnDestroy {
+export class App implements  OnInit, AfterViewInit, OnDestroy {
   title = 'SurfSessions-Web';
 
   constructor(private animationService: AnimationService) {}
@@ -48,7 +48,7 @@ export class AppComponent implements  OnInit, AfterViewInit, OnDestroy {
       { path: '/spot', id: 'spotsBtn' },
       { path: '/alert', id: 'alertsBtn' },
       { path: '/session', id: 'sessionsBtn' },
-      { path: '/guest', id: 'guestBtn' },
+      { path: '/guest-page', id: 'guestBtn' },
       { path: '/', id: 'homeBtn' }
     ];
     const match = routes.find(route => path.startsWith(route.path));

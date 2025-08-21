@@ -5,14 +5,14 @@ import {ForecastService} from '../../services/forecast.service';
 import {ForecastComponent} from '../forecast/forecast.component';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-home-page',
   imports: [
     FooterComponent,
     ForecastComponent
   ],
-  templateUrl: './home.component.html'
+  templateUrl: './home-page.html'
 })
-export class HomeComponent implements OnInit {
+export class HomePage implements OnInit {
 
   dailyForecasts: any;
   hourly3Forecasts: any;
