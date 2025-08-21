@@ -1,0 +1,65 @@
+<div class="card main-card" id="new-account-card">
+  <h2>Créer un compte</h2>
+
+
+  @if (loading) {
+    <h2> Chargement ... </h2>
+    <img class="loading" alt="chargement" src="" style="margin: 2rem">
+  }
+  @if (error) {
+    <h2> Erreur ! </h2>
+    <div><span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a></div>
+  }
+
+  <div class="form-div">
+    <form #newAccountForm="ngForm" (ngSubmit)="login()">
+      <div class="form-group"><label for="username"><h4>Nom d'utilisateur ou e-mail : </h4></label>
+        <input type="text" id="username" name="username" required></div>
+      <div class="form-group"><label for="password"><h4>Mot de passe : </h4></label>
+        <input type="password" id="password" name="password" required></div>
+      <div class="form-group"><label for="password-confirmation"><h4>Confirmer le mot de passe : </h4></label>
+        <input type="password" id="password-confirmation" name="password-confirmation" required></div>
+        <button type="submit" [disabled]="!newAccountForm.form.valid">&nbsp; Créer mon compte &nbsp;</button>
+    </form>
+  </div>
+
+</div>
+
+<app-footer/>
+
+<style>
+  /* ----- Portrait (mobile & tablette) ----- */
+  @media (orientation: portrait) {
+    form { width: 300px; }
+    .form-group:first-of-type { margin-top: 0.4rem !important; }
+    .form-group { width: calc(100% - 0.4rem) !important; }
+    .form-div { flex-direction: row !important;  }
+    input[type=text], input[type=password] { width: 100% !important; }
+  }
+
+  .form-group:first-of-type { margin-top: 0; margin-bottom: 0.8rem; }
+
+  .form-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  label {
+    margin-bottom: 0.4rem;
+    text-align: start;
+    width: 95%;
+  }
+
+  input {
+    margin-left: 0;
+    width: 20rem;
+    height: 2.2rem;
+  }
+
+  button {
+    margin: 1.8rem auto 0.4rem auto;
+    height: 2.4rem;
+  }
+
+
+</style>
