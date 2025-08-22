@@ -3,10 +3,15 @@ import {sessionsApiUrl} from '../app';
 import {HttpClient} from '@angular/common/http';
 import {switchMap, tap} from 'rxjs';
 
+export interface User {
+  id: string;
+  userName: string;
+}
+
 @Injectable({ providedIn: 'root' })
 export class IdentityService {
 
-  currentUser = signal<any>(null);
+  currentUser = signal<User | null>(null);
 
   constructor(private http: HttpClient) { }
 

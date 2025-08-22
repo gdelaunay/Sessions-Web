@@ -1,22 +1,14 @@
 <div class="card main-card" id="login-card">
   <h2>Connexion</h2>
 
-
-  @if (loading) {
-    <h2> Chargement ... </h2>
-    <img class="loading" alt="chargement" src="" style="margin: 2rem">
-  }
-  @if (error) {
-    <h2> Erreur ! </h2>
-    <div><span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a></div>
-  }
-
   <div class="form-div">
     <form #loginForm="ngForm" (ngSubmit)="login()">
       <div class="form-group"><label for="email"><h4>E-mail : </h4></label>
-        <input type="text" id="email" name="email" required></div>
+        <input type="text" id="email" name="email" #email ngModel email required>
+        @if (email.value && !email.checkValidity()){ <span> L'e-mail n'est pas valide </span> }
+      </div>
       <div class="form-group"><label for="password"><h4>Mot de passe : </h4></label>
-        <input type="password" id="password" name="password" required></div>
+        <input type="password" id="password" name="password"  ngModel #password required></div>
       <label id="rememberme">
         <input type="checkbox" checked="checked" name="rememberme" [defaultChecked]="false"> Se rappeler de moi
       </label>
@@ -48,6 +40,11 @@
     label { width: 98% !important; }
   }
 
+  form{
+    width: 25rem;
+    max-width: 25rem;
+  }
+
   .form-group {
     flex-direction: column;
     align-items: center;
@@ -58,8 +55,9 @@
 
   label {
     margin-bottom: 0.4rem;
+    margin-left: 0.4rem;
     text-align: start;
-    width: 92%;
+    width: 90%;
   }
 
   #rememberme {
@@ -74,7 +72,7 @@
 
   input {
     margin-left: 0;
-    width: 20rem;
+    width: 90%;
     height: 2.2rem;
   }
 
