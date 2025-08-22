@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {sessionsApiUrl} from '../app';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class ForecastService {
 
   private dailyForecastUrl = sessionsApiUrl + '/forecast/daily';

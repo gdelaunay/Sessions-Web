@@ -2,10 +2,7 @@ import { Injectable } from '@angular/core';
 import {sessionsApiUrl} from '../app';
 import {HttpClient} from '@angular/common/http';
 
-@Injectable({
-  providedIn: 'root'
-})
-
+@Injectable({ providedIn: 'root' })
 export class SessionService {
 
   private sessionsUrl = sessionsApiUrl + '/session';
