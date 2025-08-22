@@ -1,4 +1,4 @@
-<div class="card main-card" id="new-account-card">
+<div class="card main-card" id="register-card">
   <h2>Créer un compte</h2>
 
 
@@ -12,14 +12,14 @@
   }
 
   <div class="form-div">
-    <form #newAccountForm="ngForm" (ngSubmit)="login()">
+    <form #registerForm="ngForm" (ngSubmit)="login()">
       <div class="form-group"><label for="email"><h4>E-mail : </h4></label>
         <input type="text" id="email" name="email" required></div>
       <div class="form-group"><label for="password"><h4>Mot de passe : </h4></label>
         <input type="password" id="password" name="password" required></div>
       <div class="form-group"><label for="password-confirmation"><h4>Confirmer le mot de passe : </h4></label>
         <input type="password" id="password-confirmation" name="password-confirmation" required></div>
-        <button type="submit" [disabled]="!newAccountForm.form.valid">&nbsp; Créer mon compte &nbsp;</button>
+        <button type="submit" [disabled]="!registerForm.form.valid">&nbsp; Créer mon compte &nbsp;</button>
     </form>
   </div>
 

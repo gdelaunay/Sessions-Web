@@ -25,9 +25,9 @@
         <button type="submit" [disabled]="!loginForm.form.valid">&nbsp; Se connecter &nbsp;</button>
         <button class="google-login"><img class="google-login" alt="Se connecter avec Google" src="google-icon.svg"></button>
       </div>
-      <div id="new-account">
+      <div id="register">
         Vous n'avez pas encore de compte ?
-        <a href="/new-account">Créer un compte</a>
+        <a href="/register">Créer un compte</a>
       </div>
     </form>
   </div>
@@ -40,7 +40,7 @@
   /* ----- Portrait (mobile & tablette) ----- */
   @media (orientation: portrait) {
 
-    #new-account { margin-bottom: 0 !important; }
+    #register { margin-bottom: 0 !important; }
     .form-group:first-of-type { margin-top: 0.4rem !important; }
     .form-group { width: calc(100% - 0.4rem) !important; }
     .form-div { flex-direction: row !important; }
@@ -104,7 +104,7 @@
 
   img.google-login { margin-left: -1px; }
 
-  #new-account {
+  #register {
     width: 100%;
     text-align: center;
     margin-bottom: -0.5rem;

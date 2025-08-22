@@ -294,7 +294,7 @@ main{
 
 .zoomed main{ height: calc(100% - 2rem - 4px); }
 
-app-home-page, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-detail, app-session-form, app-guest-page, app-login-page, app-new-account-page{
+app-home-page, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-detail, app-session-form, app-guest-page, app-login-page, app-register-page{
   display: flex;
   flex-direction: column;
   overflow-y: auto;

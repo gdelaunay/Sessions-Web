@@ -3,14 +3,14 @@ import {FooterComponent} from '../footer/footer.component';
 import {FormsModule} from '@angular/forms';
 
 @Component({
-  selector: 'app-new-account-page',
+  selector: 'app-register-page',
   imports: [
     FooterComponent,
     FormsModule
   ],
-  templateUrl: './new-account-page.html'
+  templateUrl: './register-page.html'
 })
-export class NewAccountPage {
+export class RegisterPage {
   error: any;
   errorUrl: any;
   loading: boolean = false;

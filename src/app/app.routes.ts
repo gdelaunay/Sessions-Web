@@ -8,7 +8,7 @@ import {SessionDetail} from './components/sessions/session-detail/session-detail
 import {SessionForm} from './components/sessions/session-form/session-form';
 import {GuestPage} from './components/guest-page/guest-page';
 import { LoginPage } from './components/login-page/login-page';
-import {NewAccountPage} from './components/new-account-page/new-account-page';
+import {RegisterPage} from './components/register-page/register-page';
 
 export const routes: Routes = [
   { path: 'spots', component: Spots },
@@ -19,6 +19,6 @@ export const routes: Routes = [
   { path: 'session/form/:param', component: SessionForm },
   { path: 'guest', component: GuestPage },
   { path: 'login', component: LoginPage },
-  { path: 'new-account', component: NewAccountPage },
+  { path: 'register', component: RegisterPage },
   { path: '', component: HomePage }
 ];
