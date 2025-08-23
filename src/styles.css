@@ -4,6 +4,7 @@
   --mid-blue: #2e74b5;
   --blue: #5B9BD5;
   --light-blue: #BDD7EE;
+  --light-blue-grey: #9fb4c6;
 
   --black: #0D0D0D;
   --darker-grey: #292929;
@@ -42,6 +43,8 @@
     --secondary-text-color: var(--white);
     --disabled-text-color: var(--grey);
     --aside-text-color: var(--secondary-text-color);
+    --link-text-color: var(--dark-grey);
+    --link-hover-text-color: var(--grey);
 
     --logo-background-color: rgba(0,0,0,0);
 
@@ -86,6 +89,8 @@
     --secondary-text-color: var(--darkblue);
     --disabled-text-color: var(--grey);
     --aside-text-color: var(--primary-text-color);
+    --link-text-color: var(--light-blue);
+    --link-hover-text-color: var(--light-blue-grey);
 
     --logo-background-color: var(--light-grey);
 
@@ -480,11 +485,11 @@ p {
 a {
   text-decoration: none;
   cursor: pointer;
-  color: var(--dark-grey);
+  color: var(--link-text-color);
 }
 
 a:hover, a:focus {
-  color: var(--grey);
+  color: var(--link-hover-text-color);
 }
 
 a.disabled {
