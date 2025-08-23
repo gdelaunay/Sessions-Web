@@ -1,5 +1,4 @@
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChildren} from '@angular/core';
-import {FooterComponent} from '../footer/footer.component';
 import { HttpClient } from '@angular/common/http';
 import {SpotService} from '../../services/spot.service';
 import {RouterLink} from '@angular/router';
@@ -9,7 +8,6 @@ import {Map} from '../map/map';
 @Component({
   selector: 'app-spots',
   imports: [
-    FooterComponent,
     RouterLink,
     Map
   ],

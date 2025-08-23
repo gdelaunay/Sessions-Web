@@ -1,5 +1,4 @@
 import {Component, ViewChild} from '@angular/core';
-import {FooterComponent} from '../footer/footer.component';
 import {FormsModule, NgForm} from '@angular/forms';
 import {IdentityService} from '../../services/identity.service';
 import {ToastrService} from 'ngx-toastr';
@@ -8,7 +7,6 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-login-page',
   imports: [
-    FooterComponent,
     FormsModule
   ],
   templateUrl: './login-page.html'

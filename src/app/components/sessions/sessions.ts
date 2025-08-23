@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {DatePipe, TitleCasePipe} from "@angular/common";
-import {FooterComponent} from '../footer/footer.component';
 import {AnimationService} from '../../services/animation.service';
 import {SessionService} from '../../services/session.service';
 import {RouterLink} from '@angular/router';
@@ -10,7 +9,6 @@ import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-sessions',
   imports: [
-    FooterComponent,
     RouterLink,
     DatePipe,
     Map,

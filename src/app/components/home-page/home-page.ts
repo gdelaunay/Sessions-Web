@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {FooterComponent} from '../footer/footer.component';
 import {HttpClient} from '@angular/common/http';
 import {ForecastService} from '../../services/forecast.service';
 import {ForecastComponent} from '../forecast/forecast.component';
@@ -7,7 +6,6 @@ import {ForecastComponent} from '../forecast/forecast.component';
 @Component({
   selector: 'app-home-page',
   imports: [
-    FooterComponent,
     ForecastComponent
   ],
   templateUrl: './home-page.html'

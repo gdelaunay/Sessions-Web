@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
-import {FooterComponent} from '../../footer/footer.component';
 
 @Component({
   selector: 'app-session-detail',
-  imports: [
-    FooterComponent
-  ],
   templateUrl: './session-detail.html'
 })
 export class SessionDetail {

@@ -1,5 +1,4 @@
 import {AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren} from '@angular/core';
-import {FooterComponent} from '../../footer/footer.component';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {SpotService} from '../../../services/spot.service';
 import {Map} from '../../map/map';
@@ -13,7 +12,6 @@ type ErrorType = 'spot' | 'forecast';
 @Component({
   selector: 'app-spot-detail',
   imports: [
-    FooterComponent,
     RouterLink,
     Map,
     ForecastComponent

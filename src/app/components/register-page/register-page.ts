@@ -1,16 +1,12 @@
 import {Component, ViewChild} from '@angular/core';
-import {FooterComponent} from '../footer/footer.component';
 import {FormsModule, NgForm} from '@angular/forms';
-import {SessionService} from '../../services/session.service';
-import {SpotService} from '../../services/spot.service';
 import {ToastrService} from 'ngx-toastr';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {IdentityService} from '../../services/identity.service';
 
 @Component({
   selector: 'app-register-page',
   imports: [
-    FooterComponent,
     FormsModule
   ],
   templateUrl: './register-page.html'
