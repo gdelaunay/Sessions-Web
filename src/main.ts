@@ -18,7 +18,7 @@ const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([timeoutInterceptor])),
     { provide: LOCALE_ID, useValue: 'fr-FR' },
     provideAnimations(),
-    provideToastr()
+    provideToastr({positionClass: 'toast-bottom-right'})
   ]
 };
 
