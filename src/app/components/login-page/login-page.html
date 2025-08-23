@@ -15,7 +15,7 @@
       <div id="login-btns">
         <br>
         <button type="submit" [disabled]="!loginForm.form.valid">&nbsp; Se connecter &nbsp;</button>
-        <button class="google-login"><img class="google-login" alt="Se connecter avec Google" src="google-icon.svg"></button>
+        <button type="button" class="google-login" (click)="alert('Désolé, la connexion avec Google est en cours de développement.')"><img class="google-login" alt="Se connecter avec Google" src="google-icon.svg"></button>
       </div>
       <div id="register">
         Vous n'avez pas encore de compte ?

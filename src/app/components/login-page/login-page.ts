@@ -29,4 +29,5 @@ export class LoginPage {
     });
   }
 
+  protected readonly alert = alert;
 }
