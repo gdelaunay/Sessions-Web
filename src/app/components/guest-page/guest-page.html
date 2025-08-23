@@ -1,0 +1,74 @@
+<div class="card main-card" id="guest-card">
+  <h2 id="spot">Mode invité (Web standalone) :</h2>
+
+  <div id="locationDiv">
+    <div id="locationPrompt">
+      <h4>Sélectionner un point sur la carte, et valider pour obtenir les prévisions météo marines.</h4>
+      <br><h4>Point sélectionné : </h4>
+      <p> Latitude = &nbsp;&nbsp;<input #latInput type="text"> </p>
+      <p> Longitude =<input #lonInput type="text"> </p>
+      <br><button #validateCoordsBtn (click)="getForecasts()">Valider</button>
+    </div>
+    <app-map mapId='guest-map' (outCoords)="updatePosition($event)"/>
+  </div>
+
+  @if (loading) {
+    <h2> Chargement ... </h2>
+    <img class="loading" alt="chargement" src="" style="margin: 2rem">
+  }
+  @if (error) {
+    <h2> Erreur ! </h2>
+    <div><span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a></div>
+  }
+
+  @if (forecasts) { <app-forecast [forecasts]="forecasts" [type]="'guest'" /> }
+
+  <br>⚠️ Cette page n'est qu'un aperçu de l'application <b>Sessions</b>. Pour bénéficier de l'API Sessions et obtenir
+  des prévisions détaillées, <b>créez un compte</b> et commencez à configurer vos spots préférés !
+</div>
+
+<style>
+  /* ----- Portrait (mobile & tablette) ----- */
+  @media (orientation: portrait) {
+    #locationDiv { flex-direction: column !important; margin-bottom: 0 !important }
+    #locationPrompt, app-map { width: 100% !important }
+    #locationPrompt {justify-content: start !important; order: 1}
+    h4, p { margin: 0.4rem 0 !important }
+    h4 ~ br { display: none }
+  }
+
+  #locationDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  #locationPrompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #locationPrompt { width: 55%; }
+  app-map { width: 45%; }
+
+  h4 {
+    margin: 0 0.4rem 0.6rem 0;
+    text-align: center;
+  }
+
+  p { margin: 0.4rem 0; }
+
+  input {
+    width: 10rem;
+    text-align: center;
+  }
+
+  button {
+    margin-left: 25%;
+  }
+
+</style>
+

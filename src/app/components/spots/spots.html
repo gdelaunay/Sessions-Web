@@ -1,0 +1,42 @@
+<div class="card toolbar-card">
+  <h2>Mes spots :</h2>
+  <button class="refreshBtn" (click)="refreshSpots($event)">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+  </button>
+  <button class="newBtn" [routerLink]="['/spot/form', 'new']">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><line x1="1" y1="12" x2="23" y2="12"></line></svg>
+    <span>Nouveau</span>
+  </button>
+</div>
+
+@if (error || loading) {
+  <div class="card main-card">
+    @if (loading) {
+      <h2> Chargement ... </h2>
+      <img class="loading" alt="chargement" src="" style="margin: 2rem">
+    }
+    @if (error) {
+      <h2> Erreur ! </h2>
+      <div><span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a></div>
+    }
+  </div>
+}
+
+@for (spot of this.spots; track $index) {
+  <div #spotCard class="card spot-card" [routerLink]="['/spot/' + spot.Id ]">
+    <h2>{{ spot.Name }}</h2>
+    <app-map [mapId]="'map-' + spot.Id" type="readonly" [lat]="spot.Latitude" [lon]="spot.Longitude" ></app-map>
+    <div class="spot-details">
+      <p> Latitude = <b>{{ spot.Latitude }}</b> </p>
+      <p> Longitude = <b>{{ spot.Longitude }}</b> </p>
+    </div>
+  </div>
+}
+
+<style>
+
+  .spot-card {
+    cursor: pointer;
+  }
+
+</style>

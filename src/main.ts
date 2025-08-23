@@ -1,7 +1,7 @@
 import {ApplicationConfig, LOCALE_ID, provideZoneChangeDetection} from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { AppComponent } from './app/app.component';
+import { App } from './app/app';
 import {provideHttpClient, withInterceptors} from '@angular/common/http';
 import {provideRouter} from '@angular/router';
 import { provideToastr } from 'ngx-toastr';
@@ -18,12 +18,12 @@ const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([timeoutInterceptor])),
     { provide: LOCALE_ID, useValue: 'fr-FR' },
     provideAnimations(),
-    provideToastr()
+    provideToastr({positionClass: 'toast-bottom-right'})
   ]
 };
 
 registerLocaleData(localeFr);
 
-bootstrapApplication(AppComponent, appConfig)
+bootstrapApplication(App, appConfig)
   .catch((err) => console.error(err));
 

@@ -4,6 +4,7 @@
   --mid-blue: #2e74b5;
   --blue: #5B9BD5;
   --light-blue: #BDD7EE;
+  --light-blue-grey: #9fb4c6;
 
   --black: #0D0D0D;
   --darker-grey: #292929;
@@ -42,6 +43,8 @@
     --secondary-text-color: var(--white);
     --disabled-text-color: var(--grey);
     --aside-text-color: var(--secondary-text-color);
+    --link-text-color: var(--dark-grey);
+    --link-hover-text-color: var(--grey);
 
     --logo-background-color: rgba(0,0,0,0);
 
@@ -86,6 +89,8 @@
     --secondary-text-color: var(--darkblue);
     --disabled-text-color: var(--grey);
     --aside-text-color: var(--primary-text-color);
+    --link-text-color: var(--light-blue);
+    --link-hover-text-color: var(--light-blue-grey);
 
     --logo-background-color: var(--light-grey);
 
@@ -174,7 +179,7 @@
 
   .card { padding: 0.4rem !important; }
 
-  .main-card { margin-top: 2.6rem !important; }
+  .main-card { margin: auto !important; }
 
   .card:not(.toolbar-card) > h2:first-of-type { margin: -2.4rem 0 -0.6rem -0.2rem !important; }
 
@@ -200,7 +205,7 @@
 
   input { font-size: 0.9rem !important; }
 
-  #form-div  { flex-direction: column !important; margin-bottom: 0 !important }
+  .form-div  { flex-direction: column !important; margin-bottom: 0 !important }
   form {justify-content: start !important; order: 1}
   form { padding: 0 !important }
 }
@@ -255,6 +260,11 @@ header {
   border-bottom: 1px solid var(--border-color-grey);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #title{
@@ -264,6 +274,24 @@ header {
   align-items: center;
 }
 
+#user-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+}
+
+#user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+}
+
+#user-div svg {
+  height: 2.4rem;
+  margin: 0 0.2rem 0 0.6rem;
+}
 
 header h1 {
   color : var(--primary-text-color);
@@ -279,9 +307,9 @@ header h1 {
 
 /* ----- ZOOMED ----- */
 .zoomed header {  padding: 0.2rem; }
-.zoomed #title { justify-content: center; }
-.zoomed header h1 { font-size: 1.5rem; }
-.zoomed .logo { height: 2rem; }
+.zoomed #title {  /* margin: 0 auto; */ }
+.zoomed header h1 { font-size: 1.5rem; margin: 0 0.2rem}
+.zoomed .logo { height: 2rem;  margin: 0.1rem}
 
 
 /* ---------- Main ---------- */
@@ -294,7 +322,7 @@ main{
 
 .zoomed main{ height: calc(100% - 2rem - 4px); }
 
-app-home, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-detail, app-session-form, app-guest{
+app-home-page, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-detail, app-session-form, app-guest-page, app-login-page, app-register-page, #main-div{
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -360,10 +388,6 @@ ul > div {
   flex-direction: column;
 }
 
-#guestBtn{
-  margin-top: auto;
-}
-
 li {
   margin: 0 0 0.6rem 0;
 }
@@ -386,13 +410,13 @@ li a:hover {
   margin-bottom: -0.2rem;
 }
 
-li a:hover, li.active a {
+li a:hover, li a:focus, li.active a {
   color: var(--aside-text-color);
   background: var(--background-color-grey-01);
   border: 1px solid var(--border-color-grey);
 }
 
-li a:focus {
+li a:active {
   margin-top: 0.4rem;
   margin-bottom: -0.4rem;
   color: var(--aside-text-color);
@@ -439,19 +463,19 @@ li a:focus {
   margin-top: 0.1rem;
 }
 
-.toolbar-card button:hover {
+.toolbar-card button:hover, .toolbar-card button:focus {
   margin-top: 0.3rem;
   margin-bottom: -0.1rem;
 }
 
-.toolbar-card button:focus {
+.toolbar-card button:active {
   margin-top: 0.5rem;
   margin-bottom: -0.3rem;
 }
 
 .deleteBtn { color: var(--red); border-color: var(--red); background-color: var(--red-01); }
-.deleteBtn:hover, .deleteBtn:active { background-color: var(--red-02); }
-.deleteBtn:focus { background-color: var(--red-03); box-shadow:inset 0 0 0.5rem var(--box-shadow-color); }
+.deleteBtn:hover, .deleteBtn:focus { background-color: var(--red-02); }
+.deleteBtn:active { background-color: var(--red-03); box-shadow:inset 0 0 0.5rem var(--box-shadow-color); }
 
 /* ----- Spot cards, Session cards ----- */
 
@@ -479,11 +503,12 @@ p {
 
 a {
   text-decoration: none;
-  color: var(--dark-grey);
+  cursor: pointer;
+  color: var(--link-text-color);
 }
 
 a:hover, a:focus {
-  color: var(--grey);
+  color: var(--link-hover-text-color);
 }
 
 a.disabled {
@@ -515,7 +540,7 @@ h5 { font-size: 1rem }
 
 
 /* ---------- Formulaire, boutons et inputs ---------- */
-#form-div {
+.form-div {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -527,7 +552,6 @@ form {
   display: flex;
   flex-direction: column;
   align-items: start;
-  padding: 0 1rem 0 0;
 }
 
 .form-group {
@@ -539,10 +563,14 @@ form {
 
 form button { margin-left: 70%; }
 
+input[type="checkbox"] { max-height: 1rem; max-width: 1rem; margin-right: 0.4rem; margin-bottom: 0; cursor: pointer; }
+
 input, select, textarea {
   padding: 0.25rem;
+  margin-left: 0.6rem;
   font-size: 0.9rem;
   color: var(--primary-text-color);
+  accent-color: var(--primary-text-color);
   border-radius: 0.25rem;
   border: 1px solid var(--background-color-blue-05);
   background-color: var(--background-color-blue-01);
@@ -570,6 +598,10 @@ button {
     border-color 0.25s ease;
 }
 
+.button{
+  transition: margin 0.3s ease;
+}
+
 button:disabled {
   cursor: initial;
   color: var(--disabled-text-color) !important;
@@ -579,7 +611,7 @@ button:disabled {
   background-color: var(--background-color-blue-01) !important;
 }
 
-button:hover {
+button:hover, .button:hover {
   margin-top: 0.2rem;
   margin-bottom: -0.2rem;
 }
@@ -588,11 +620,14 @@ button:hover, button:active {
   background-color: var(--background-color-blue-02);
 }
 
-button:focus {
+button:active, .button:active {
   margin-top: 0.4rem;
   margin-bottom: -0.4rem;
-  background-color: var(--background-color-blue-03);
   box-shadow:inset 0 0 0.5rem var(--box-shadow-color);
+}
+
+button:active {
+  background-color: var(--background-color-blue-03);
 }
 
 
@@ -662,6 +697,7 @@ button:focus {
   max-height: 3rem;
   margin: 0.2rem !important;
 }
+
 
 /* ---------- Animation des dégradés en arrière plan ---------- */
 @keyframes gradient {

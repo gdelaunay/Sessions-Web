@@ -1,0 +1,85 @@
+<div class="card main-card" id="register-card">
+  <h2>Créer un compte</h2>
+
+  <div class="form-div">
+    <form #registerForm="ngForm" (ngSubmit)="register()">
+      <div class="form-group"><label for="email"><h4>E-mail : </h4></label>
+        <input type="email" id="email" name="email" #email ngModel email required >
+        @if (email.value && !email.checkValidity()){ <span> L'e-mail n'est pas valide </span> }
+      </div>
+      <div class="form-group"><label for="password" ><h4>Mot de passe : </h4></label>
+        <input type="password" id="password" name="password" ngModel #password pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}|:;<>,.?/~\-]).{8,}$" required>
+        @if(password.value){
+          @if (password.value.length < minLength){ <span> Le mot de passe doit contenir au moins 6 caractères. </span> }
+          @else if (!uppercase.test(password.value)){ <span> Le mot de passe doit contenir au moins une lettre majuscule. </span> }
+          @else if (!lowercase.test(password.value)){ <span> Le mot de passe doit contenir au moins une lettre minuscule. </span> }
+          @else if (!digit.test(password.value)){ <span> Le mot de passe doit contenir au moins un chiffre. </span> }
+          @else if (!specialCharacter.test(password.value)){ <span> Le mot de passe doit contenir au moins un caractère spécial. </span> }
+        }
+      </div>
+      <div class="form-group"><label for="password-confirmation"><h4>Confirmer le mot de passe : </h4></label>
+        <input type="password" id="password-confirmation" name="passwordConfirmation" ngModel #passwordConfirmation required >
+        @if (password.value && passwordConfirmation.value && password.value !== passwordConfirmation.value) {
+            <span>Les mots de passe ne correspondent pas.</span>
+        }
+      </div>
+      <div id="btn-div"><button type="submit" [disabled]="!registerForm.form.valid || password.value !== passwordConfirmation.value">&nbsp; Créer mon compte &nbsp;</button></div>
+    </form>
+  </div>
+
+</div>
+
+
+<style>
+  /* ----- Portrait (mobile & tablette) ----- */
+  @media (orientation: portrait) {
+    form { width: 300px; }
+    .form-group:first-of-type { margin-top: 0.4rem !important; }
+    .form-group { width: calc(100% - 0.4rem) !important; }
+    .form-div { flex-direction: row !important;  }
+    input[type=text], input[type=email], input[type=password] { width: 100% !important; }
+  }
+
+  form{
+    width: 25rem;
+    max-width: 25rem;
+  }
+
+  .form-group:first-of-type { margin-top: 0; margin-bottom: 0.8rem; }
+
+  .form-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  label {
+    margin-bottom: 0.4rem;
+    margin-left: 0.4rem;
+    text-align: start;
+    width: 90%;
+  }
+
+  input {
+    margin-left: 0;
+    width: 90%;
+    height: 2.2rem;
+  }
+
+  span{
+    text-align: center;
+    width: 100%;
+    margin-top: 0.2rem;
+  }
+
+  #btn-div {
+    width: 100%;
+    margin: 1.4rem auto 0.4rem auto;
+  }
+
+  button {
+    margin-left: auto;
+    margin-right: auto;
+    height: 2.4rem;
+  }
+
+</style>
