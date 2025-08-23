@@ -1,8 +1,10 @@
 import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
-import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
+import {NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
 import {AnimationService} from './services/animation.service';
 import {filter} from 'rxjs';
 import {FooterComponent} from './components/footer/footer.component';
+import {IdentityService} from './services/identity.service';
+import {ToastrService} from 'ngx-toastr';
 
 const sessionsApiUrl_DEV = 'http://localhost:5050/api';
 const sessionsApiUrl_HTTP = 'http://localhost/api';
@@ -12,7 +14,7 @@ export const sessionsApiUrl: string = sessionsApiUrl_HTTP;
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FooterComponent],
+  imports: [RouterOutlet, FooterComponent, RouterLink],
   templateUrl: './app.html',
   standalone: true
 })
@@ -20,9 +22,12 @@ export const sessionsApiUrl: string = sessionsApiUrl_HTTP;
 export class App implements  OnInit, AfterViewInit, OnDestroy {
   title = 'SurfSessions-Web';
 
-  constructor(private animationService: AnimationService, private router: Router) {}
+  constructor(public identityService: IdentityService, private animationService: AnimationService, private toastrService: ToastrService, public router: Router) {}
 
   ngOnInit() {
+
+    this.checkIdentity();
+
     // Affichage spécifique quand zoom navigateur > 150% (desktop ou mobile/tablette paysage)
     window.addEventListener('resize', () => {
       if (window.devicePixelRatio > 1.5) {
@@ -35,6 +40,7 @@ export class App implements  OnInit, AfterViewInit, OnDestroy {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
+        this.checkIdentity();
         this.ngAfterViewInit()
       });
   }
@@ -60,11 +66,34 @@ export class App implements  OnInit, AfterViewInit, OnDestroy {
       { path: '/guest-page', id: 'guestBtn' },
       { path: '/', id: 'homeBtn' }
     ];
-    const match = routes.find(route => path.startsWith(route.path));
 
+    routes.forEach(route => {
+      document.getElementById(route.id)?.classList.remove('active');
+    });
+
+    const match = routes.find(route => path.startsWith(route.path));
     if (match) {
       document.getElementById(match.id)?.classList.add('active');
     }
+  }
+
+  getCurrentPage(): string {
+    return this.router.url;
+  }
+
+  checkIdentity() {
+    this.identityService.getUser().subscribe({
+      error: () => {  if(!(this.getCurrentPage() == "/guest" || this.getCurrentPage() == "/register")) { this.router.navigate(['/login']).then() }}
+    });
+  }
+
+  logout() {
+    this.identityService.logout().subscribe({
+      next: () => {
+        this.toastrService.success("Déconnexion réussie.");
+      },
+      error: err => { console.log(err); this.toastrService.error("La déconnexion a échoué : " + err.message) }
+    });
   }
 
   ngOnDestroy() {

@@ -12,18 +12,18 @@ export class SpotService {
   constructor(private http: HttpClient) { }
 
   getSpots() {
-    return this.http.get<any[]>(this.spotsUrl)
+    return this.http.get<any[]>(this.spotsUrl, { withCredentials: true })
   }
   getSpotById( id : number ) {
-    return this.http.get<any[]>(`${this.spotsUrl}/${id}`)
+    return this.http.get<any[]>(`${this.spotsUrl}/${id}`, { withCredentials: true })
   }
   createSpot( data: any ) {
-    return this.http.post(this.spotsUrl, data, { observe: 'response' })
+    return this.http.post(this.spotsUrl, data, { observe: 'response', withCredentials: true })
   }
   updateSpot( id : number, data: any ) {
-    return this.http.put(`${this.spotsUrl}/${id}`, data, { observe: 'response' })
+    return this.http.put(`${this.spotsUrl}/${id}`, data, { observe: 'response', withCredentials: true })
   }
   deleteSpot( id : number) {
-    return this.http.delete(`${this.spotsUrl}/${id}`)
+    return this.http.delete(`${this.spotsUrl}/${id}`, { withCredentials: true })
   }
 }

@@ -14,11 +14,11 @@ export class ForecastService {
   constructor(private http: HttpClient) { }
 
   getForecastDaily( lat : number, lon: number ) {
-    return this.http.get<any>(`${this.dailyForecastUrl}?lat=${lat}&lon=${lon}`);
+    return this.http.get<any>(`${this.dailyForecastUrl}?lat=${lat}&lon=${lon}`, { withCredentials: true });
   }
 
   getForecast3Hourly( lat : number, lon: number ) {
-    return this.http.get<any>(`${this.hourly3ForecastUrl}?lat=${lat}&lon=${lon}`);
+    return this.http.get<any>(`${this.hourly3ForecastUrl}?lat=${lat}&lon=${lon}`, { withCredentials: true });
   }
 
   getGuestForecast( lat : number, lon: number ) {

@@ -2,12 +2,13 @@ import {Component, ViewChild} from '@angular/core';
 import {FormsModule, NgForm} from '@angular/forms';
 import {IdentityService} from '../../services/identity.service';
 import {ToastrService} from 'ngx-toastr';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
   imports: [
-    FormsModule
+    FormsModule,
+    RouterLink
   ],
   templateUrl: './login-page.html'
 })
@@ -22,19 +23,10 @@ export class LoginPage {
     this.identityService.login({ email, password }).subscribe({
       next: () => {
         this.toastrService.success("Connexion réussie.");
-        this.router.navigate(['/home']).then();
+        this.router.navigate(['/']).then();
       },
       error: err => { console.log(err); this.toastrService.error("La connexion a échoué : " + err.error.detail) }
     });
   }
 
-
-  logout() {
-    this.identityService.logout({}).subscribe({
-      next: () => {
-        this.toastrService.success("Déconnexion réussie.");
-      },
-      error: err => { console.log(err); this.toastrService.error("La déconnexion a échoué : " + err.message) }
-    });
-  }
 }

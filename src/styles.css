@@ -179,7 +179,7 @@
 
   .card { padding: 0.4rem !important; }
 
-  .main-card { margin-top: 2.6rem !important; }
+  .main-card { margin: auto !important; }
 
   .card:not(.toolbar-card) > h2:first-of-type { margin: -2.4rem 0 -0.6rem -0.2rem !important; }
 
@@ -260,6 +260,11 @@ header {
   border-bottom: 1px solid var(--border-color-grey);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #title{
@@ -269,6 +274,24 @@ header {
   align-items: center;
 }
 
+#user-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+}
+
+#user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+}
+
+#user-div svg {
+  height: 2.4rem;
+  margin: 0 0.2rem 0 0.6rem;
+}
 
 header h1 {
   color : var(--primary-text-color);
@@ -284,9 +307,9 @@ header h1 {
 
 /* ----- ZOOMED ----- */
 .zoomed header {  padding: 0.2rem; }
-.zoomed #title { justify-content: center; }
-.zoomed header h1 { font-size: 1.5rem; }
-.zoomed .logo { height: 2rem; }
+.zoomed #title {  /* margin: 0 auto; */ }
+.zoomed header h1 { font-size: 1.5rem; margin: 0 0.2rem}
+.zoomed .logo { height: 2rem;  margin: 0.1rem}
 
 
 /* ---------- Main ---------- */
@@ -365,10 +388,6 @@ ul > div {
   flex-direction: column;
 }
 
-#guestBtn{
-  margin-top: auto;
-}
-
 li {
   margin: 0 0 0.6rem 0;
 }
@@ -391,13 +410,13 @@ li a:hover {
   margin-bottom: -0.2rem;
 }
 
-li a:hover, li.active a {
+li a:hover, li a:focus, li.active a {
   color: var(--aside-text-color);
   background: var(--background-color-grey-01);
   border: 1px solid var(--border-color-grey);
 }
 
-li a:focus {
+li a:active {
   margin-top: 0.4rem;
   margin-bottom: -0.4rem;
   color: var(--aside-text-color);
@@ -444,19 +463,19 @@ li a:focus {
   margin-top: 0.1rem;
 }
 
-.toolbar-card button:hover {
+.toolbar-card button:hover, .toolbar-card button:focus {
   margin-top: 0.3rem;
   margin-bottom: -0.1rem;
 }
 
-.toolbar-card button:focus {
+.toolbar-card button:active {
   margin-top: 0.5rem;
   margin-bottom: -0.3rem;
 }
 
 .deleteBtn { color: var(--red); border-color: var(--red); background-color: var(--red-01); }
-.deleteBtn:hover, .deleteBtn:active { background-color: var(--red-02); }
-.deleteBtn:focus { background-color: var(--red-03); box-shadow:inset 0 0 0.5rem var(--box-shadow-color); }
+.deleteBtn:hover, .deleteBtn:focus { background-color: var(--red-02); }
+.deleteBtn:active { background-color: var(--red-03); box-shadow:inset 0 0 0.5rem var(--box-shadow-color); }
 
 /* ----- Spot cards, Session cards ----- */
 

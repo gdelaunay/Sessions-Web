@@ -18,6 +18,7 @@ export class IdentityService {
   setUser(user: any) { this.currentUser.set(user); }
   clearUser() { this.currentUser.set(null); }
 
+
   register(data: { email: string; password: string }) {
     return this.http.post(`${sessionsApiUrl}/register`, data, { withCredentials: true })
   }
@@ -29,8 +30,14 @@ export class IdentityService {
     );
   }
 
-  logout(data: {}) {
-    return this.http.post(`${sessionsApiUrl}/logout`, data, { withCredentials: true }).pipe(tap(() =>this.clearUser()));
+  getUser() {
+    return this.http.get<any>(`${sessionsApiUrl}/account`, { withCredentials: true }).pipe(
+      tap(user => this.setUser(user))
+    );
+  }
+
+  logout() {
+    return this.http.post(`${sessionsApiUrl}/logout`, {}, { withCredentials: true }).pipe(tap(() =>this.clearUser()));
   }
 
   deleteAccount() {
