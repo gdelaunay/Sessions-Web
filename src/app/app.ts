@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {AnimationService} from './services/animation.service';
 import {filter} from 'rxjs';
+import {FooterComponent} from './components/footer/footer.component';
 
 const sessionsApiUrl_DEV = 'http://localhost:5050/api';
 const sessionsApiUrl_HTTP = 'http://localhost/api';
@@ -11,8 +12,9 @@ export const sessionsApiUrl: string = sessionsApiUrl_HTTP;
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  template: "<router-outlet/>"
+  imports: [RouterOutlet, FooterComponent],
+  templateUrl: './app.html',
+  standalone: true
 })
 
 export class App implements  OnInit, AfterViewInit, OnDestroy {
