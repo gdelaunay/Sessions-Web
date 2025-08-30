@@ -43,7 +43,7 @@ export class App implements  OnInit, AfterViewInit, OnDestroy {
       .subscribe(() => {
         // Redirection si utilisateur non connecté et page protégée
         if(!this.identityService.currentUser() && !["/login", "/guest", "/register"].includes(this.getCurrentPage())){
-          this.router.navigate(['/login']).then();
+          this.router.navigate(['/login'], { replaceUrl: true }).then();
         }
         this.ngAfterViewInit()
       });
