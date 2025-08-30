@@ -1,4 +1,4 @@
-import {Injectable, signal} from '@angular/core';
+import {computed, Injectable, signal} from '@angular/core';
 import {sessionsApiUrl} from '../app';
 import {HttpClient} from '@angular/common/http';
 import {switchMap, tap} from 'rxjs';
@@ -12,18 +12,22 @@ export interface User {
 export class IdentityService {
 
   currentUser = signal<User | null>(null);
+  rememberMe= computed(() => this.currentUser() && this._rememberMe());
+  private _rememberMe = signal(false);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   setUser(user: any) { this.currentUser.set(user); }
   clearUser() { this.currentUser.set(null); }
+  setRememberMe(rememberMe: boolean) { this._rememberMe.set(rememberMe); }
 
 
   register(data: { email: string; password: string }) {
     return this.http.post(`${sessionsApiUrl}/register`, data, { withCredentials: true })
   }
 
-  login(data: { email: string; password: string }) {
+  login(data: { email: string; password: string }, rememberMe: boolean) {
+    this._rememberMe.set(rememberMe);
     return this.http.post(`${sessionsApiUrl}/login?useCookies=true`, data, { withCredentials: true }).pipe(
       switchMap(() => this.http.get<any>(`${sessionsApiUrl}/account`, { withCredentials: true })),
       tap(user => this.setUser(user))

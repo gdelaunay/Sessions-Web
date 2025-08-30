@@ -19,13 +19,13 @@ export class LoginPage {
   constructor(public identityService: IdentityService, private toastrService: ToastrService, private router: Router) {}
 
   login() {
-    const { email, password } = this.loginForm.value;
-    this.identityService.login({ email, password }).subscribe({
+    const { email, password, rememberMe } = this.loginForm.value;
+    this.identityService.login({ email, password }, rememberMe).subscribe({
       next: () => {
         this.toastrService.success("Connexion réussie.");
         this.router.navigate(['/']).then();
       },
-      error: err => { console.log(err); this.toastrService.error("La connexion a échoué : " + err.error.detail) }
+      error: err => { this.toastrService.error("La connexion a échoué : " + err.error.detail) }
     });
   }
 

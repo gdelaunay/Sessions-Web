@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
 import {AnimationService} from './services/animation.service';
-import {filter} from 'rxjs';
+import {filter, skip} from 'rxjs';
 import {FooterComponent} from './components/footer/footer.component';
 import {IdentityService} from './services/identity.service';
 import {ToastrService} from 'ngx-toastr';
@@ -37,14 +37,25 @@ export class App implements  OnInit, AfterViewInit, OnDestroy {
       }
     });
 
+    // Déclenchement des animations, et de la mise en évidence de la page actuelle
     this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
+      .pipe(filter(event => event instanceof NavigationEnd), skip(1))
       .subscribe(() => {
+        // Redirection si utilisateur non connecté et page protégée
         if(!this.identityService.currentUser() && !["/login", "/guest", "/register"].includes(this.getCurrentPage())){
-          this.checkIdentity();
+          this.router.navigate(['/login']).then();
         }
         this.ngAfterViewInit()
       });
+
+    // Déclenchement d'une déconnexion en quittant le site, selon l'option "rememberMe" du login
+    window.addEventListener('beforeunload', () => {
+      if (!this.identityService.rememberMe()) {
+        this.identityService.clearUser();
+        navigator.sendBeacon(`${sessionsApiUrl}/logout`, new Blob([JSON.stringify({})], { type: 'application/json' }));
+      }
+    });
+
   }
 
   ngAfterViewInit() {
@@ -85,7 +96,8 @@ export class App implements  OnInit, AfterViewInit, OnDestroy {
 
   checkIdentity() {
     this.identityService.getUser().subscribe({
-      error: () => { this.router.navigate(['/login']).then() }
+      next: () => this.identityService.setRememberMe(true),
+      error: () => this.router.navigate(['/login']).then()
     });
   }
 
@@ -94,7 +106,7 @@ export class App implements  OnInit, AfterViewInit, OnDestroy {
       next: () => {
         this.toastrService.success("Déconnexion réussie.");
       },
-      error: err => { console.log(err); this.toastrService.error("La déconnexion a échoué : " + err.message) }
+      error: err => { this.toastrService.error("La déconnexion a échoué : " + err.message) }
     });
   }
 
@@ -103,5 +115,4 @@ export class App implements  OnInit, AfterViewInit, OnDestroy {
     mainCards.forEach(card => this.animationService.clearAnimation(card as HTMLElement));
   }
 
-  protected readonly JSON = JSON;
 }

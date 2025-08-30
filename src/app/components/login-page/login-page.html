@@ -10,7 +10,7 @@
       <div class="form-group"><label for="password"><h4>Mot de passe : </h4></label>
         <input type="password" id="password" name="password" ngModel #password autocomplete="current-password" required></div>
       <label id="rememberme">
-        <input type="checkbox" checked="checked" name="rememberme" [defaultChecked]="false"> Se rappeler de moi
+        <input type="checkbox" checked="checked" name="rememberMe" ngModel [defaultChecked]="true"> Se rappeler de moi
       </label>
       <div id="login-btns">
         <br>
