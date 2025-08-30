@@ -9,8 +9,8 @@
       </div>
       <div class="form-group"><label for="password"><h4>Mot de passe : </h4></label>
         <input type="password" id="password" name="password" ngModel #password autocomplete="current-password" required></div>
-      <label id="rememberme">
-        <input type="checkbox" checked="checked" name="rememberMe" ngModel [defaultChecked]="true"> Se rappeler de moi
+      <label class="rememberme">
+        <input type="checkbox" name="rememberMe" ngModel [ngModel]="true"> Se rappeler de moi
       </label>
       <div class="login-btns">
         <br>
@@ -31,8 +31,11 @@
   <h5>Pour essayer l'application et avoir accès à toutes ses fonctionnalités, vous pouvez vous connecter au compte <b>Invité</b>.</h5>
   <p>⚠ Le compte <b>Invité</b> est public et partagé, les données renseignées (spots, sessions) seront visibles de tous les visiteurs.</p>
   <div class="login-btns guest">
-    <button type="button" (click)="guestLogin()">&nbsp; Se connecter au compte Invité &nbsp;</button>
+    <button type="button" (click)="guestLogin(rememberMeGuest.checked)">&nbsp; Se connecter au compte Invité &nbsp;</button>
   </div>
+  <label class="rememberme guest">
+    <input type="checkbox" name="rememberMeGuest" #rememberMeGuest> Rester connecté
+  </label>
 </div>
 
 <style>
@@ -67,7 +70,7 @@
     width: 90%;
   }
 
-  #rememberme {
+  .rememberme {
     width: 100%;
     margin-top: -0.4rem;
     display: flex;
@@ -124,8 +127,8 @@
     margin-top: 0.6rem;
   }
 
-  .login-btns.guest {
-    margin-bottom: 0.2rem;
+  .rememberme.guest {
+    margin-bottom: 0;
   }
 
 </style>

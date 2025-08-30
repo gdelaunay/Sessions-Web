@@ -29,8 +29,8 @@ export class LoginPage {
     });
   }
 
-  guestLogin() {
-    this.identityService.login({ email: 'guest@sessions', password: 'Invité1234!' }, false).subscribe({
+  guestLogin(rememberMe: boolean) {
+    this.identityService.login({ email: 'guest@sessions', password: 'Invité1234!' }, rememberMe).subscribe({
       next: () => {
         this.toastrService.success("Connexion réussie.");
         this.router.navigate(['/']).then();
