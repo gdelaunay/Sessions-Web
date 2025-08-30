@@ -29,5 +29,15 @@ export class LoginPage {
     });
   }
 
+  guestLogin() {
+    this.identityService.login({ email: 'guest@sessions', password: 'Invité1234!' }, false).subscribe({
+      next: () => {
+        this.toastrService.success("Connexion réussie.");
+        this.router.navigate(['/']).then();
+      },
+      error: err => { this.toastrService.error("La connexion a échoué : " + err.error.detail) }
+    });
+  }
+
   protected readonly alert = alert;
 }

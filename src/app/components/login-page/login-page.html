@@ -12,7 +12,7 @@
       <label id="rememberme">
         <input type="checkbox" checked="checked" name="rememberMe" ngModel [defaultChecked]="true"> Se rappeler de moi
       </label>
-      <div id="login-btns">
+      <div class="login-btns">
         <br>
         <button type="submit" [disabled]="!loginForm.form.valid">&nbsp; Se connecter &nbsp;</button>
         <button type="button" class="google-login" (click)="alert('Désolé, la connexion avec Google est en cours de développement.')"><img class="google-login" alt="Se connecter avec Google" src="google-icon.svg"></button>
@@ -22,8 +22,17 @@
         <a [routerLink]="['/register']">Créer un compte</a>
       </div>
     </form>
-  </div>
 
+  </div>
+</div>
+
+<div class="card main-card" id="guest-login-card">
+  <h2>Connexion en tant qu'invité</h2>
+  <h5>Pour essayer l'application et avoir accès à toutes ses fonctionnalités, vous pouvez vous connecter au compte <b>Invité</b>.</h5>
+  <p>⚠ Le compte <b>Invité</b> est public et partagé, les données renseignées (spots, sessions) seront visibles de tous les visiteurs.</p>
+  <div class="login-btns guest">
+    <button type="button" (click)="guestLogin()">&nbsp; Se connecter au compte Invité &nbsp;</button>
+  </div>
 </div>
 
 <style>
@@ -79,7 +88,7 @@
     height: 2.6rem;
   }
 
-  #login-btns {
+  .login-btns {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -104,6 +113,19 @@
     width: 100%;
     text-align: center;
     margin-bottom: -0.5rem;
+  }
+
+  #guest-login-card {
+    text-align: center;
+    min-width: 50%;
+  }
+
+  #guest-login-card p {
+    margin-top: 0.6rem;
+  }
+
+  .login-btns.guest {
+    margin-bottom: 0.2rem;
   }
 
 </style>
