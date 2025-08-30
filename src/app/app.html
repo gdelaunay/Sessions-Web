@@ -1,4 +1,8 @@
 ﻿<header>
+  @if (["/login", "/guest", "/register"].includes(getCurrentPage())){
+    <div id="header-spacer" style="width: 40%"></div>
+  }
+
   <a [routerLink]="['/']">
     <div id="title">
       <img class="logo" src="/logo_placeholder.png" alt="Logo de Sessions">
@@ -12,10 +16,10 @@
         @if (getCurrentPage() !== "/login" && getCurrentPage() !== "/guest") {
           <div style="display: flex; flex-direction: row ">
             <span>ou &nbsp; </span>
-            <a [routerLink]="['/guest']">Mode invité</a>
+            <a [routerLink]="['/guest']">Mode Web standalone</a>
           </div>
         }
-        @else if (getCurrentPage() !== "/guest"){ <a [routerLink]="['/guest']"> Mode invité </a> }
+        @else if (getCurrentPage() !== "/guest"){ <a [routerLink]="['/guest']"> Mode Web standalone </a> }
       } @else {
         {{ this.identityService.currentUser()?.userName }}
         <a (click)="this.logout(); this.router.navigate(['/login'])" style="font-size: 0.8rem; margin-bottom: -0.2rem"> Se déconnecter </a>

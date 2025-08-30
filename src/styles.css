@@ -279,6 +279,7 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: end;
+  width: 40%;
 }
 
 #user-info {
@@ -307,9 +308,11 @@ header h1 {
 
 /* ----- ZOOMED ----- */
 .zoomed header {  padding: 0.2rem; }
+.zoomed #header-spacer { display: none; }
 .zoomed #title {  /* margin: 0 auto; */ }
 .zoomed header h1 { font-size: 1.5rem; margin: 0 0.2rem}
 .zoomed .logo { height: 2rem;  margin: 0.1rem}
+.zoomed #user-div { width: 70%; }
 
 
 /* ---------- Main ---------- */
