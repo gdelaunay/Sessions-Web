@@ -40,7 +40,9 @@ export class App implements  OnInit, AfterViewInit, OnDestroy {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
-        this.checkIdentity();
+        if(!this.identityService.currentUser() && !["/login", "/guest", "/register"].includes(this.getCurrentPage())){
+          this.checkIdentity();
+        }
         this.ngAfterViewInit()
       });
   }
@@ -83,7 +85,7 @@ export class App implements  OnInit, AfterViewInit, OnDestroy {
 
   checkIdentity() {
     this.identityService.getUser().subscribe({
-      error: () => {  if(!(this.getCurrentPage() == "/guest" || this.getCurrentPage() == "/register")) { this.router.navigate(['/login']).then() }}
+      error: () => { this.router.navigate(['/login']).then() }
     });
   }
 
@@ -101,4 +103,5 @@ export class App implements  OnInit, AfterViewInit, OnDestroy {
     mainCards.forEach(card => this.animationService.clearAnimation(card as HTMLElement));
   }
 
+  protected readonly JSON = JSON;
 }
