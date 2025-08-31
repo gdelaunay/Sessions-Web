@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {DatePipe, KeyValuePipe, TitleCasePipe} from '@angular/common';
 
-type ForecastType = 'daily' | '3hourly' | 'guest';
+type ForecastType = 'daily' | '3hourly' | 'standalone';
 
 @Component({
   selector: 'app-forecast',

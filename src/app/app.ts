@@ -42,7 +42,7 @@ export class App implements  OnInit, AfterViewInit, OnDestroy {
       .pipe(filter(event => event instanceof NavigationEnd), skip(1))
       .subscribe(() => {
         // Redirection si utilisateur non connecté et page protégée
-        if(!this.identityService.currentUser() && !["/login", "/guest", "/register"].includes(this.getCurrentPage())){
+        if(!this.identityService.currentUser() && !["/login", "/standalone", "/register"].includes(this.getCurrentPage())){
           this.router.navigate(['/login'], { replaceUrl: true }).then();
         }
         this.ngAfterViewInit()
@@ -76,7 +76,7 @@ export class App implements  OnInit, AfterViewInit, OnDestroy {
       { path: '/spot', id: 'spotsBtn' },
       { path: '/alert', id: 'alertsBtn' },
       { path: '/session', id: 'sessionsBtn' },
-      { path: '/guest-page', id: 'guestBtn' },
+      { path: '/standalone', id: 'standaloneBtn' },
       { path: '/', id: 'homeBtn' }
     ];
 

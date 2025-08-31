@@ -1,5 +1,5 @@
 ﻿<header>
-  @if (["/login", "/guest", "/register"].includes(getCurrentPage())){
+  @if (["/login", "/standalone", "/register"].includes(getCurrentPage())){
     <div id="header-spacer" style="width: 40%"></div>
   }
 
@@ -13,13 +13,13 @@
     <div id="user-info">
       @if (!this.identityService.currentUser()){
         @if (getCurrentPage() !== "/login"){ <a [routerLink]="['/login']"> Se connecter </a>}
-        @if (getCurrentPage() !== "/login" && getCurrentPage() !== "/guest") {
+        @if (getCurrentPage() !== "/login" && getCurrentPage() !== "/standalone") {
           <div style="display: flex; flex-direction: row ">
             <span>ou &nbsp; </span>
-            <a [routerLink]="['/guest']">Mode Web standalone</a>
+            <a [routerLink]="['/standalone']">Mode Web standalone</a>
           </div>
         }
-        @else if (getCurrentPage() !== "/guest"){ <a [routerLink]="['/guest']"> Mode Web standalone </a> }
+        @else if (getCurrentPage() !== "/standalone"){ <a [routerLink]="['/standalone']"> Mode Web standalone </a> }
       } @else {
         {{ this.identityService.currentUser()?.userName }}
         <a (click)="this.logout(); this.router.navigate(['/login'])" style="font-size: 0.8rem; margin-bottom: -0.2rem"> Se déconnecter </a>

@@ -327,7 +327,7 @@ main{
 
 .zoomed main{ height: calc(100% - 2rem - 4px); }
 
-app-home-page, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-detail, app-session-form, app-guest-page, app-login-page, app-register-page, #main-div{
+app-home-page, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-detail, app-session-form, app-standalone-page, app-login-page, app-register-page, #main-div{
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -335,7 +335,7 @@ app-home-page, app-spots, app-spot-detail, app-spot-form, app-sessions, app-sess
   height: 100%;
 }
 
-app-home-page, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-detail, app-session-form, app-guest-page, app-login-page, app-register-page {
+app-home-page, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-detail, app-session-form, app-standalone-page, app-login-page, app-register-page {
   /* Chrome, Safari */
   -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 97.5%, rgba(0,0,0,0) 100%);
   -webkit-mask-repeat: no-repeat;
