@@ -1,4 +1,4 @@
-# SurfSessions-Web
+# Sessions-Web
 
 Application web Angular 19 front-end de l'application **Sessions**.  
 → API .NET back-end de l'application **Sessions** : [SurfSessions-API](https://github.com/gdelaunay/SurfSessions-API)  
