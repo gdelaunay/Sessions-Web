@@ -1,7 +1,7 @@
 # Sessions-Web
 
 Application web Angular 19 front-end de l'application **Sessions**.  
-→ API .NET back-end de l'application **Sessions** : [SurfSessions-API](https://github.com/gdelaunay/Sessions-API)  
+→ API .NET back-end de l'application **Sessions** : [Sessions-API](https://github.com/gdelaunay/Sessions-API)  
 <br>
 En standalone / mode invité, elle permet de visualiser les prévisions de météo marine (houle, vent...) à une position donnée (lat/long).  
 <br>
