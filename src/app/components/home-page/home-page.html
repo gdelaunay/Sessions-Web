@@ -1,6 +1,20 @@
+<div class="card toolbar-card welcome-card">
+  <h2> Bienvenue sur l'application Sessions !</h2>
+  <h5> ✨ Ici, vous pouvez configurer vos spots de surf préférés, obtenir leur météo marine détaillée, et enregistrer vos sessions.  </h5>
+  <p> - Vous pouvez commencer par <a [routerLink]="['/spot/form', 'new']">créer un spot</a> en indiquant sa position géographique précise (en mer). </p>
+  <p> - Le spot est maintenant présent dans votre <a [routerLink]="['/spots']">liste des spots</a>, vous pouvez l'ouvrir pour y consulter la météo marine. </p>
+  <p> - Vous pourrez ensuite <a [routerLink]="['/session/form', 'new']">créer une session</a>, renseigner sa durée, lui mettre une note, et un commentaire. </p>
+  <h5>🛠️ Fonctionnalités à venir :</h5>
+  <p> - Connexion avec un compte Google.</p>
+  <p> - Présentation des conditions météo (graphiques, flèches et directions cardinales ...). </p>
+  <p> - Définition d'un spot favoris et de conditions météo favorites pour chaque spot. </p>
+  <p> - Création d'alertes, pour être prévenu immédiatement (7 jours à l'avance) quand les conditions météo pour un spot correspondent à vos conditions favorites. </p>
+  <p> - Enregistrement des conditions météos au moment de la session. </p>
+  <p> - Affichage de statistiques personnelles (sessions par spots, conditions météo des sessions, notes attribuées...). </p>
+</div>
+
 <div class="card main-card" id="home-card">
   <h2 id="spot">Spot : Margaret plage - Préfailles</h2>
-
   @if (loading) {
     <h2> Chargement ... </h2>
     <img class="loading" alt="chargement" src="" style="margin: 2rem">
@@ -9,7 +23,32 @@
     <h2> Erreur ! </h2>
     <div><span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a></div>
   }
-
   @if (hourly3Forecasts) { <app-forecast [forecasts]="hourly3Forecasts" [type]="'3hourly'"/> }
-
 </div>
+
+<style>
+
+  .welcome-card{
+    flex-direction: column;
+    padding: 0.6rem 0.8rem;
+  }
+
+  #home-card {
+    margin-top: 2.8rem;
+  }
+
+  h2{
+    text-align: center;
+    margin-top: 0.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  h5{
+    margin-bottom: 0.4rem;
+  }
+
+  h5:last-of-type{
+    margin-top: 0.8rem;
+  }
+
+</style>

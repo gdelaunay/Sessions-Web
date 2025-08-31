@@ -2,11 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ForecastService} from '../../services/forecast.service';
 import {ForecastComponent} from '../forecast/forecast.component';
+import {IdentityService} from '../../services/identity.service';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
   imports: [
-    ForecastComponent
+    ForecastComponent,
+    RouterLink
   ],
   templateUrl: './home-page.html'
 })
@@ -18,7 +21,7 @@ export class HomePage implements OnInit {
   error: any;
   errorUrl: any;
 
-  constructor(private http: HttpClient, private forecastService: ForecastService) {  }
+  constructor(private forecastService: ForecastService, public identityService: IdentityService) {  }
 
   ngOnInit() {
     this.loading = true;
