@@ -136,6 +136,25 @@
 }
 
 
+/* ----- Désactivation des animations si prefers-reduced-motion ----- */
+@media (prefers-reduced-motion) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .card{
+    transform: none !important;
+  }
+
+  li a, button, .button {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+  }
+}
+
 /* ----- Paysage ----- */
 @media (orientation: landscape) {
 
