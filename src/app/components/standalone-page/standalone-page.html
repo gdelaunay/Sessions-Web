@@ -1,3 +1,8 @@
+<div class="card toolbar-card explanation-card">
+  <p>🛠️ Mode <b>Sessions-Web</b> standalone - l'application fonctionne sans <b>Sessions-API</b> (gestion des comptes, spots, sessions ...).</p>
+    <p>💡Tout se déroule dans votre navigateur: l'API <a href="https://open-meteo.com/">Open-Meteo</a> est interrogée directement,
+    sa réponse brute est affichée, et aucune donnée n'est enregistrée.</p>
+</div>
 <div class="spacer top"></div>
 <div class="card main-card" id="standalone-card">
   <h2 id="spot">Mode Web standalone :</h2>
@@ -6,9 +11,10 @@
     <div id="locationPrompt">
       <h4>Sélectionner un point sur la carte, et valider pour obtenir les prévisions météo marines.</h4>
       <br><h4>Point sélectionné : </h4>
-      <p> Latitude = &nbsp;&nbsp;<input #latInput type="text"> </p>
-      <p> Longitude =<input #lonInput type="text"> </p>
-      <button #validateCoordsBtn (click)="getForecasts()">Valider</button>
+      <p> Latitude = &nbsp;&nbsp;<input #latInput type="text" required> </p>
+      <p> Longitude =<input #lonInput type="text" required> </p>
+      <br>
+      <button #validateCoordsBtn (click)="getForecasts()" [disabled]="!latInput.value || !lonInput.value">Valider</button>
     </div>
     <app-map mapId='standalone-map' (outCoords)="updatePosition($event)"/>
   </div>
@@ -24,8 +30,7 @@
 
   @if (forecasts) { <app-forecast [forecasts]="forecasts" [type]="'standalone'" /> }
 
-  <br>⚠️ Cette page n'est qu'un aperçu de l'application <b>Sessions</b>. Pour bénéficier de l'API Sessions et obtenir
-  des prévisions détaillées, <b>créez un compte</b> et commencez à configurer vos spots préférés !
+
 </div>
 <div class="spacer bottom"></div>
 
@@ -37,9 +42,9 @@
     #locationPrompt {justify-content: start !important; order: 1}
     h4, p { margin: 0.4rem 0 !important }
     h4 ~ br { display: none }
-    button { margin-top: 0.4rem !important; }
-    .spacer.top { min-height: 2.6rem !important }
   }
+
+  .spacer.top { min-height: 1.8rem }
 
   #locationDiv {
     display: flex;
@@ -63,6 +68,7 @@
     text-align: center;
   }
 
+  p:first-of-type { margin: 0 !important;}
   p { margin: 0.4rem 0; }
 
   input {
@@ -71,7 +77,6 @@
   }
 
   button {
-    margin-top: 0.8rem;
     margin-left: 25%;
   }
 
