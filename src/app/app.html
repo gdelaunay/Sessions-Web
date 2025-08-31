@@ -1,5 +1,5 @@
 ﻿<header>
-  @if (["/login", "/standalone", "/register"].includes(getCurrentPage())){
+  @if (!this.identityService.currentUser()){
     <div id="header-spacer" style="width: 40%"></div>
   }
 
@@ -70,3 +70,9 @@
 
 </main>
 
+<style>
+
+  #user-info{
+  }
+
+</style>

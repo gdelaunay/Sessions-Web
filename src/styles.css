@@ -149,6 +149,11 @@
     flex-direction: column !important;
   }
 
+  header {  padding: 0.2rem !important; }
+  #user-div { width: 70% !important; }
+  #header-spacer { display: none !important; }
+  header h1 { font-size: 1.5rem !important; margin: 0 0.2rem !important; }
+
   aside {
     order: 1;
     width: 100%;
@@ -194,6 +199,9 @@
     min-width: 92.5% !important;
     max-width: 92.5% !important;
   }
+
+  #spots-form{ padding-bottom: 0.8rem !important; }
+  #sessions-form { padding-bottom: 0.42rem !important; }
 
   .session-details{
     margin-top: 1rem !important;
@@ -289,6 +297,7 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: end;
+  text-align: end;
 }
 
 #user-div svg {
@@ -312,7 +321,7 @@ header h1 {
 .zoomed header {  padding: 0.2rem; }
 .zoomed #header-spacer { display: none; }
 .zoomed #title {  /* margin: 0 auto; */ }
-.zoomed header h1 { font-size: 1.5rem; margin: 0 0.2rem}
+.zoomed header h1 { font-size: 1.5rem; margin: 0 0.2rem }
 .zoomed .logo { height: 2rem;  margin: 0.1rem}
 .zoomed #user-div { width: 70%; }
 
