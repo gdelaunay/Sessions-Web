@@ -1,4 +1,5 @@
-<div class="card main-card" id="spots-form">
+<div class="spacer top"></div>
+<div class="card main-card" id="sessions-form">
   @if (loading) {
     <h2> Chargement ... </h2>
     <img class="loading" alt="chargement" src="" style="margin: 2rem">
@@ -7,7 +8,7 @@
     <h2> Erreur ! </h2>
     <div><span style="font-weight: 600;">{{ error }}</span><a href="{{ errorUrl }}">{{ errorUrl }}</a></div>
   }
-  @if (session.Id) { <h2> Modifier session : {{ session.StartTime | date:'EEEE dd/MM/yyyy' | titlecase }} - {{ session.Spot.Name }}</h2> }
+  @if (session.Id) { <h2> Modifier une session : <!--  {{ session.StartTime | date:'EEEE dd/MM/yyyy' | titlecase }} - {{ session.Spot.Name }} --> </h2> }
   @else if (!error && !loading) { <h2> Nouvelle session </h2> }
 
   <div class="form-div">
@@ -55,6 +56,7 @@
 
   </div>
 </div>
+<div class="spacer top"></div>
 
 <style>
   @media (orientation: portrait) {

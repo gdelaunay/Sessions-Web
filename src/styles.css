@@ -181,14 +181,16 @@
 
   .main-card { margin: auto !important; }
 
+  .spacer.top{ min-height: 2.2rem !important; }
+
   .card:not(.toolbar-card) > h2:first-of-type { margin: -2.4rem 0 -0.6rem -0.2rem !important; }
 
   .toolbar-card button { font-size: 0 !important; text-indent: 0 !important}
 
   .toolbar-card { min-width: 95% !important; }
 
-  .spot-card {
-    margin-top: 1.8rem !important;
+  .spot-card, .session-card {
+    margin-top: 2.2rem !important;
     min-width: 92.5% !important;
     max-width: 92.5% !important;
   }
@@ -361,9 +363,9 @@ app-home-page, app-spots, app-spot-detail, app-spot-form, app-sessions, app-sess
   border-radius: 0.75rem;
 }
 
-.main-card {
-  margin-top: 3.6rem;
-}
+.spacer{ height: auto }
+.spacer.top{ min-height: 3.2rem; }
+.spacer.bottom{ min-height: 1.2rem; }
 
 
 /* ---------- Volet aside ---------- */

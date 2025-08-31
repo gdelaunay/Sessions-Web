@@ -1,6 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Map} from '../../map/map';
-import {FooterComponent} from '../../footer/footer.component';
 import {SpotService} from '../../../services/spot.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormsModule} from '@angular/forms';
@@ -10,7 +9,6 @@ import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-spot-form',
   imports: [
-    FooterComponent,
     FormsModule,
     Map
   ],

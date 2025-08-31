@@ -25,8 +25,14 @@
   }
   @if (hourly3Forecasts) { <app-forecast [forecasts]="hourly3Forecasts" [type]="'3hourly'"/> }
 </div>
+<div class="spacer bottom"></div>
 
 <style>
+
+  /* ----- Portrait (mobile & tablette) ----- */
+  @media (orientation: portrait) {
+    #home-card { margin-top: 2.4rem !important; }
+  }
 
   .welcome-card{
     flex-direction: column;
@@ -34,7 +40,7 @@
   }
 
   #home-card {
-    margin-top: 2.8rem;
+    margin-top: 2.6rem;
   }
 
   h2{
