@@ -136,6 +136,25 @@
 }
 
 
+/* ----- Désactivation des animations si prefers-reduced-motion ----- */
+@media (prefers-reduced-motion) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .card{
+    transform: none !important;
+  }
+
+  li a, button, .button {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+  }
+}
+
 /* ----- Paysage ----- */
 @media (orientation: landscape) {
 
@@ -148,6 +167,11 @@
   main{
     flex-direction: column !important;
   }
+
+  header {  padding: 0.2rem !important; }
+  #user-div { width: 70% !important; }
+  #header-spacer { display: none !important; }
+  header h1 { font-size: 1.5rem !important; margin: 0 0.2rem !important; }
 
   aside {
     order: 1;
@@ -181,17 +205,22 @@
 
   .main-card { margin: auto !important; }
 
+  .spacer.top{ min-height: 2.2rem !important; }
+
   .card:not(.toolbar-card) > h2:first-of-type { margin: -2.4rem 0 -0.6rem -0.2rem !important; }
 
   .toolbar-card button { font-size: 0 !important; text-indent: 0 !important}
 
   .toolbar-card { min-width: 95% !important; }
 
-  .spot-card {
-    margin-top: 1.8rem !important;
+  .spot-card, .session-card {
+    margin-top: 2.2rem !important;
     min-width: 92.5% !important;
     max-width: 92.5% !important;
   }
+
+  #spots-form{ padding-bottom: 0.8rem !important; }
+  #sessions-form { padding-bottom: 0.42rem !important; }
 
   .session-details{
     margin-top: 1rem !important;
@@ -287,6 +316,7 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: end;
+  text-align: end;
 }
 
 #user-div svg {
@@ -310,7 +340,7 @@ header h1 {
 .zoomed header {  padding: 0.2rem; }
 .zoomed #header-spacer { display: none; }
 .zoomed #title {  /* margin: 0 auto; */ }
-.zoomed header h1 { font-size: 1.5rem; margin: 0 0.2rem}
+.zoomed header h1 { font-size: 1.5rem; margin: 0 0.2rem }
 .zoomed .logo { height: 2rem;  margin: 0.1rem}
 .zoomed #user-div { width: 70%; }
 
@@ -325,7 +355,7 @@ main{
 
 .zoomed main{ height: calc(100% - 2rem - 4px); }
 
-app-home-page, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-detail, app-session-form, app-guest-page, app-login-page, app-register-page, #main-div{
+app-home-page, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-detail, app-session-form, app-standalone-page, app-login-page, app-register-page, #main-div{
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -333,7 +363,7 @@ app-home-page, app-spots, app-spot-detail, app-spot-form, app-sessions, app-sess
   height: 100%;
 }
 
-app-home-page, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-detail, app-session-form, app-guest-page, app-login-page, app-register-page {
+app-home-page, app-spots, app-spot-detail, app-spot-form, app-sessions, app-session-detail, app-session-form, app-standalone-page, app-login-page, app-register-page {
   /* Chrome, Safari */
   -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 97.5%, rgba(0,0,0,0) 100%);
   -webkit-mask-repeat: no-repeat;
@@ -361,9 +391,9 @@ app-home-page, app-spots, app-spot-detail, app-spot-form, app-sessions, app-sess
   border-radius: 0.75rem;
 }
 
-.main-card {
-  margin-top: 3.6rem;
-}
+.spacer{ height: auto }
+.spacer.top{ min-height: 3.2rem; }
+.spacer.bottom{ min-height: 1.2rem; }
 
 
 /* ---------- Volet aside ---------- */

@@ -1,3 +1,4 @@
+<div class="spacer top"></div>
 <div class="card main-card" id="spots-form">
   @if (loading) {
     <h2> Chargement ... </h2>
@@ -22,13 +23,14 @@
     <app-map mapId='form-map' (outCoords)="updatePosition($event)"/>
   </div>
 </div>
+<div class="spacer bottom"></div>
 
-<app-footer></app-footer>
 <style>
   @media (orientation: portrait) {
     form, app-map { width: 100% !important }
     h4, .form-group { margin: 0.4rem 0 !important }
     h4 ~ br { display: none }
+    .form-group:first-of-type { margin-top: 0.8rem !important ; }
   }
 
   form { width: 55%; padding: 0 1rem 0 0; }

@@ -8,8 +8,8 @@ export class ForecastService {
   private dailyForecastUrl = sessionsApiUrl + '/forecast/daily';
   private hourly3ForecastUrl = sessionsApiUrl + '/forecast/3hourly';
 
-  private guestForecastUrl = 'https://marine-api.open-meteo.com/v1/marine';
-  private guestForecastParams = 'daily=wave_height_max,wave_direction_dominant,wave_period_max&timezone=Europe%2FBerlin'
+  private standaloneForecastUrl = 'https://marine-api.open-meteo.com/v1/marine';
+  private standaloneForecastParams = 'daily=wave_height_max,wave_direction_dominant,wave_period_max&timezone=Europe%2FBerlin'
 
   constructor(private http: HttpClient) { }
 
@@ -21,8 +21,8 @@ export class ForecastService {
     return this.http.get<any>(`${this.hourly3ForecastUrl}?lat=${lat}&lon=${lon}`, { withCredentials: true });
   }
 
-  getGuestForecast( lat : number, lon: number ) {
-    return this.http.get<any>(`${this.guestForecastUrl}?latitude=${lat}&longitude=${lon}&${this.guestForecastParams}`);
+  getStandaloneForecast( lat : number, lon: number ) {
+    return this.http.get<any>(`${this.standaloneForecastUrl}?latitude=${lat}&longitude=${lon}&${this.standaloneForecastParams}`);
   }
 
 }

@@ -6,14 +6,14 @@ import {Map} from '../map/map';
 import {roundTo} from '../../utils';
 
 @Component({
-  selector: 'app-guest-page',
+  selector: 'app-standalone-page',
   imports: [
     ForecastComponent,
     Map
   ],
-  templateUrl: './guest-page.html'
+  templateUrl: './standalone-page.html'
 })
-export class GuestPage {
+export class StandalonePage {
 
   forecasts: any;
   error: any;
@@ -30,7 +30,7 @@ export class GuestPage {
     this.validateCoordsBtn.nativeElement.blur();
     this.error = null;
     this.loading = true;
-    this.forecastService.getGuestForecast(this.latInput.nativeElement.value, this.lonInput.nativeElement.value).
+    this.forecastService.getStandaloneForecast(this.latInput.nativeElement.value, this.lonInput.nativeElement.value).
     subscribe({
       next: (data) => {
         this.forecasts = data;
