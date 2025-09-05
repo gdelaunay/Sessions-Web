@@ -46,8 +46,8 @@ npm install -g @angular/cli
 
 1. Cloner le dépôt :
 ```bash
-git clone https://github.com/gdelaunay/SurfSessions-Web.git
-cd SurfSessions-Web
+git clone https://github.com/gdelaunay/Sessions-Web.git
+cd Sessions-Web
 ```
 2. Installer les dépendances du projet :
 ```bash

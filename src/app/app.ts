@@ -20,7 +20,7 @@ export const sessionsApiUrl: string = sessionsApiUrl_HTTP;
 })
 
 export class App implements  OnInit, AfterViewInit, OnDestroy {
-  title = 'SurfSessions-Web';
+  title = 'Sessions-Web';
 
   constructor(public identityService: IdentityService, private animationService: AnimationService, private toastrService: ToastrService, public router: Router) {}
 

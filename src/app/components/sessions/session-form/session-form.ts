@@ -9,8 +9,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 @Component({
   selector: 'app-session-form',
   imports: [
-    DatePipe,
-    TitleCasePipe,
     FormsModule,
     ReactiveFormsModule
   ],

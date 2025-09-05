@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "SurfSessions-Web": {
+    "Sessions-Web": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -61,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "SurfSessions-Web:build:production"
+              "buildTarget": "Sessions-Web:build:production"
             },
             "development": {
-              "buildTarget": "SurfSessions-Web:build:development"
+              "buildTarget": "Sessions-Web:build:development"
             }
           },
           "defaultConfiguration": "development"
